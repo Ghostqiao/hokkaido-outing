@@ -1,0 +1,351 @@
+{
+  "frames": {
+    "Nanshi0013.png": {
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "w": 122,
+        "h": 265
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 3,
+        "y": 1,
+        "w": 122,
+        "h": 265
+      },
+      "sourceSize": {
+        "w": 143,
+        "h": 268
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Nanshi0012.png": {
+      "frame": {
+        "x": 122,
+        "y": 0,
+        "w": 122,
+        "h": 265
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 3,
+        "y": 1,
+        "w": 122,
+        "h": 265
+      },
+      "sourceSize": {
+        "w": 143,
+        "h": 268
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Nanshi0011.png": {
+      "frame": {
+        "x": 244,
+        "y": 0,
+        "w": 122,
+        "h": 265
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 3,
+        "y": 1,
+        "w": 122,
+        "h": 265
+      },
+      "sourceSize": {
+        "w": 143,
+        "h": 268
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Nanshi0010.png": {
+      "frame": {
+        "x": 0,
+        "y": 265,
+        "w": 124,
+        "h": 265
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 4,
+        "y": 2,
+        "w": 124,
+        "h": 265
+      },
+      "sourceSize": {
+        "w": 143,
+        "h": 268
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Nanshi0008.png": {
+      "frame": {
+        "x": 124,
+        "y": 265,
+        "w": 124,
+        "h": 265
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 4,
+        "y": 2,
+        "w": 124,
+        "h": 265
+      },
+      "sourceSize": {
+        "w": 143,
+        "h": 268
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Nanshi0009.png": {
+      "frame": {
+        "x": 248,
+        "y": 265,
+        "w": 124,
+        "h": 265
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 4,
+        "y": 2,
+        "w": 124,
+        "h": 265
+      },
+      "sourceSize": {
+        "w": 143,
+        "h": 268
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Nanshi0003.png": {
+      "frame": {
+        "x": 366,
+        "y": 0,
+        "w": 141,
+        "h": 249
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 1,
+        "y": 18,
+        "w": 141,
+        "h": 249
+      },
+      "sourceSize": {
+        "w": 143,
+        "h": 268
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Nanshi0001.png": {
+      "frame": {
+        "x": 372,
+        "y": 249,
+        "w": 141,
+        "h": 249
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 1,
+        "y": 18,
+        "w": 141,
+        "h": 249
+      },
+      "sourceSize": {
+        "w": 143,
+        "h": 268
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Nanshi0000.png": {
+      "frame": {
+        "x": 0,
+        "y": 530,
+        "w": 141,
+        "h": 249
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 1,
+        "y": 18,
+        "w": 141,
+        "h": 249
+      },
+      "sourceSize": {
+        "w": 143,
+        "h": 268
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Nanshi0002.png": {
+      "frame": {
+        "x": 141,
+        "y": 530,
+        "w": 141,
+        "h": 249
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 1,
+        "y": 18,
+        "w": 141,
+        "h": 249
+      },
+      "sourceSize": {
+        "w": 143,
+        "h": 268
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Nanshi0006.png": {
+      "frame": {
+        "x": 507,
+        "y": 0,
+        "w": 107,
+        "h": 247
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 5,
+        "y": 19,
+        "w": 107,
+        "h": 247
+      },
+      "sourceSize": {
+        "w": 143,
+        "h": 268
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Nanshi0005.png": {
+      "frame": {
+        "x": 282,
+        "y": 530,
+        "w": 107,
+        "h": 247
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 5,
+        "y": 19,
+        "w": 107,
+        "h": 247
+      },
+      "sourceSize": {
+        "w": 143,
+        "h": 268
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Nanshi0004.png": {
+      "frame": {
+        "x": 513,
+        "y": 247,
+        "w": 107,
+        "h": 247
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 5,
+        "y": 19,
+        "w": 107,
+        "h": 247
+      },
+      "sourceSize": {
+        "w": 143,
+        "h": 268
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Nanshi0007.png": {
+      "frame": {
+        "x": 513,
+        "y": 494,
+        "w": 107,
+        "h": 247
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 5,
+        "y": 19,
+        "w": 107,
+        "h": 247
+      },
+      "sourceSize": {
+        "w": 143,
+        "h": 268
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    }
+  },
+  "meta": {
+    "app": "http://free-tex-packer.com",
+    "version": "0.6.7",
+    "image": "nanshi.png",
+    "format": "RGBA8888",
+    "size": {
+      "w": 620,
+      "h": 779
+    },
+    "scale": 1
+  }
+}

@@ -1,0 +1,447 @@
+{
+  "frames": {
+    "Ezo fox0004.png": {
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "w": 190,
+        "h": 214
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 2,
+        "y": 1,
+        "w": 190,
+        "h": 214
+      },
+      "sourceSize": {
+        "w": 192,
+        "h": 250
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Ezo fox0011.png": {
+      "frame": {
+        "x": 190,
+        "y": 0,
+        "w": 175,
+        "h": 223
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 11,
+        "y": 10,
+        "w": 175,
+        "h": 223
+      },
+      "sourceSize": {
+        "w": 192,
+        "h": 250
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Ezo fox0012.png": {
+      "frame": {
+        "x": 0,
+        "y": 214,
+        "w": 175,
+        "h": 223
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 11,
+        "y": 10,
+        "w": 175,
+        "h": 223
+      },
+      "sourceSize": {
+        "w": 192,
+        "h": 250
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Ezo fox0005.png": {
+      "frame": {
+        "x": 175,
+        "y": 223,
+        "w": 190,
+        "h": 214
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 2,
+        "y": 1,
+        "w": 190,
+        "h": 214
+      },
+      "sourceSize": {
+        "w": 192,
+        "h": 250
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Ezo fox0013.png": {
+      "frame": {
+        "x": 365,
+        "y": 0,
+        "w": 175,
+        "h": 223
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 11,
+        "y": 10,
+        "w": 175,
+        "h": 223
+      },
+      "sourceSize": {
+        "w": 192,
+        "h": 250
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Ezo fox0014.png": {
+      "frame": {
+        "x": 365,
+        "y": 223,
+        "w": 175,
+        "h": 223
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 11,
+        "y": 10,
+        "w": 175,
+        "h": 223
+      },
+      "sourceSize": {
+        "w": 192,
+        "h": 250
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Ezo fox0000.png": {
+      "frame": {
+        "x": 0,
+        "y": 437,
+        "w": 182,
+        "h": 220
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 30,
+        "w": 182,
+        "h": 220
+      },
+      "sourceSize": {
+        "w": 192,
+        "h": 250
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Ezo fox0001.png": {
+      "frame": {
+        "x": 182,
+        "y": 437,
+        "w": 182,
+        "h": 220
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 30,
+        "w": 182,
+        "h": 220
+      },
+      "sourceSize": {
+        "w": 192,
+        "h": 250
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Ezo fox0006.png": {
+      "frame": {
+        "x": 364,
+        "y": 446,
+        "w": 190,
+        "h": 214
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 2,
+        "y": 1,
+        "w": 190,
+        "h": 214
+      },
+      "sourceSize": {
+        "w": 192,
+        "h": 250
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Ezo fox0007.png": {
+      "frame": {
+        "x": 0,
+        "y": 657,
+        "w": 190,
+        "h": 214
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 2,
+        "y": 1,
+        "w": 190,
+        "h": 214
+      },
+      "sourceSize": {
+        "w": 192,
+        "h": 250
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Ezo fox0015.png": {
+      "frame": {
+        "x": 190,
+        "y": 657,
+        "w": 155,
+        "h": 204
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 46,
+        "w": 155,
+        "h": 204
+      },
+      "sourceSize": {
+        "w": 192,
+        "h": 250
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Ezo fox0002.png": {
+      "frame": {
+        "x": 540,
+        "y": 0,
+        "w": 182,
+        "h": 220
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 30,
+        "w": 182,
+        "h": 220
+      },
+      "sourceSize": {
+        "w": 192,
+        "h": 250
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Ezo fox0003.png": {
+      "frame": {
+        "x": 540,
+        "y": 220,
+        "w": 182,
+        "h": 220
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 30,
+        "w": 182,
+        "h": 220
+      },
+      "sourceSize": {
+        "w": 192,
+        "h": 250
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Ezo fox0008.png": {
+      "frame": {
+        "x": 554,
+        "y": 440,
+        "w": 182,
+        "h": 220
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 30,
+        "w": 182,
+        "h": 220
+      },
+      "sourceSize": {
+        "w": 192,
+        "h": 250
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Ezo fox0009.png": {
+      "frame": {
+        "x": 722,
+        "y": 0,
+        "w": 182,
+        "h": 220
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 30,
+        "w": 182,
+        "h": 220
+      },
+      "sourceSize": {
+        "w": 192,
+        "h": 250
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Ezo fox0010.png": {
+      "frame": {
+        "x": 722,
+        "y": 220,
+        "w": 182,
+        "h": 220
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 30,
+        "w": 182,
+        "h": 220
+      },
+      "sourceSize": {
+        "w": 192,
+        "h": 250
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Ezo fox0016.png": {
+      "frame": {
+        "x": 736,
+        "y": 440,
+        "w": 155,
+        "h": 204
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 46,
+        "w": 155,
+        "h": 204
+      },
+      "sourceSize": {
+        "w": 192,
+        "h": 250
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Ezo fox0017.png": {
+      "frame": {
+        "x": 736,
+        "y": 644,
+        "w": 155,
+        "h": 204
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 46,
+        "w": 155,
+        "h": 204
+      },
+      "sourceSize": {
+        "w": 192,
+        "h": 250
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    }
+  },
+  "meta": {
+    "app": "http://free-tex-packer.com",
+    "version": "0.6.7",
+    "image": "ezofox.png",
+    "format": "RGBA8888",
+    "size": {
+      "w": 904,
+      "h": 871
+    },
+    "scale": 1
+  }
+}

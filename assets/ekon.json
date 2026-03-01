@@ -1,0 +1,615 @@
+{
+  "frames": {
+    "Ekon0008.png": {
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "w": 131,
+        "h": 279
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 6,
+        "y": 3,
+        "w": 131,
+        "h": 279
+      },
+      "sourceSize": {
+        "w": 137,
+        "h": 286
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Ekon0009.png": {
+      "frame": {
+        "x": 131,
+        "y": 0,
+        "w": 131,
+        "h": 279
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 6,
+        "y": 3,
+        "w": 131,
+        "h": 279
+      },
+      "sourceSize": {
+        "w": 137,
+        "h": 286
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Ekon0010.png": {
+      "frame": {
+        "x": 262,
+        "y": 0,
+        "w": 131,
+        "h": 279
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 6,
+        "y": 3,
+        "w": 131,
+        "h": 279
+      },
+      "sourceSize": {
+        "w": 137,
+        "h": 286
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Ekon0000.png": {
+      "frame": {
+        "x": 393,
+        "y": 0,
+        "w": 129,
+        "h": 280
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 1,
+        "y": 4,
+        "w": 129,
+        "h": 280
+      },
+      "sourceSize": {
+        "w": 137,
+        "h": 286
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Ekon0001.png": {
+      "frame": {
+        "x": 522,
+        "y": 0,
+        "w": 129,
+        "h": 280
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 1,
+        "y": 4,
+        "w": 129,
+        "h": 280
+      },
+      "sourceSize": {
+        "w": 137,
+        "h": 286
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Ekon0002.png": {
+      "frame": {
+        "x": 651,
+        "y": 0,
+        "w": 129,
+        "h": 280
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 1,
+        "y": 4,
+        "w": 129,
+        "h": 280
+      },
+      "sourceSize": {
+        "w": 137,
+        "h": 286
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Ekon0003.png": {
+      "frame": {
+        "x": 780,
+        "y": 0,
+        "w": 129,
+        "h": 280
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 1,
+        "y": 4,
+        "w": 129,
+        "h": 280
+      },
+      "sourceSize": {
+        "w": 137,
+        "h": 286
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Ekon0015.png": {
+      "frame": {
+        "x": 909,
+        "y": 0,
+        "w": 102,
+        "h": 281
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 1,
+        "y": 5,
+        "w": 102,
+        "h": 281
+      },
+      "sourceSize": {
+        "w": 137,
+        "h": 286
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Ekon0016.png": {
+      "frame": {
+        "x": 0,
+        "y": 279,
+        "w": 102,
+        "h": 281
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 1,
+        "y": 5,
+        "w": 102,
+        "h": 281
+      },
+      "sourceSize": {
+        "w": 137,
+        "h": 286
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Ekon0017.png": {
+      "frame": {
+        "x": 102,
+        "y": 279,
+        "w": 102,
+        "h": 281
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 1,
+        "y": 5,
+        "w": 102,
+        "h": 281
+      },
+      "sourceSize": {
+        "w": 137,
+        "h": 286
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Ekon0022.png": {
+      "frame": {
+        "x": 204,
+        "y": 279,
+        "w": 129,
+        "h": 281
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 1,
+        "y": 5,
+        "w": 129,
+        "h": 281
+      },
+      "sourceSize": {
+        "w": 137,
+        "h": 286
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Ekon0023.png": {
+      "frame": {
+        "x": 333,
+        "y": 280,
+        "w": 129,
+        "h": 281
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 1,
+        "y": 5,
+        "w": 129,
+        "h": 281
+      },
+      "sourceSize": {
+        "w": 137,
+        "h": 286
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Ekon0024.png": {
+      "frame": {
+        "x": 462,
+        "y": 280,
+        "w": 129,
+        "h": 281
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 1,
+        "y": 5,
+        "w": 129,
+        "h": 281
+      },
+      "sourceSize": {
+        "w": 137,
+        "h": 286
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Ekon0004.png": {
+      "frame": {
+        "x": 591,
+        "y": 280,
+        "w": 118,
+        "h": 283
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 7,
+        "y": 1,
+        "w": 118,
+        "h": 283
+      },
+      "sourceSize": {
+        "w": 137,
+        "h": 286
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Ekon0005.png": {
+      "frame": {
+        "x": 709,
+        "y": 280,
+        "w": 118,
+        "h": 283
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 7,
+        "y": 1,
+        "w": 118,
+        "h": 283
+      },
+      "sourceSize": {
+        "w": 137,
+        "h": 286
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Ekon0006.png": {
+      "frame": {
+        "x": 827,
+        "y": 281,
+        "w": 118,
+        "h": 283
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 7,
+        "y": 1,
+        "w": 118,
+        "h": 283
+      },
+      "sourceSize": {
+        "w": 137,
+        "h": 286
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Ekon0007.png": {
+      "frame": {
+        "x": 0,
+        "y": 560,
+        "w": 118,
+        "h": 283
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 7,
+        "y": 1,
+        "w": 118,
+        "h": 283
+      },
+      "sourceSize": {
+        "w": 137,
+        "h": 286
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Ekon0011.png": {
+      "frame": {
+        "x": 118,
+        "y": 560,
+        "w": 101,
+        "h": 283
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 24,
+        "y": 3,
+        "w": 101,
+        "h": 283
+      },
+      "sourceSize": {
+        "w": 137,
+        "h": 286
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Ekon0012.png": {
+      "frame": {
+        "x": 219,
+        "y": 560,
+        "w": 101,
+        "h": 283
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 24,
+        "y": 3,
+        "w": 101,
+        "h": 283
+      },
+      "sourceSize": {
+        "w": 137,
+        "h": 286
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Ekon0013.png": {
+      "frame": {
+        "x": 320,
+        "y": 561,
+        "w": 101,
+        "h": 283
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 24,
+        "y": 3,
+        "w": 101,
+        "h": 283
+      },
+      "sourceSize": {
+        "w": 137,
+        "h": 286
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Ekon0014.png": {
+      "frame": {
+        "x": 421,
+        "y": 561,
+        "w": 101,
+        "h": 283
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 24,
+        "y": 3,
+        "w": 101,
+        "h": 283
+      },
+      "sourceSize": {
+        "w": 137,
+        "h": 286
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Ekon0018.png": {
+      "frame": {
+        "x": 522,
+        "y": 563,
+        "w": 115,
+        "h": 285
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 1,
+        "y": 1,
+        "w": 115,
+        "h": 285
+      },
+      "sourceSize": {
+        "w": 137,
+        "h": 286
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Ekon0019.png": {
+      "frame": {
+        "x": 637,
+        "y": 563,
+        "w": 115,
+        "h": 285
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 1,
+        "y": 1,
+        "w": 115,
+        "h": 285
+      },
+      "sourceSize": {
+        "w": 137,
+        "h": 286
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Ekon0020.png": {
+      "frame": {
+        "x": 752,
+        "y": 564,
+        "w": 115,
+        "h": 285
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 1,
+        "y": 1,
+        "w": 115,
+        "h": 285
+      },
+      "sourceSize": {
+        "w": 137,
+        "h": 286
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Ekon0021.png": {
+      "frame": {
+        "x": 867,
+        "y": 564,
+        "w": 115,
+        "h": 285
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 1,
+        "y": 1,
+        "w": 115,
+        "h": 285
+      },
+      "sourceSize": {
+        "w": 137,
+        "h": 286
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    }
+  },
+  "meta": {
+    "app": "http://free-tex-packer.com",
+    "version": "0.6.7",
+    "image": "ekon.png",
+    "format": "RGBA8888",
+    "size": {
+      "w": 1011,
+      "h": 849
+    },
+    "scale": 1
+  }
+}

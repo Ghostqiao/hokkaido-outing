@@ -1,0 +1,135 @@
+{
+  "frames": {
+    "Shannon0004.png": {
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "w": 141,
+        "h": 147
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 141,
+        "h": 147
+      },
+      "sourceSize": {
+        "w": 141,
+        "h": 164
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Shannon0003.png": {
+      "frame": {
+        "x": 141,
+        "y": 0,
+        "w": 124,
+        "h": 148
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 124,
+        "h": 148
+      },
+      "sourceSize": {
+        "w": 141,
+        "h": 164
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Shannon0002.png": {
+      "frame": {
+        "x": 0,
+        "y": 147,
+        "w": 101,
+        "h": 164
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 101,
+        "h": 164
+      },
+      "sourceSize": {
+        "w": 141,
+        "h": 164
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Shannon0000.png": {
+      "frame": {
+        "x": 101,
+        "y": 148,
+        "w": 101,
+        "h": 159
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 101,
+        "h": 159
+      },
+      "sourceSize": {
+        "w": 141,
+        "h": 164
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Shannon0001.png": {
+      "frame": {
+        "x": 202,
+        "y": 148,
+        "w": 101,
+        "h": 159
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 101,
+        "h": 159
+      },
+      "sourceSize": {
+        "w": 141,
+        "h": 164
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    }
+  },
+  "meta": {
+    "app": "http://free-tex-packer.com",
+    "version": "0.6.7",
+    "image": "shannon.png",
+    "format": "RGBA8888",
+    "size": {
+      "w": 303,
+      "h": 311
+    },
+    "scale": 1
+  }
+}

@@ -1,0 +1,303 @@
+{
+  "frames": {
+    "Rabbitman0006.png": {
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "w": 131,
+        "h": 177
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 10,
+        "y": 0,
+        "w": 131,
+        "h": 177
+      },
+      "sourceSize": {
+        "w": 141,
+        "h": 177
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Rabbitman0005.png": {
+      "frame": {
+        "x": 131,
+        "y": 0,
+        "w": 131,
+        "h": 177
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 10,
+        "y": 0,
+        "w": 131,
+        "h": 177
+      },
+      "sourceSize": {
+        "w": 141,
+        "h": 177
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Rabbitman0007.png": {
+      "frame": {
+        "x": 0,
+        "y": 177,
+        "w": 131,
+        "h": 177
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 10,
+        "y": 0,
+        "w": 131,
+        "h": 177
+      },
+      "sourceSize": {
+        "w": 141,
+        "h": 177
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Rabbitman0009.png": {
+      "frame": {
+        "x": 131,
+        "y": 177,
+        "w": 131,
+        "h": 175
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 10,
+        "y": 2,
+        "w": 131,
+        "h": 175
+      },
+      "sourceSize": {
+        "w": 141,
+        "h": 177
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Rabbitman0008.png": {
+      "frame": {
+        "x": 262,
+        "y": 0,
+        "w": 131,
+        "h": 175
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 10,
+        "y": 2,
+        "w": 131,
+        "h": 175
+      },
+      "sourceSize": {
+        "w": 141,
+        "h": 177
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Rabbitman0011.png": {
+      "frame": {
+        "x": 262,
+        "y": 175,
+        "w": 131,
+        "h": 175
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 10,
+        "y": 2,
+        "w": 131,
+        "h": 175
+      },
+      "sourceSize": {
+        "w": 141,
+        "h": 177
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Rabbitman0010.png": {
+      "frame": {
+        "x": 262,
+        "y": 350,
+        "w": 131,
+        "h": 175
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 10,
+        "y": 2,
+        "w": 131,
+        "h": 175
+      },
+      "sourceSize": {
+        "w": 141,
+        "h": 177
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Rabbitman0004.png": {
+      "frame": {
+        "x": 0,
+        "y": 354,
+        "w": 103,
+        "h": 170
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 6,
+        "w": 103,
+        "h": 170
+      },
+      "sourceSize": {
+        "w": 141,
+        "h": 177
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Rabbitman0003.png": {
+      "frame": {
+        "x": 103,
+        "y": 354,
+        "w": 103,
+        "h": 170
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 6,
+        "w": 103,
+        "h": 170
+      },
+      "sourceSize": {
+        "w": 141,
+        "h": 177
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Rabbitman0001.png": {
+      "frame": {
+        "x": 393,
+        "y": 0,
+        "w": 119,
+        "h": 167
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 3,
+        "y": 7,
+        "w": 119,
+        "h": 167
+      },
+      "sourceSize": {
+        "w": 141,
+        "h": 177
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Rabbitman0002.png": {
+      "frame": {
+        "x": 393,
+        "y": 167,
+        "w": 119,
+        "h": 167
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 3,
+        "y": 7,
+        "w": 119,
+        "h": 167
+      },
+      "sourceSize": {
+        "w": 141,
+        "h": 177
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Rabbitman0000.png": {
+      "frame": {
+        "x": 393,
+        "y": 334,
+        "w": 119,
+        "h": 167
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 3,
+        "y": 7,
+        "w": 119,
+        "h": 167
+      },
+      "sourceSize": {
+        "w": 141,
+        "h": 177
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    }
+  },
+  "meta": {
+    "app": "http://free-tex-packer.com",
+    "version": "0.6.7",
+    "image": "rabbitman.png",
+    "format": "RGBA8888",
+    "size": {
+      "w": 512,
+      "h": 525
+    },
+    "scale": 1
+  }
+}

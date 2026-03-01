@@ -1,0 +1,471 @@
+{
+  "frames": {
+    "Shuqiao0010.png": {
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "w": 107,
+        "h": 200
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 7,
+        "y": 39,
+        "w": 107,
+        "h": 200
+      },
+      "sourceSize": {
+        "w": 114,
+        "h": 240
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Shuqiao0011.png": {
+      "frame": {
+        "x": 107,
+        "y": 0,
+        "w": 107,
+        "h": 200
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 7,
+        "y": 39,
+        "w": 107,
+        "h": 200
+      },
+      "sourceSize": {
+        "w": 114,
+        "h": 240
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Shuqiao0015.png": {
+      "frame": {
+        "x": 214,
+        "y": 0,
+        "w": 107,
+        "h": 200
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 7,
+        "y": 39,
+        "w": 107,
+        "h": 200
+      },
+      "sourceSize": {
+        "w": 114,
+        "h": 240
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Shuqiao0016.png": {
+      "frame": {
+        "x": 321,
+        "y": 0,
+        "w": 107,
+        "h": 200
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 7,
+        "y": 39,
+        "w": 107,
+        "h": 200
+      },
+      "sourceSize": {
+        "w": 114,
+        "h": 240
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Shuqiao0012.png": {
+      "frame": {
+        "x": 428,
+        "y": 0,
+        "w": 110,
+        "h": 217
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 2,
+        "y": 23,
+        "w": 110,
+        "h": 217
+      },
+      "sourceSize": {
+        "w": 114,
+        "h": 240
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Shuqiao0013.png": {
+      "frame": {
+        "x": 538,
+        "y": 0,
+        "w": 110,
+        "h": 217
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 2,
+        "y": 23,
+        "w": 110,
+        "h": 217
+      },
+      "sourceSize": {
+        "w": 114,
+        "h": 240
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Shuqiao0014.png": {
+      "frame": {
+        "x": 648,
+        "y": 0,
+        "w": 110,
+        "h": 217
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 2,
+        "y": 23,
+        "w": 110,
+        "h": 217
+      },
+      "sourceSize": {
+        "w": 114,
+        "h": 240
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Shuqiao0017.png": {
+      "frame": {
+        "x": 758,
+        "y": 0,
+        "w": 110,
+        "h": 217
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 2,
+        "y": 23,
+        "w": 110,
+        "h": 217
+      },
+      "sourceSize": {
+        "w": 114,
+        "h": 240
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Shuqiao0018.png": {
+      "frame": {
+        "x": 868,
+        "y": 0,
+        "w": 110,
+        "h": 217
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 2,
+        "y": 23,
+        "w": 110,
+        "h": 217
+      },
+      "sourceSize": {
+        "w": 114,
+        "h": 240
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Shuqiao0000.png": {
+      "frame": {
+        "x": 0,
+        "y": 200,
+        "w": 102,
+        "h": 221
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 102,
+        "h": 221
+      },
+      "sourceSize": {
+        "w": 114,
+        "h": 240
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Shuqiao0001.png": {
+      "frame": {
+        "x": 102,
+        "y": 200,
+        "w": 102,
+        "h": 221
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 102,
+        "h": 221
+      },
+      "sourceSize": {
+        "w": 114,
+        "h": 240
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Shuqiao0002.png": {
+      "frame": {
+        "x": 204,
+        "y": 200,
+        "w": 102,
+        "h": 221
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 102,
+        "h": 221
+      },
+      "sourceSize": {
+        "w": 114,
+        "h": 240
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Shuqiao0005.png": {
+      "frame": {
+        "x": 306,
+        "y": 200,
+        "w": 97,
+        "h": 225
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 4,
+        "y": 0,
+        "w": 97,
+        "h": 225
+      },
+      "sourceSize": {
+        "w": 114,
+        "h": 240
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Shuqiao0006.png": {
+      "frame": {
+        "x": 403,
+        "y": 217,
+        "w": 97,
+        "h": 225
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 4,
+        "y": 0,
+        "w": 97,
+        "h": 225
+      },
+      "sourceSize": {
+        "w": 114,
+        "h": 240
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Shuqiao0007.png": {
+      "frame": {
+        "x": 500,
+        "y": 217,
+        "w": 97,
+        "h": 225
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 4,
+        "y": 0,
+        "w": 97,
+        "h": 225
+      },
+      "sourceSize": {
+        "w": 114,
+        "h": 240
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Shuqiao0003.png": {
+      "frame": {
+        "x": 597,
+        "y": 217,
+        "w": 92,
+        "h": 229
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 92,
+        "h": 229
+      },
+      "sourceSize": {
+        "w": 114,
+        "h": 240
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Shuqiao0004.png": {
+      "frame": {
+        "x": 689,
+        "y": 217,
+        "w": 92,
+        "h": 229
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 92,
+        "h": 229
+      },
+      "sourceSize": {
+        "w": 114,
+        "h": 240
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Shuqiao0008.png": {
+      "frame": {
+        "x": 781,
+        "y": 217,
+        "w": 92,
+        "h": 229
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 92,
+        "h": 229
+      },
+      "sourceSize": {
+        "w": 114,
+        "h": 240
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Shuqiao0009.png": {
+      "frame": {
+        "x": 873,
+        "y": 217,
+        "w": 92,
+        "h": 229
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 92,
+        "h": 229
+      },
+      "sourceSize": {
+        "w": 114,
+        "h": 240
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    }
+  },
+  "meta": {
+    "app": "http://free-tex-packer.com",
+    "version": "0.6.7",
+    "image": "shuqiao.png",
+    "format": "RGBA8888",
+    "size": {
+      "w": 978,
+      "h": 446
+    },
+    "scale": 1
+  }
+}

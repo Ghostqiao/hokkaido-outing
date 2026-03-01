@@ -1,0 +1,423 @@
+{
+  "frames": {
+    "Horseman0004.png": {
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "w": 137,
+        "h": 295
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 1,
+        "y": 2,
+        "w": 137,
+        "h": 295
+      },
+      "sourceSize": {
+        "w": 140,
+        "h": 297
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Horseman0005.png": {
+      "frame": {
+        "x": 137,
+        "y": 0,
+        "w": 137,
+        "h": 295
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 1,
+        "y": 2,
+        "w": 137,
+        "h": 295
+      },
+      "sourceSize": {
+        "w": 140,
+        "h": 297
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Horseman0006.png": {
+      "frame": {
+        "x": 274,
+        "y": 0,
+        "w": 137,
+        "h": 295
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 1,
+        "y": 2,
+        "w": 137,
+        "h": 295
+      },
+      "sourceSize": {
+        "w": 140,
+        "h": 297
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Horseman0007.png": {
+      "frame": {
+        "x": 0,
+        "y": 295,
+        "w": 137,
+        "h": 295
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 1,
+        "y": 2,
+        "w": 137,
+        "h": 295
+      },
+      "sourceSize": {
+        "w": 140,
+        "h": 297
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Horseman0000.png": {
+      "frame": {
+        "x": 137,
+        "y": 295,
+        "w": 137,
+        "h": 294
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 2,
+        "y": 3,
+        "w": 137,
+        "h": 294
+      },
+      "sourceSize": {
+        "w": 140,
+        "h": 297
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Horseman0002.png": {
+      "frame": {
+        "x": 274,
+        "y": 295,
+        "w": 137,
+        "h": 294
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 2,
+        "y": 3,
+        "w": 137,
+        "h": 294
+      },
+      "sourceSize": {
+        "w": 140,
+        "h": 297
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Horseman0003.png": {
+      "frame": {
+        "x": 411,
+        "y": 0,
+        "w": 137,
+        "h": 294
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 2,
+        "y": 3,
+        "w": 137,
+        "h": 294
+      },
+      "sourceSize": {
+        "w": 140,
+        "h": 297
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Horseman0001.png": {
+      "frame": {
+        "x": 411,
+        "y": 294,
+        "w": 137,
+        "h": 294
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 2,
+        "y": 3,
+        "w": 137,
+        "h": 294
+      },
+      "sourceSize": {
+        "w": 140,
+        "h": 297
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Horseman0008.png": {
+      "frame": {
+        "x": 548,
+        "y": 0,
+        "w": 137,
+        "h": 292
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 2,
+        "y": 3,
+        "w": 137,
+        "h": 292
+      },
+      "sourceSize": {
+        "w": 140,
+        "h": 297
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Horseman0009.png": {
+      "frame": {
+        "x": 548,
+        "y": 292,
+        "w": 137,
+        "h": 292
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 2,
+        "y": 3,
+        "w": 137,
+        "h": 292
+      },
+      "sourceSize": {
+        "w": 140,
+        "h": 297
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Horseman0010.png": {
+      "frame": {
+        "x": 548,
+        "y": 584,
+        "w": 137,
+        "h": 292
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 2,
+        "y": 3,
+        "w": 137,
+        "h": 292
+      },
+      "sourceSize": {
+        "w": 140,
+        "h": 297
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Horseman0011.png": {
+      "frame": {
+        "x": 411,
+        "y": 588,
+        "w": 137,
+        "h": 292
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 3,
+        "y": 4,
+        "w": 137,
+        "h": 292
+      },
+      "sourceSize": {
+        "w": 140,
+        "h": 297
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Horseman0012.png": {
+      "frame": {
+        "x": 137,
+        "y": 589,
+        "w": 137,
+        "h": 292
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 3,
+        "y": 4,
+        "w": 137,
+        "h": 292
+      },
+      "sourceSize": {
+        "w": 140,
+        "h": 297
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Horseman0013.png": {
+      "frame": {
+        "x": 0,
+        "y": 590,
+        "w": 137,
+        "h": 292
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 3,
+        "y": 4,
+        "w": 137,
+        "h": 292
+      },
+      "sourceSize": {
+        "w": 140,
+        "h": 297
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Horseman0014.png": {
+      "frame": {
+        "x": 274,
+        "y": 589,
+        "w": 137,
+        "h": 292
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 3,
+        "y": 4,
+        "w": 137,
+        "h": 292
+      },
+      "sourceSize": {
+        "w": 140,
+        "h": 297
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Horseman0015.png": {
+      "frame": {
+        "x": 685,
+        "y": 0,
+        "w": 128,
+        "h": 295
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 9,
+        "y": 1,
+        "w": 128,
+        "h": 295
+      },
+      "sourceSize": {
+        "w": 140,
+        "h": 297
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Horseman0016.png": {
+      "frame": {
+        "x": 685,
+        "y": 295,
+        "w": 115,
+        "h": 295
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 22,
+        "y": 1,
+        "w": 115,
+        "h": 295
+      },
+      "sourceSize": {
+        "w": 140,
+        "h": 297
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    }
+  },
+  "meta": {
+    "app": "http://free-tex-packer.com",
+    "version": "0.6.7",
+    "image": "horseman.png",
+    "format": "RGBA8888",
+    "size": {
+      "w": 813,
+      "h": 882
+    },
+    "scale": 1
+  }
+}

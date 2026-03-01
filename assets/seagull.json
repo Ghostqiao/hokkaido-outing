@@ -1,0 +1,591 @@
+{
+  "frames": {
+    "Seagull0000.png": {
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "w": 261,
+        "h": 246
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 2,
+        "y": 70,
+        "w": 261,
+        "h": 246
+      },
+      "sourceSize": {
+        "w": 302,
+        "h": 336
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Seagull0021.png": {
+      "frame": {
+        "x": 261,
+        "y": 0,
+        "w": 261,
+        "h": 246
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 2,
+        "y": 2,
+        "w": 261,
+        "h": 246
+      },
+      "sourceSize": {
+        "w": 302,
+        "h": 336
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Seagull0020.png": {
+      "frame": {
+        "x": 522,
+        "y": 0,
+        "w": 261,
+        "h": 246
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 2,
+        "y": 2,
+        "w": 261,
+        "h": 246
+      },
+      "sourceSize": {
+        "w": 302,
+        "h": 336
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Seagull0001.png": {
+      "frame": {
+        "x": 783,
+        "y": 0,
+        "w": 261,
+        "h": 246
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 2,
+        "y": 70,
+        "w": 261,
+        "h": 246
+      },
+      "sourceSize": {
+        "w": 302,
+        "h": 336
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Seagull0002.png": {
+      "frame": {
+        "x": 1044,
+        "y": 0,
+        "w": 261,
+        "h": 246
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 2,
+        "y": 70,
+        "w": 261,
+        "h": 246
+      },
+      "sourceSize": {
+        "w": 302,
+        "h": 336
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Seagull0004.png": {
+      "frame": {
+        "x": 1305,
+        "y": 0,
+        "w": 262,
+        "h": 245
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 2,
+        "y": 71,
+        "w": 262,
+        "h": 245
+      },
+      "sourceSize": {
+        "w": 302,
+        "h": 336
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Seagull0003.png": {
+      "frame": {
+        "x": 1567,
+        "y": 0,
+        "w": 262,
+        "h": 245
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 2,
+        "y": 71,
+        "w": 262,
+        "h": 245
+      },
+      "sourceSize": {
+        "w": 302,
+        "h": 336
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Seagull0006.png": {
+      "frame": {
+        "x": 1305,
+        "y": 245,
+        "w": 301,
+        "h": 199
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 113,
+        "w": 301,
+        "h": 199
+      },
+      "sourceSize": {
+        "w": 302,
+        "h": 336
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Seagull0007.png": {
+      "frame": {
+        "x": 1606,
+        "y": 245,
+        "w": 301,
+        "h": 199
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 113,
+        "w": 301,
+        "h": 199
+      },
+      "sourceSize": {
+        "w": 302,
+        "h": 336
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Seagull0005.png": {
+      "frame": {
+        "x": 0,
+        "y": 246,
+        "w": 301,
+        "h": 199
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 113,
+        "w": 301,
+        "h": 199
+      },
+      "sourceSize": {
+        "w": 302,
+        "h": 336
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Seagull0015.png": {
+      "frame": {
+        "x": 301,
+        "y": 246,
+        "w": 301,
+        "h": 199
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 103,
+        "w": 301,
+        "h": 199
+      },
+      "sourceSize": {
+        "w": 302,
+        "h": 336
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Seagull0016.png": {
+      "frame": {
+        "x": 602,
+        "y": 246,
+        "w": 301,
+        "h": 199
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 103,
+        "w": 301,
+        "h": 199
+      },
+      "sourceSize": {
+        "w": 302,
+        "h": 336
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Seagull0011.png": {
+      "frame": {
+        "x": 903,
+        "y": 246,
+        "w": 301,
+        "h": 198
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 138,
+        "w": 301,
+        "h": 198
+      },
+      "sourceSize": {
+        "w": 302,
+        "h": 336
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Seagull0010.png": {
+      "frame": {
+        "x": 903,
+        "y": 444,
+        "w": 301,
+        "h": 198
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 138,
+        "w": 301,
+        "h": 198
+      },
+      "sourceSize": {
+        "w": 302,
+        "h": 336
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Seagull0014.png": {
+      "frame": {
+        "x": 1204,
+        "y": 444,
+        "w": 293,
+        "h": 145
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 1,
+        "y": 176,
+        "w": 293,
+        "h": 145
+      },
+      "sourceSize": {
+        "w": 302,
+        "h": 336
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Seagull0023.png": {
+      "frame": {
+        "x": 1497,
+        "y": 444,
+        "w": 293,
+        "h": 145
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 1,
+        "y": 48,
+        "w": 293,
+        "h": 145
+      },
+      "sourceSize": {
+        "w": 302,
+        "h": 336
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Seagull0008.png": {
+      "frame": {
+        "x": 1204,
+        "y": 589,
+        "w": 293,
+        "h": 145
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 1,
+        "y": 164,
+        "w": 293,
+        "h": 145
+      },
+      "sourceSize": {
+        "w": 302,
+        "h": 336
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Seagull0017.png": {
+      "frame": {
+        "x": 1497,
+        "y": 589,
+        "w": 293,
+        "h": 145
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 1,
+        "y": 129,
+        "w": 293,
+        "h": 145
+      },
+      "sourceSize": {
+        "w": 302,
+        "h": 336
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Seagull0018.png": {
+      "frame": {
+        "x": 0,
+        "y": 445,
+        "w": 293,
+        "h": 145
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 1,
+        "y": 129,
+        "w": 293,
+        "h": 145
+      },
+      "sourceSize": {
+        "w": 302,
+        "h": 336
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Seagull0019.png": {
+      "frame": {
+        "x": 293,
+        "y": 445,
+        "w": 293,
+        "h": 145
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 1,
+        "y": 129,
+        "w": 293,
+        "h": 145
+      },
+      "sourceSize": {
+        "w": 302,
+        "h": 336
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Seagull0009.png": {
+      "frame": {
+        "x": 586,
+        "y": 445,
+        "w": 293,
+        "h": 145
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 1,
+        "y": 164,
+        "w": 293,
+        "h": 145
+      },
+      "sourceSize": {
+        "w": 302,
+        "h": 336
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Seagull0013.png": {
+      "frame": {
+        "x": 0,
+        "y": 590,
+        "w": 293,
+        "h": 145
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 1,
+        "y": 176,
+        "w": 293,
+        "h": 145
+      },
+      "sourceSize": {
+        "w": 302,
+        "h": 336
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Seagull0022.png": {
+      "frame": {
+        "x": 293,
+        "y": 590,
+        "w": 293,
+        "h": 145
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 1,
+        "y": 48,
+        "w": 293,
+        "h": 145
+      },
+      "sourceSize": {
+        "w": 302,
+        "h": 336
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Seagull0012.png": {
+      "frame": {
+        "x": 586,
+        "y": 590,
+        "w": 293,
+        "h": 145
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 1,
+        "y": 176,
+        "w": 293,
+        "h": 145
+      },
+      "sourceSize": {
+        "w": 302,
+        "h": 336
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    }
+  },
+  "meta": {
+    "app": "http://free-tex-packer.com",
+    "version": "0.6.7",
+    "image": "seagull.png",
+    "format": "RGBA8888",
+    "size": {
+      "w": 1907,
+      "h": 735
+    },
+    "scale": 1
+  }
+}

@@ -1,0 +1,471 @@
+{
+  "frames": {
+    "Lexi0018.png": {
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "w": 128,
+        "h": 246
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 128,
+        "h": 246
+      },
+      "sourceSize": {
+        "w": 159,
+        "h": 246
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Lexi0017.png": {
+      "frame": {
+        "x": 0,
+        "y": 246,
+        "w": 128,
+        "h": 246
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 128,
+        "h": 246
+      },
+      "sourceSize": {
+        "w": 159,
+        "h": 246
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Lexi0014.png": {
+      "frame": {
+        "x": 0,
+        "y": 492,
+        "w": 126,
+        "h": 246
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 32,
+        "y": 0,
+        "w": 126,
+        "h": 246
+      },
+      "sourceSize": {
+        "w": 159,
+        "h": 246
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Lexi0005.png": {
+      "frame": {
+        "x": 0,
+        "y": 738,
+        "w": 126,
+        "h": 246
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 32,
+        "y": 0,
+        "w": 126,
+        "h": 246
+      },
+      "sourceSize": {
+        "w": 159,
+        "h": 246
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Lexi0006.png": {
+      "frame": {
+        "x": 126,
+        "y": 492,
+        "w": 126,
+        "h": 246
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 32,
+        "y": 0,
+        "w": 126,
+        "h": 246
+      },
+      "sourceSize": {
+        "w": 159,
+        "h": 246
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Lexi0007.png": {
+      "frame": {
+        "x": 126,
+        "y": 738,
+        "w": 126,
+        "h": 246
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 32,
+        "y": 0,
+        "w": 126,
+        "h": 246
+      },
+      "sourceSize": {
+        "w": 159,
+        "h": 246
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Lexi0013.png": {
+      "frame": {
+        "x": 128,
+        "y": 0,
+        "w": 126,
+        "h": 246
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 32,
+        "y": 0,
+        "w": 126,
+        "h": 246
+      },
+      "sourceSize": {
+        "w": 159,
+        "h": 246
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Lexi0012.png": {
+      "frame": {
+        "x": 128,
+        "y": 246,
+        "w": 126,
+        "h": 246
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 32,
+        "y": 0,
+        "w": 126,
+        "h": 246
+      },
+      "sourceSize": {
+        "w": 159,
+        "h": 246
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Lexi0002.png": {
+      "frame": {
+        "x": 252,
+        "y": 492,
+        "w": 135,
+        "h": 229
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 6,
+        "y": 12,
+        "w": 135,
+        "h": 229
+      },
+      "sourceSize": {
+        "w": 159,
+        "h": 246
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Lexi0001.png": {
+      "frame": {
+        "x": 252,
+        "y": 721,
+        "w": 135,
+        "h": 229
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 6,
+        "y": 12,
+        "w": 135,
+        "h": 229
+      },
+      "sourceSize": {
+        "w": 159,
+        "h": 246
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Lexi0000.png": {
+      "frame": {
+        "x": 254,
+        "y": 0,
+        "w": 135,
+        "h": 229
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 6,
+        "y": 12,
+        "w": 135,
+        "h": 229
+      },
+      "sourceSize": {
+        "w": 159,
+        "h": 246
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Lexi0004.png": {
+      "frame": {
+        "x": 254,
+        "y": 229,
+        "w": 141,
+        "h": 216
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 1,
+        "y": 26,
+        "w": 141,
+        "h": 216
+      },
+      "sourceSize": {
+        "w": 159,
+        "h": 246
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Lexi0003.png": {
+      "frame": {
+        "x": 389,
+        "y": 0,
+        "w": 141,
+        "h": 216
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 1,
+        "y": 26,
+        "w": 141,
+        "h": 216
+      },
+      "sourceSize": {
+        "w": 159,
+        "h": 246
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Lexi0015.png": {
+      "frame": {
+        "x": 387,
+        "y": 445,
+        "w": 116,
+        "h": 246
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 12,
+        "y": 0,
+        "w": 116,
+        "h": 246
+      },
+      "sourceSize": {
+        "w": 159,
+        "h": 246
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Lexi0016.png": {
+      "frame": {
+        "x": 387,
+        "y": 691,
+        "w": 116,
+        "h": 246
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 12,
+        "y": 0,
+        "w": 116,
+        "h": 246
+      },
+      "sourceSize": {
+        "w": 159,
+        "h": 246
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Lexi0008.png": {
+      "frame": {
+        "x": 395,
+        "y": 216,
+        "w": 123,
+        "h": 229
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 12,
+        "y": 11,
+        "w": 123,
+        "h": 229
+      },
+      "sourceSize": {
+        "w": 159,
+        "h": 246
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Lexi0009.png": {
+      "frame": {
+        "x": 503,
+        "y": 445,
+        "w": 123,
+        "h": 229
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 12,
+        "y": 11,
+        "w": 123,
+        "h": 229
+      },
+      "sourceSize": {
+        "w": 159,
+        "h": 246
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Lexi0011.png": {
+      "frame": {
+        "x": 518,
+        "y": 216,
+        "w": 129,
+        "h": 217
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 7,
+        "y": 24,
+        "w": 129,
+        "h": 217
+      },
+      "sourceSize": {
+        "w": 159,
+        "h": 246
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Lexi0010.png": {
+      "frame": {
+        "x": 503,
+        "y": 674,
+        "w": 129,
+        "h": 217
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 7,
+        "y": 24,
+        "w": 129,
+        "h": 217
+      },
+      "sourceSize": {
+        "w": 159,
+        "h": 246
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    }
+  },
+  "meta": {
+    "app": "http://free-tex-packer.com",
+    "version": "0.6.7",
+    "image": "lexi.png",
+    "format": "RGBA8888",
+    "size": {
+      "w": 647,
+      "h": 984
+    },
+    "scale": 1
+  }
+}

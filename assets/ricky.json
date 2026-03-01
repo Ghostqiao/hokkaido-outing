@@ -1,0 +1,423 @@
+{
+  "frames": {
+    "Ricky0014.png": {
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "w": 118,
+        "h": 291
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 67,
+        "y": 0,
+        "w": 118,
+        "h": 291
+      },
+      "sourceSize": {
+        "w": 219,
+        "h": 291
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Ricky0013.png": {
+      "frame": {
+        "x": 118,
+        "y": 0,
+        "w": 118,
+        "h": 291
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 67,
+        "y": 0,
+        "w": 118,
+        "h": 291
+      },
+      "sourceSize": {
+        "w": 219,
+        "h": 291
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Ricky0012.png": {
+      "frame": {
+        "x": 236,
+        "y": 0,
+        "w": 118,
+        "h": 291
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 67,
+        "y": 0,
+        "w": 118,
+        "h": 291
+      },
+      "sourceSize": {
+        "w": 219,
+        "h": 291
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Ricky0003.png": {
+      "frame": {
+        "x": 0,
+        "y": 291,
+        "w": 107,
+        "h": 263
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 89,
+        "y": 28,
+        "w": 107,
+        "h": 263
+      },
+      "sourceSize": {
+        "w": 219,
+        "h": 291
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Ricky0004.png": {
+      "frame": {
+        "x": 107,
+        "y": 291,
+        "w": 107,
+        "h": 263
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 89,
+        "y": 28,
+        "w": 107,
+        "h": 263
+      },
+      "sourceSize": {
+        "w": 219,
+        "h": 291
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Ricky0008.png": {
+      "frame": {
+        "x": 214,
+        "y": 291,
+        "w": 118,
+        "h": 261
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 89,
+        "y": 30,
+        "w": 118,
+        "h": 261
+      },
+      "sourceSize": {
+        "w": 219,
+        "h": 291
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Ricky0009.png": {
+      "frame": {
+        "x": 354,
+        "y": 0,
+        "w": 118,
+        "h": 261
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 89,
+        "y": 30,
+        "w": 118,
+        "h": 261
+      },
+      "sourceSize": {
+        "w": 219,
+        "h": 291
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Ricky0010.png": {
+      "frame": {
+        "x": 354,
+        "y": 261,
+        "w": 118,
+        "h": 261
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 89,
+        "y": 30,
+        "w": 118,
+        "h": 261
+      },
+      "sourceSize": {
+        "w": 219,
+        "h": 291
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Ricky0011.png": {
+      "frame": {
+        "x": 472,
+        "y": 0,
+        "w": 118,
+        "h": 261
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 89,
+        "y": 30,
+        "w": 118,
+        "h": 261
+      },
+      "sourceSize": {
+        "w": 219,
+        "h": 291
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Ricky0002.png": {
+      "frame": {
+        "x": 0,
+        "y": 554,
+        "w": 169,
+        "h": 251
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 50,
+        "y": 32,
+        "w": 169,
+        "h": 251
+      },
+      "sourceSize": {
+        "w": 219,
+        "h": 291
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Ricky0000.png": {
+      "frame": {
+        "x": 169,
+        "y": 554,
+        "w": 169,
+        "h": 251
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 50,
+        "y": 32,
+        "w": 169,
+        "h": 251
+      },
+      "sourceSize": {
+        "w": 219,
+        "h": 291
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Ricky0001.png": {
+      "frame": {
+        "x": 338,
+        "y": 522,
+        "w": 169,
+        "h": 251
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 50,
+        "y": 32,
+        "w": 169,
+        "h": 251
+      },
+      "sourceSize": {
+        "w": 219,
+        "h": 291
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Ricky0007.png": {
+      "frame": {
+        "x": 590,
+        "y": 0,
+        "w": 150,
+        "h": 250
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 58,
+        "y": 37,
+        "w": 150,
+        "h": 250
+      },
+      "sourceSize": {
+        "w": 219,
+        "h": 291
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Ricky0006.png": {
+      "frame": {
+        "x": 590,
+        "y": 250,
+        "w": 150,
+        "h": 250
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 58,
+        "y": 37,
+        "w": 150,
+        "h": 250
+      },
+      "sourceSize": {
+        "w": 219,
+        "h": 291
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Ricky0005.png": {
+      "frame": {
+        "x": 507,
+        "y": 500,
+        "w": 150,
+        "h": 250
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 58,
+        "y": 37,
+        "w": 150,
+        "h": 250
+      },
+      "sourceSize": {
+        "w": 219,
+        "h": 291
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Ricky0015.png": {
+      "frame": {
+        "x": 740,
+        "y": 0,
+        "w": 185,
+        "h": 238
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 51,
+        "w": 185,
+        "h": 238
+      },
+      "sourceSize": {
+        "w": 219,
+        "h": 291
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Ricky0016.png": {
+      "frame": {
+        "x": 740,
+        "y": 238,
+        "w": 178,
+        "h": 234
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 1,
+        "y": 57,
+        "w": 178,
+        "h": 234
+      },
+      "sourceSize": {
+        "w": 219,
+        "h": 291
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    }
+  },
+  "meta": {
+    "app": "http://free-tex-packer.com",
+    "version": "0.6.7",
+    "image": "ricky.png",
+    "format": "RGBA8888",
+    "size": {
+      "w": 925,
+      "h": 805
+    },
+    "scale": 1
+  }
+}

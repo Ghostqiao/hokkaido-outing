@@ -1,0 +1,351 @@
+{
+  "frames": {
+    "Yuki0000.png": {
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "w": 151,
+        "h": 266
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 151,
+        "h": 266
+      },
+      "sourceSize": {
+        "w": 158,
+        "h": 266
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Yuki0001.png": {
+      "frame": {
+        "x": 0,
+        "y": 266,
+        "w": 151,
+        "h": 266
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 151,
+        "h": 266
+      },
+      "sourceSize": {
+        "w": 158,
+        "h": 266
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Yuki0002.png": {
+      "frame": {
+        "x": 151,
+        "y": 0,
+        "w": 151,
+        "h": 266
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 151,
+        "h": 266
+      },
+      "sourceSize": {
+        "w": 158,
+        "h": 266
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Yuki0003.png": {
+      "frame": {
+        "x": 0,
+        "y": 532,
+        "w": 151,
+        "h": 266
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 151,
+        "h": 266
+      },
+      "sourceSize": {
+        "w": 158,
+        "h": 266
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Yuki0004.png": {
+      "frame": {
+        "x": 151,
+        "y": 266,
+        "w": 154,
+        "h": 265
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 3,
+        "y": 1,
+        "w": 154,
+        "h": 265
+      },
+      "sourceSize": {
+        "w": 158,
+        "h": 266
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Yuki0005.png": {
+      "frame": {
+        "x": 151,
+        "y": 531,
+        "w": 154,
+        "h": 265
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 3,
+        "y": 1,
+        "w": 154,
+        "h": 265
+      },
+      "sourceSize": {
+        "w": 158,
+        "h": 266
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Yuki0006.png": {
+      "frame": {
+        "x": 302,
+        "y": 0,
+        "w": 154,
+        "h": 265
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 3,
+        "y": 1,
+        "w": 154,
+        "h": 265
+      },
+      "sourceSize": {
+        "w": 158,
+        "h": 266
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Yuki0007.png": {
+      "frame": {
+        "x": 305,
+        "y": 265,
+        "w": 154,
+        "h": 265
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 3,
+        "y": 1,
+        "w": 154,
+        "h": 265
+      },
+      "sourceSize": {
+        "w": 158,
+        "h": 266
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Yuki0008.png": {
+      "frame": {
+        "x": 305,
+        "y": 530,
+        "w": 154,
+        "h": 265
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 3,
+        "y": 1,
+        "w": 154,
+        "h": 265
+      },
+      "sourceSize": {
+        "w": 158,
+        "h": 266
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Yuki0009.png": {
+      "frame": {
+        "x": 456,
+        "y": 0,
+        "w": 154,
+        "h": 265
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 3,
+        "y": 1,
+        "w": 154,
+        "h": 265
+      },
+      "sourceSize": {
+        "w": 158,
+        "h": 266
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Yuki0010.png": {
+      "frame": {
+        "x": 459,
+        "y": 265,
+        "w": 154,
+        "h": 265
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 3,
+        "y": 1,
+        "w": 154,
+        "h": 265
+      },
+      "sourceSize": {
+        "w": 158,
+        "h": 266
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Yuki0011.png": {
+      "frame": {
+        "x": 459,
+        "y": 530,
+        "w": 151,
+        "h": 266
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 151,
+        "h": 266
+      },
+      "sourceSize": {
+        "w": 158,
+        "h": 266
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Yuki0012.png": {
+      "frame": {
+        "x": 613,
+        "y": 0,
+        "w": 151,
+        "h": 266
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 151,
+        "h": 266
+      },
+      "sourceSize": {
+        "w": 158,
+        "h": 266
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Yuki0013.png": {
+      "frame": {
+        "x": 610,
+        "y": 530,
+        "w": 151,
+        "h": 266
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 151,
+        "h": 266
+      },
+      "sourceSize": {
+        "w": 158,
+        "h": 266
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    }
+  },
+  "meta": {
+    "app": "http://free-tex-packer.com",
+    "version": "0.6.7",
+    "image": "yuki.png",
+    "format": "RGBA8888",
+    "size": {
+      "w": 764,
+      "h": 798
+    },
+    "scale": 1
+  }
+}

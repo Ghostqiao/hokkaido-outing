@@ -1,0 +1,135 @@
+{
+  "frames": {
+    "crabman0003.png": {
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "w": 176,
+        "h": 118
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 4,
+        "w": 176,
+        "h": 118
+      },
+      "sourceSize": {
+        "w": 176,
+        "h": 123
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "crabman0000.png": {
+      "frame": {
+        "x": 176,
+        "y": 0,
+        "w": 167,
+        "h": 119
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 9,
+        "y": 4,
+        "w": 167,
+        "h": 119
+      },
+      "sourceSize": {
+        "w": 176,
+        "h": 123
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "crabman0001.png": {
+      "frame": {
+        "x": 0,
+        "y": 118,
+        "w": 167,
+        "h": 119
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 9,
+        "y": 4,
+        "w": 167,
+        "h": 119
+      },
+      "sourceSize": {
+        "w": 176,
+        "h": 123
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "crabman0004.png": {
+      "frame": {
+        "x": 343,
+        "y": 0,
+        "w": 156,
+        "h": 122
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 9,
+        "y": 0,
+        "w": 156,
+        "h": 122
+      },
+      "sourceSize": {
+        "w": 176,
+        "h": 123
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "crabman0002.png": {
+      "frame": {
+        "x": 167,
+        "y": 119,
+        "w": 147,
+        "h": 120
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 14,
+        "y": 3,
+        "w": 147,
+        "h": 120
+      },
+      "sourceSize": {
+        "w": 176,
+        "h": 123
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    }
+  },
+  "meta": {
+    "app": "http://free-tex-packer.com",
+    "version": "0.6.7",
+    "image": "crabman.png",
+    "format": "RGBA8888",
+    "size": {
+      "w": 499,
+      "h": 239
+    },
+    "scale": 1
+  }
+}

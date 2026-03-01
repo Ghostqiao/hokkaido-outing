@@ -1,0 +1,423 @@
+{
+  "frames": {
+    "Melody0005.png": {
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "w": 222,
+        "h": 260
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 1,
+        "y": 4,
+        "w": 222,
+        "h": 260
+      },
+      "sourceSize": {
+        "w": 265,
+        "h": 264
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Melody0006.png": {
+      "frame": {
+        "x": 222,
+        "y": 0,
+        "w": 222,
+        "h": 260
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 1,
+        "y": 4,
+        "w": 222,
+        "h": 260
+      },
+      "sourceSize": {
+        "w": 265,
+        "h": 264
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Melody0007.png": {
+      "frame": {
+        "x": 444,
+        "y": 0,
+        "w": 222,
+        "h": 260
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 1,
+        "y": 4,
+        "w": 222,
+        "h": 260
+      },
+      "sourceSize": {
+        "w": 265,
+        "h": 264
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Melody0008.png": {
+      "frame": {
+        "x": 666,
+        "y": 0,
+        "w": 227,
+        "h": 260
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 4,
+        "w": 227,
+        "h": 260
+      },
+      "sourceSize": {
+        "w": 265,
+        "h": 264
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Melody0009.png": {
+      "frame": {
+        "x": 893,
+        "y": 0,
+        "w": 227,
+        "h": 260
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 4,
+        "w": 227,
+        "h": 260
+      },
+      "sourceSize": {
+        "w": 265,
+        "h": 264
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Melody0003.png": {
+      "frame": {
+        "x": 1120,
+        "y": 0,
+        "w": 228,
+        "h": 262
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 2,
+        "w": 228,
+        "h": 262
+      },
+      "sourceSize": {
+        "w": 265,
+        "h": 264
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Melody0004.png": {
+      "frame": {
+        "x": 1348,
+        "y": 0,
+        "w": 228,
+        "h": 262
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 2,
+        "w": 228,
+        "h": 262
+      },
+      "sourceSize": {
+        "w": 265,
+        "h": 264
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Melody0010.png": {
+      "frame": {
+        "x": 1576,
+        "y": 0,
+        "w": 226,
+        "h": 262
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 1,
+        "y": 2,
+        "w": 226,
+        "h": 262
+      },
+      "sourceSize": {
+        "w": 265,
+        "h": 264
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Melody0011.png": {
+      "frame": {
+        "x": 1802,
+        "y": 0,
+        "w": 226,
+        "h": 262
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 1,
+        "y": 2,
+        "w": 226,
+        "h": 262
+      },
+      "sourceSize": {
+        "w": 265,
+        "h": 264
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Melody0012.png": {
+      "frame": {
+        "x": 0,
+        "y": 260,
+        "w": 226,
+        "h": 262
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 1,
+        "y": 2,
+        "w": 226,
+        "h": 262
+      },
+      "sourceSize": {
+        "w": 265,
+        "h": 264
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Melody0013.png": {
+      "frame": {
+        "x": 226,
+        "y": 260,
+        "w": 226,
+        "h": 262
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 1,
+        "y": 2,
+        "w": 226,
+        "h": 262
+      },
+      "sourceSize": {
+        "w": 265,
+        "h": 264
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Melody0014.png": {
+      "frame": {
+        "x": 452,
+        "y": 260,
+        "w": 226,
+        "h": 262
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 1,
+        "y": 2,
+        "w": 226,
+        "h": 262
+      },
+      "sourceSize": {
+        "w": 265,
+        "h": 264
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Melody0015.png": {
+      "frame": {
+        "x": 678,
+        "y": 260,
+        "w": 226,
+        "h": 262
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 1,
+        "y": 2,
+        "w": 226,
+        "h": 262
+      },
+      "sourceSize": {
+        "w": 265,
+        "h": 264
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Melody0016.png": {
+      "frame": {
+        "x": 904,
+        "y": 262,
+        "w": 226,
+        "h": 262
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 1,
+        "y": 2,
+        "w": 226,
+        "h": 262
+      },
+      "sourceSize": {
+        "w": 265,
+        "h": 264
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Melody0000.png": {
+      "frame": {
+        "x": 1130,
+        "y": 262,
+        "w": 264,
+        "h": 263
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 1,
+        "y": 1,
+        "w": 264,
+        "h": 263
+      },
+      "sourceSize": {
+        "w": 265,
+        "h": 264
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Melody0001.png": {
+      "frame": {
+        "x": 1394,
+        "y": 262,
+        "w": 264,
+        "h": 263
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 1,
+        "y": 1,
+        "w": 264,
+        "h": 263
+      },
+      "sourceSize": {
+        "w": 265,
+        "h": 264
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Melody0002.png": {
+      "frame": {
+        "x": 1658,
+        "y": 262,
+        "w": 264,
+        "h": 263
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 1,
+        "y": 1,
+        "w": 264,
+        "h": 263
+      },
+      "sourceSize": {
+        "w": 265,
+        "h": 264
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    }
+  },
+  "meta": {
+    "app": "http://free-tex-packer.com",
+    "version": "0.6.7",
+    "image": "melody.png",
+    "format": "RGBA8888",
+    "size": {
+      "w": 2028,
+      "h": 525
+    },
+    "scale": 1
+  }
+}

@@ -1,0 +1,759 @@
+{
+  "frames": {
+    "Marimokkori0030.png": {
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "w": 162,
+        "h": 268
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 3,
+        "y": 70,
+        "w": 162,
+        "h": 268
+      },
+      "sourceSize": {
+        "w": 167,
+        "h": 339
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Marimokkori0011.png": {
+      "frame": {
+        "x": 0,
+        "y": 268,
+        "w": 162,
+        "h": 268
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 3,
+        "y": 70,
+        "w": 162,
+        "h": 268
+      },
+      "sourceSize": {
+        "w": 167,
+        "h": 339
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Marimokkori0029.png": {
+      "frame": {
+        "x": 0,
+        "y": 536,
+        "w": 162,
+        "h": 268
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 3,
+        "y": 70,
+        "w": 162,
+        "h": 268
+      },
+      "sourceSize": {
+        "w": 167,
+        "h": 339
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Marimokkori0010.png": {
+      "frame": {
+        "x": 0,
+        "y": 804,
+        "w": 162,
+        "h": 268
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 3,
+        "y": 70,
+        "w": 162,
+        "h": 268
+      },
+      "sourceSize": {
+        "w": 167,
+        "h": 339
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Marimokkori0019.png": {
+      "frame": {
+        "x": 0,
+        "y": 1072,
+        "w": 158,
+        "h": 265
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 71,
+        "w": 158,
+        "h": 265
+      },
+      "sourceSize": {
+        "w": 167,
+        "h": 339
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Marimokkori0018.png": {
+      "frame": {
+        "x": 0,
+        "y": 1337,
+        "w": 158,
+        "h": 265
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 71,
+        "w": 158,
+        "h": 265
+      },
+      "sourceSize": {
+        "w": 167,
+        "h": 339
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Marimokkori0012.png": {
+      "frame": {
+        "x": 0,
+        "y": 1602,
+        "w": 158,
+        "h": 265
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 71,
+        "w": 158,
+        "h": 265
+      },
+      "sourceSize": {
+        "w": 167,
+        "h": 339
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Marimokkori0014.png": {
+      "frame": {
+        "x": 158,
+        "y": 1072,
+        "w": 158,
+        "h": 265
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 71,
+        "w": 158,
+        "h": 265
+      },
+      "sourceSize": {
+        "w": 167,
+        "h": 339
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Marimokkori0013.png": {
+      "frame": {
+        "x": 158,
+        "y": 1337,
+        "w": 158,
+        "h": 265
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 71,
+        "w": 158,
+        "h": 265
+      },
+      "sourceSize": {
+        "w": 167,
+        "h": 339
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Marimokkori0017.png": {
+      "frame": {
+        "x": 158,
+        "y": 1602,
+        "w": 158,
+        "h": 265
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 71,
+        "w": 158,
+        "h": 265
+      },
+      "sourceSize": {
+        "w": 167,
+        "h": 339
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Marimokkori0022.png": {
+      "frame": {
+        "x": 162,
+        "y": 0,
+        "w": 162,
+        "h": 258
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 4,
+        "y": 2,
+        "w": 162,
+        "h": 258
+      },
+      "sourceSize": {
+        "w": 167,
+        "h": 339
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Marimokkori0023.png": {
+      "frame": {
+        "x": 162,
+        "y": 258,
+        "w": 162,
+        "h": 258
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 4,
+        "y": 2,
+        "w": 162,
+        "h": 258
+      },
+      "sourceSize": {
+        "w": 167,
+        "h": 339
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Marimokkori0016.png": {
+      "frame": {
+        "x": 162,
+        "y": 516,
+        "w": 152,
+        "h": 263
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 11,
+        "y": 71,
+        "w": 152,
+        "h": 263
+      },
+      "sourceSize": {
+        "w": 167,
+        "h": 339
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Marimokkori0015.png": {
+      "frame": {
+        "x": 162,
+        "y": 779,
+        "w": 152,
+        "h": 263
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 11,
+        "y": 71,
+        "w": 152,
+        "h": 263
+      },
+      "sourceSize": {
+        "w": 167,
+        "h": 339
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Marimokkori0026.png": {
+      "frame": {
+        "x": 314,
+        "y": 516,
+        "w": 140,
+        "h": 272
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 1,
+        "y": 66,
+        "w": 140,
+        "h": 272
+      },
+      "sourceSize": {
+        "w": 167,
+        "h": 339
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Marimokkori0024.png": {
+      "frame": {
+        "x": 314,
+        "y": 788,
+        "w": 140,
+        "h": 272
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 1,
+        "y": 66,
+        "w": 140,
+        "h": 272
+      },
+      "sourceSize": {
+        "w": 167,
+        "h": 339
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Marimokkori0025.png": {
+      "frame": {
+        "x": 324,
+        "y": 0,
+        "w": 140,
+        "h": 272
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 1,
+        "y": 66,
+        "w": 140,
+        "h": 272
+      },
+      "sourceSize": {
+        "w": 167,
+        "h": 339
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Marimokkori0020.png": {
+      "frame": {
+        "x": 324,
+        "y": 272,
+        "w": 150,
+        "h": 236
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 10,
+        "y": 101,
+        "w": 150,
+        "h": 236
+      },
+      "sourceSize": {
+        "w": 167,
+        "h": 339
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Marimokkori0021.png": {
+      "frame": {
+        "x": 464,
+        "y": 0,
+        "w": 150,
+        "h": 236
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 10,
+        "y": 101,
+        "w": 150,
+        "h": 236
+      },
+      "sourceSize": {
+        "w": 167,
+        "h": 339
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Marimokkori0028.png": {
+      "frame": {
+        "x": 316,
+        "y": 1060,
+        "w": 139,
+        "h": 242
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 3,
+        "y": 95,
+        "w": 139,
+        "h": 242
+      },
+      "sourceSize": {
+        "w": 167,
+        "h": 339
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Marimokkori0027.png": {
+      "frame": {
+        "x": 454,
+        "y": 508,
+        "w": 139,
+        "h": 242
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 3,
+        "y": 95,
+        "w": 139,
+        "h": 242
+      },
+      "sourceSize": {
+        "w": 167,
+        "h": 339
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Marimokkori0001.png": {
+      "frame": {
+        "x": 474,
+        "y": 236,
+        "w": 125,
+        "h": 268
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 22,
+        "y": 70,
+        "w": 125,
+        "h": 268
+      },
+      "sourceSize": {
+        "w": 167,
+        "h": 339
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Marimokkori0000.png": {
+      "frame": {
+        "x": 454,
+        "y": 750,
+        "w": 125,
+        "h": 268
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 22,
+        "y": 70,
+        "w": 125,
+        "h": 268
+      },
+      "sourceSize": {
+        "w": 167,
+        "h": 339
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Marimokkori0002.png": {
+      "frame": {
+        "x": 316,
+        "y": 1302,
+        "w": 125,
+        "h": 268
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 22,
+        "y": 70,
+        "w": 125,
+        "h": 268
+      },
+      "sourceSize": {
+        "w": 167,
+        "h": 339
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Marimokkori0007.png": {
+      "frame": {
+        "x": 316,
+        "y": 1570,
+        "w": 107,
+        "h": 266
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 35,
+        "y": 69,
+        "w": 107,
+        "h": 266
+      },
+      "sourceSize": {
+        "w": 167,
+        "h": 339
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Marimokkori0005.png": {
+      "frame": {
+        "x": 423,
+        "y": 1570,
+        "w": 107,
+        "h": 266
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 35,
+        "y": 69,
+        "w": 107,
+        "h": 266
+      },
+      "sourceSize": {
+        "w": 167,
+        "h": 339
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Marimokkori0006.png": {
+      "frame": {
+        "x": 441,
+        "y": 1302,
+        "w": 107,
+        "h": 266
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 35,
+        "y": 69,
+        "w": 107,
+        "h": 266
+      },
+      "sourceSize": {
+        "w": 167,
+        "h": 339
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Marimokkori0009.png": {
+      "frame": {
+        "x": 455,
+        "y": 1018,
+        "w": 85,
+        "h": 265
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 35,
+        "y": 72,
+        "w": 85,
+        "h": 265
+      },
+      "sourceSize": {
+        "w": 167,
+        "h": 339
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Marimokkori0008.png": {
+      "frame": {
+        "x": 540,
+        "y": 1018,
+        "w": 85,
+        "h": 265
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 35,
+        "y": 72,
+        "w": 85,
+        "h": 265
+      },
+      "sourceSize": {
+        "w": 167,
+        "h": 339
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Marimokkori0003.png": {
+      "frame": {
+        "x": 579,
+        "y": 750,
+        "w": 85,
+        "h": 265
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 35,
+        "y": 72,
+        "w": 85,
+        "h": 265
+      },
+      "sourceSize": {
+        "w": 167,
+        "h": 339
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Marimokkori0004.png": {
+      "frame": {
+        "x": 530,
+        "y": 1568,
+        "w": 85,
+        "h": 265
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 35,
+        "y": 72,
+        "w": 85,
+        "h": 265
+      },
+      "sourceSize": {
+        "w": 167,
+        "h": 339
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    }
+  },
+  "meta": {
+    "app": "http://free-tex-packer.com",
+    "version": "0.6.7",
+    "image": "marimokkori.png",
+    "format": "RGBA8888",
+    "size": {
+      "w": 664,
+      "h": 1867
+    },
+    "scale": 1
+  }
+}

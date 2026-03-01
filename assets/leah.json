@@ -1,0 +1,423 @@
+{
+  "frames": {
+    "Leah0015.png": {
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "w": 372,
+        "h": 212
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 5,
+        "w": 372,
+        "h": 212
+      },
+      "sourceSize": {
+        "w": 372,
+        "h": 260
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Leah0003.png": {
+      "frame": {
+        "x": 372,
+        "y": 0,
+        "w": 288,
+        "h": 213
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 37,
+        "w": 288,
+        "h": 213
+      },
+      "sourceSize": {
+        "w": 372,
+        "h": 260
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Leah0006.png": {
+      "frame": {
+        "x": 660,
+        "y": 0,
+        "w": 288,
+        "h": 213
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 37,
+        "w": 288,
+        "h": 213
+      },
+      "sourceSize": {
+        "w": 372,
+        "h": 260
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Leah0007.png": {
+      "frame": {
+        "x": 948,
+        "y": 0,
+        "w": 288,
+        "h": 213
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 37,
+        "w": 288,
+        "h": 213
+      },
+      "sourceSize": {
+        "w": 372,
+        "h": 260
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Leah0010.png": {
+      "frame": {
+        "x": 1236,
+        "y": 0,
+        "w": 288,
+        "h": 213
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 37,
+        "w": 288,
+        "h": 213
+      },
+      "sourceSize": {
+        "w": 372,
+        "h": 260
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Leah0014.png": {
+      "frame": {
+        "x": 1524,
+        "y": 0,
+        "w": 288,
+        "h": 213
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 37,
+        "w": 288,
+        "h": 213
+      },
+      "sourceSize": {
+        "w": 372,
+        "h": 260
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Leah0016.png": {
+      "frame": {
+        "x": 0,
+        "y": 212,
+        "w": 367,
+        "h": 214
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 1,
+        "w": 367,
+        "h": 214
+      },
+      "sourceSize": {
+        "w": 372,
+        "h": 260
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Leah0002.png": {
+      "frame": {
+        "x": 367,
+        "y": 213,
+        "w": 326,
+        "h": 221
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 38,
+        "w": 326,
+        "h": 221
+      },
+      "sourceSize": {
+        "w": 372,
+        "h": 260
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Leah0005.png": {
+      "frame": {
+        "x": 693,
+        "y": 213,
+        "w": 326,
+        "h": 221
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 38,
+        "w": 326,
+        "h": 221
+      },
+      "sourceSize": {
+        "w": 372,
+        "h": 260
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Leah0009.png": {
+      "frame": {
+        "x": 1019,
+        "y": 213,
+        "w": 326,
+        "h": 221
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 38,
+        "w": 326,
+        "h": 221
+      },
+      "sourceSize": {
+        "w": 372,
+        "h": 260
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Leah0012.png": {
+      "frame": {
+        "x": 1345,
+        "y": 213,
+        "w": 326,
+        "h": 221
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 38,
+        "w": 326,
+        "h": 221
+      },
+      "sourceSize": {
+        "w": 372,
+        "h": 260
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Leah0013.png": {
+      "frame": {
+        "x": 1671,
+        "y": 213,
+        "w": 326,
+        "h": 221
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 38,
+        "w": 326,
+        "h": 221
+      },
+      "sourceSize": {
+        "w": 372,
+        "h": 260
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Leah0000.png": {
+      "frame": {
+        "x": 0,
+        "y": 426,
+        "w": 334,
+        "h": 228
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 25,
+        "w": 334,
+        "h": 228
+      },
+      "sourceSize": {
+        "w": 372,
+        "h": 260
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Leah0001.png": {
+      "frame": {
+        "x": 334,
+        "y": 434,
+        "w": 334,
+        "h": 228
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 25,
+        "w": 334,
+        "h": 228
+      },
+      "sourceSize": {
+        "w": 372,
+        "h": 260
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Leah0004.png": {
+      "frame": {
+        "x": 668,
+        "y": 434,
+        "w": 334,
+        "h": 228
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 25,
+        "w": 334,
+        "h": 228
+      },
+      "sourceSize": {
+        "w": 372,
+        "h": 260
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Leah0008.png": {
+      "frame": {
+        "x": 1002,
+        "y": 434,
+        "w": 334,
+        "h": 228
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 25,
+        "w": 334,
+        "h": 228
+      },
+      "sourceSize": {
+        "w": 372,
+        "h": 260
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Leah0011.png": {
+      "frame": {
+        "x": 1336,
+        "y": 434,
+        "w": 334,
+        "h": 228
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 25,
+        "w": 334,
+        "h": 228
+      },
+      "sourceSize": {
+        "w": 372,
+        "h": 260
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    }
+  },
+  "meta": {
+    "app": "http://free-tex-packer.com",
+    "version": "0.6.7",
+    "image": "leah.png",
+    "format": "RGBA8888",
+    "size": {
+      "w": 1997,
+      "h": 662
+    },
+    "scale": 1
+  }
+}
