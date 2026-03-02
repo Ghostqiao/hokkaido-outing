@@ -19,6 +19,60 @@ const SNOW_DURATION = 20000;
 const CLEAR_DURATION = 15000;
 
 /* ===============================
+   📱 ORIENTATION GUARD (Mobile Only)
+================================ */
+const rotateOverlay = document.createElement('div');
+rotateOverlay.id = 'rotate-guard';
+rotateOverlay.innerHTML = `
+  <div class="rotate-box">
+    <div class="phone-icon"></div>
+    <p>Please Rotate Your Device</p>
+  </div>
+`;
+document.body.appendChild(rotateOverlay);
+
+// Add CSS directly via JS to keep your main.js portable
+const style = document.createElement('style');
+style.innerHTML = `
+  #rotate-guard {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.9);
+    z-index: 10000;
+    color: white;
+    font-family: sans-serif;
+    justify-content: center;
+    align-items: center;
+  }
+  .rotate-box { text-align: center; }
+  .phone-icon {
+    width: 50px; height: 80px;
+    border: 3px solid white;
+    border-radius: 6px;
+    margin: 0 auto 20px;
+    animation: rotatePhone 2s ease-in-out infinite;
+  }
+  @keyframes rotatePhone {
+    0% { transform: rotate(0deg); }
+    50% { transform: rotate(90deg); }
+    100% { transform: rotate(90deg); }
+  }
+`;
+document.head.appendChild(style);
+
+function checkOrientation() {
+  const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+  if (isMobile && window.innerHeight > window.innerWidth) {
+    rotateOverlay.style.display = 'flex';
+  } else {
+    rotateOverlay.style.display = 'none';
+  }
+}
+window.addEventListener('resize', checkOrientation);
+checkOrientation();
+
+/* ===============================
    ❄️ SNOW SYSTEM
 ================================ */
 class SnowParticle {
@@ -78,7 +132,6 @@ class Sprite {
     this.fullData = null; this.frameNames = []; this.state = "idle"; this.index = 0; this.ready = false; this.lastUpdate = 0;
     this.hitShakeDone = false;
 
-    // 🔊 AUDIO SETUP
     this.soundPath = `assets/sounds/${this.name.toLowerCase()}.mp3`;
     this.sound = new Audio(this.soundPath);
     this.load();
@@ -108,7 +161,7 @@ class Sprite {
     if (!seq || seq.length === 0) return;
     if (this.index >= seq.length) this.index = 0; 
 
-    if (this.name === "Donghao" && this.state === "action" && seq[this.index] === 29 && !this.hitShakeDone) {
+    if (this.name === "donghaoandbear" && this.state === "action" && seq[this.index] === 29 && !this.hitShakeDone) {
       screenShake = 60; 
       this.hitShakeDone = true;
     }
@@ -186,7 +239,7 @@ class Sprite {
   checkHit(tx, ty) {
     let isHit = (tx >= this.x && tx <= this.x + this.w && ty >= this.y + this.yOffset - 100 && ty <= this.y + this.yOffset + this.h + 100);
     if (isHit) {
-      this.playSound(); // 🔊 TRIGGER SOUND
+      this.playSound(); 
       if (this.name === "Shannon") { shannonState = "trick"; trickTimer = 0; }
       if (this.name === "Rabbitman" && this.state === "idle") {
         this.state = "action"; this.index = 0; this.repeatCount = 0; this.rabbitSubPhase = 0;
@@ -199,7 +252,7 @@ class Sprite {
   }
 }
 
-// 🗺️ CHARACTERS (I updated Donghao's name to match your sound file!)
+// 🗺️ FULL CHARACTER LIST
 const characters = [
   new Sprite("Rabbitman", "assets/rabbitman.json", "assets/rabbitman.webp", 1300, 630, [0], [], 1, [], 1, 0, 98),
   new Sprite("Shannon", "assets/shannon.json", "assets/shannon.webp", 2840, 129, [0, 1, 2, 3, 4], [0, 1, 2, 3, 4], 1, [], 1, -155, 0),
@@ -290,8 +343,14 @@ function render(time) {
   requestAnimationFrame(render);
 }
 
-function handleResize() { worldScale = window.innerHeight / BG_HEIGHT; canvas.height = window.innerHeight; canvas.width = BG_WIDTH * worldScale; }
-window.addEventListener('resize', handleResize); handleResize();
+function handleResize() { 
+  worldScale = window.innerHeight / BG_HEIGHT; 
+  canvas.height = window.innerHeight; 
+  canvas.width = BG_WIDTH * worldScale;
+  checkOrientation(); 
+}
+window.addEventListener('resize', handleResize); 
+handleResize();
 
 canvas.addEventListener('mousedown', (e) => {
   const rect = canvas.getBoundingClientRect(); const worldX = (e.clientX - rect.left) / worldScale; const worldY = (e.clientY - rect.top) / worldScale;
