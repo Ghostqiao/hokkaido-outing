@@ -49,28 +49,59 @@ hideScrollStyle.innerHTML = `
 document.head.appendChild(hideScrollStyle);
 
 /* ===============================
-   ✨ V3 BRAND NEW ROTATE UI (Neon Blue)
+   ✨ CONCEPT 3: PLAYFUL TOOLTIP UI
 ================================ */
 let manualDismiss = false;
 const rotateOverlay = document.createElement('div');
 rotateOverlay.id = 'rotate-guard';
+// Design: Floating white card with iconic instructions for minimal reading
 rotateOverlay.innerHTML = `
-  <div class="rotate-box">
-    <h2 style="color: #00E5FF; margin: 0 0 10px 0; font-family: sans-serif; text-transform: uppercase;">⚠️ Rotate Phone ⚠️</h2>
-    <div class="device-icon">📱</div>
-    <p style="color: #ddd; font-weight: bold; font-family: sans-serif;">Landscape Mode Required</p>
-    <p style="font-size: 13px; color: #999; font-family: sans-serif;">Turn on Sound & Shake for Snow</p>
-    <div style="margin-top: 15px; padding: 5px 10px; background: rgba(0,0,0,0.5); border-radius: 5px; font-size: 10px; color: #00E5FF; font-family: monospace;">INSTANT TAP FIX - TAP TO SKIP</div>
+  <div class="rotate-card">
+    <div class="card-content">
+      <div class="icon-row main-action">
+        <div class="device-icon">📱</div>
+      </div>
+      
+      <div class="icon-row equation">
+        <span class="step">🎧</span>
+        <span class="plus">+</span>
+        <span class="step">❄️</span>
+      </div>
+      
+      <h1 class="rotate-text">Turn to Play!</h1>
+      
+      <div class="tap-note">V3 Tooltip UI - Tap to Skip</div>
+    </div>
   </div>
 `;
 document.body.appendChild(rotateOverlay);
 
 const style = document.createElement('style');
 style.innerHTML = `
-  #rotate-guard { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(135deg, #0f2027, #203a43, #2c5364); z-index: 10000; justify-content: center; align-items: center; cursor: pointer; }
-  .rotate-box { background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); padding: 30px 40px; border-radius: 20px; text-align: center; box-shadow: 0 15px 40px rgba(0,0,0,0.6); border: 2px solid #00E5FF; }
-  .device-icon { font-size: 70px; display: inline-block; animation: tiltPhone 2s ease-in-out infinite; }
-  @keyframes tiltPhone { 0% { transform: rotate(0deg); } 50% { transform: rotate(-90deg); } 100% { transform: rotate(-90deg); } }
+  /* Dark muted blue background to make the card pop */
+  #rotate-guard { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #1a2a3a; z-index: 10000; justify-content: center; align-items: center; cursor: pointer; }
+  
+  /* The floating rounded white card */
+  .rotate-card { background: white; padding: 25px 35px; border-radius: 25px; box-shadow: 0 20px 50px rgba(0,0,0,0.5); width: 80%; max-width: 320px; transition: transform 0.3s ease; }
+  
+  /* Layout helpers */
+  .card-content { text-align: center; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; display: flex; flex-direction: column; align-items: center; gap: 10px; }
+  .icon-row { display: flex; align-items: center; justify-content: center; gap: 10px; }
+  
+  /* Phone rotation animation */
+  .device-icon { font-size: 80px; display: inline-block; animation: tiltPhoneV3 2s ease-in-out infinite; }
+  @keyframes tiltPhoneV3 { 0% { transform: rotate(0deg); } 40% { transform: rotate(-90deg); } 100% { transform: rotate(-90deg); } }
+  
+  /* Equation styling (🎧 + ❄️) */
+  .equation { font-size: 30px; margin-top: -10px; }
+  .step { opacity: 0.8; }
+  .plus { color: #888; font-weight: bold; font-size: 24px; }
+  
+  /* Bold, clean game-like text */
+  .rotate-text { font-size: 26px; color: #1a2a3a; margin: 0; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; }
+  
+  /* Minimal tap-to-skip note */
+  .tap-note { margin-top: 10px; font-size: 10px; color: #aaa; text-transform: uppercase; letter-spacing: 1px; font-weight: bold; }
 `;
 document.head.appendChild(style);
 
@@ -134,7 +165,7 @@ const SHANNON_WAIT = 4000, TRICK_DURATION = 700, SHANNON_SPEED = 0.00005;
 const shannonPath = document.createElementNS("http://www.w3.org/2000/svg", "path");
 
 /* ===============================
-   🎨 SPRITE CLASS (Original JSON Logic)
+   🎨 SPRITE CLASS (ORIGINAL INDIVIDUAL JSON)
 ================================ */
 class Sprite {
   constructor(name, jsonPath, webpPath, x, y, idleRange, actionRange, repeatAction = 1, stutterQueue = [], assetScale = 1, yOffset = 0, zIndex = 0) {
@@ -232,6 +263,7 @@ class Sprite {
 
   finalize() { this.index = 0; this.state = "idle"; this.repeatCount = 0; this.stutterStage = -1; this.stutterCount = 0; this.rabbitSubPhase = 0; }
 
+  // Special helper to detect if a point is within the character's hit box
   isHit(tx, ty) {
     if (!this.w || !this.h) return false;
     return (tx >= this.x && tx <= this.x + this.w && ty >= this.y + this.yOffset - 100 && ty <= this.y + this.yOffset + this.h + 100);
@@ -353,21 +385,37 @@ let lastClientX = 0;
 canvas.addEventListener('pointerdown', (e) => {
     isDragging = true;
     lastClientX = e.clientX;
-    handleInteraction(e); // Play animation instantly
+    // Mobile optimization: If pointerdown has world coordinates, trigger interaction
+    if (e.pointerType !== 'mouse') {
+        handleInteraction(e);
+    }
 });
 
-// 2. STOP DRAGGING
-window.addEventListener('pointerup', () => {
+// PC Mouse requires separating drag from click
+window.addEventListener('mousedown', (e) => {
+    isDragging = true;
+    hasDragged = false;
+    lastClientX = e.clientX;
+});
+
+window.addEventListener('mouseup', (e) => {
+    if (isDragging && e.button === 0) { // Left click only
+        if (!hasDragged) {
+            handleInteraction(e); // Play animation if they didn't drag
+        }
+    }
     isDragging = false;
     canvas.style.cursor = 'default';
 });
 
-// 3. PC HOVER & DRAG LOGIC (Ignored by Mobile Touch)
-window.addEventListener('pointermove', (e) => {
+// 2. PC HOVER & DRAG LOGIC (Ignored by Mobile Touch)
+window.addEventListener('mousemove', (e) => {
+    // Only run this logic for mouse, not touch
     if (e.pointerType === 'mouse') {
         if (isDragging) {
             // Drag the map left/right
             const dx = e.clientX - lastClientX;
+            if (Math.abs(dx) > 2) hasDragged = true; // Mark as dragged if mouse moved
             window.scrollBy(-dx, 0);
             lastClientX = e.clientX;
             canvas.style.cursor = 'grabbing'; // Closed hand when pulling the map
@@ -378,6 +426,7 @@ window.addEventListener('pointermove', (e) => {
             const worldY = (e.clientY - rect.top) / worldScale;
             
             let isHovering = false;
+            // Check z-index sorted characters so we hit the one on top
             const sortedChars = [...characters].sort((a,b) => b.zIndex - a.zIndex);
             for (let c of sortedChars) {
                 if (c.isHit(worldX, worldY)) {
