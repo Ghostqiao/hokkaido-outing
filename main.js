@@ -49,26 +49,32 @@ hideScrollStyle.innerHTML = `
 document.head.appendChild(hideScrollStyle);
 
 /* ===============================
-   ✨ YOUR CUSTOM OVERLAY DESIGN
+   ✨ YOUR CUSTOM 3-COLUMN OVERLAY DESIGN
 ================================ */
 let manualDismiss = false;
 const rotateOverlay = document.createElement('div');
 rotateOverlay.id = 'rotate-guard';
 rotateOverlay.innerHTML = `
   <div class="custom-overlay-content">
-    <div class="icons-container">
-      
-      <svg class="anim-phone" viewBox="0 0 24 24" width="70" height="70" stroke="white" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    
+    <div class="icon-column">
+      <svg class="anim-phone" viewBox="0 0 24 24" width="70" height="70" stroke="white" stroke-width="0.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
         <rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect>
       </svg>
+      <span class="icon-label">Rotate</span>
+    </div>
 
-      <svg viewBox="0 0 24 24" width="70" height="70" stroke="white" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <div class="icon-column">
+      <svg viewBox="0 0 24 24" width="70" height="70" stroke="white" stroke-width="0.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
         <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
         <path class="anim-wave1" d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
         <path class="anim-wave2" d="M19.07 4.93a10 10 0 0 1 0 14.14"></path>
       </svg>
+      <span class="icon-label">Sound On</span>
+    </div>
 
-      <svg class="anim-snow" viewBox="0 0 24 24" width="70" height="70" stroke="white" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <div class="icon-column">
+      <svg class="anim-snow" viewBox="0 0 24 24" width="70" height="70" stroke="white" stroke-width="0.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
         <line x1="12" y1="2" x2="12" y2="22"></line>
         <line x1="17" y1="5" x2="12" y2="10"></line>
         <line x1="7" y1="5" x2="12" y2="10"></line>
@@ -80,9 +86,9 @@ rotateOverlay.innerHTML = `
         <line x1="19" y1="7" x2="14" y2="12"></line>
         <line x1="19" y1="17" x2="14" y2="12"></line>
       </svg>
-
+      <span class="icon-label">Shake</span>
     </div>
-    <p class="custom-overlay-text">Rotate your phone. Turn your volume on. Shake your phone to snow.</p>
+
   </div>
 `;
 document.body.appendChild(rotateOverlay);
@@ -94,34 +100,39 @@ style.innerHTML = `
     position: fixed; 
     top: 0; left: 0; 
     width: 100%; height: 100%; 
-    background: rgba(10, 10, 80, 0.75); /* Deep transparent blue from your image */
-    backdrop-filter: blur(3px); /* Subtle blur so game is visible behind */
+    background: rgba(10, 10, 80, 0.75); 
+    backdrop-filter: blur(3px); 
     z-index: 10000; 
     justify-content: center; 
     align-items: center; 
     cursor: pointer; 
   }
+  
+  /* Flex row to line up the columns */
   .custom-overlay-content {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 40px; /* Space between icons */
+  }
+  
+  /* Flex col to stack icon and text */
+  .icon-column {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 30px;
+    gap: 15px; /* Space between icon and word */
+    width: 80px; /* Forces boxes to be the same size for perfect alignment */
   }
-  .icons-container {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    gap: 40px;
-  }
-  .custom-overlay-text {
+  
+  .icon-label {
     color: white;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font-size: 15px;
-    font-weight: 400;
+    font-size: 13px;
+    font-weight: 300; 
+    letter-spacing: 1px; 
     text-align: center;
-    margin: 0;
-    padding: 0 20px;
   }
   
   /* Animations */
@@ -229,7 +240,6 @@ class Sprite {
     if (!seq || seq.length === 0) return;
     if (this.index >= seq.length) this.index = 0; 
 
-    // BEAR HIT EFFECT
     if (this.name === "donghaoandbear" && this.state === "action" && seq[this.index] === 29 && !this.hitShakeDone) {
       screenShake = 60; this.hitShakeDone = true;
     }
@@ -415,17 +425,14 @@ const handleInteraction = (e) => {
 let isDragging = false;
 let lastClientX = 0;
 
-// 1. INSTANT HIT: Fires the millisecond you touch/click. Fast and responsive!
 canvas.addEventListener('pointerdown', (e) => {
     isDragging = true;
     lastClientX = e.clientX;
-    // Mobile optimization: If pointerdown has world coordinates, trigger interaction immediately
     if (e.pointerType !== 'mouse') {
         handleInteraction(e);
     }
 });
 
-// PC Mouse requires separating drag from click
 window.addEventListener('mousedown', (e) => {
     isDragging = true;
     hasDragged = false;
@@ -433,33 +440,29 @@ window.addEventListener('mousedown', (e) => {
 });
 
 window.addEventListener('mouseup', (e) => {
-    if (isDragging && e.button === 0) { // Left click only
+    if (isDragging && e.button === 0) { 
         if (!hasDragged) {
-            handleInteraction(e); // Play animation if they didn't drag
+            handleInteraction(e); 
         }
     }
     isDragging = false;
     canvas.style.cursor = 'default';
 });
 
-// 2. PC HOVER & DRAG LOGIC (Ignored by Mobile Touch)
 window.addEventListener('mousemove', (e) => {
     if (e.pointerType === 'mouse') {
         if (isDragging) {
-            // Drag the map left/right
             const dx = e.clientX - lastClientX;
-            if (Math.abs(dx) > 2) hasDragged = true; // Mark as dragged if mouse moved
+            if (Math.abs(dx) > 2) hasDragged = true; 
             window.scrollBy(-dx, 0);
             lastClientX = e.clientX;
-            canvas.style.cursor = 'grabbing'; // Closed hand when pulling the map
+            canvas.style.cursor = 'grabbing'; 
         } else {
-            // Hover logic: Show normal arrow, unless over a character
             const rect = canvas.getBoundingClientRect();
             const worldX = (e.clientX - rect.left) / worldScale;
             const worldY = (e.clientY - rect.top) / worldScale;
             
             let isHovering = false;
-            // Check z-index sorted characters so we hit the one on top
             const sortedChars = [...characters].sort((a,b) => b.zIndex - a.zIndex);
             for (let c of sortedChars) {
                 if (c.isHit(worldX, worldY)) {
@@ -467,7 +470,7 @@ window.addEventListener('mousemove', (e) => {
                     break;
                 }
             }
-            canvas.style.cursor = isHovering ? 'pointer' : 'default'; // Clicking hand ONLY on characters
+            canvas.style.cursor = isHovering ? 'pointer' : 'default'; 
         }
     }
 });
@@ -478,6 +481,3 @@ rotateOverlay.addEventListener('touchstart', () => { manualDismiss = true; rotat
 rotateOverlay.addEventListener('click', () => { manualDismiss = true; rotateOverlay.style.display = 'none'; });
 
 initShannonPath(); requestAnimationFrame(render);
-
-
-
