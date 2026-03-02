@@ -11,17 +11,38 @@ let screenShake = 0;
 const skyImg = new Image(); skyImg.src = 'assets/sky.webp';
 const mountainImg = new Image(); mountainImg.src = 'assets/mountainandgrass.webp';
 
-// 🎵 Background Music
+// 🎵 Background Music (Triple-Locked to 40% Volume)
 const bgm = new Audio('assets/sounds/outingbgm.mp3');
 bgm.loop = true;
+bgm.volume = 0.4; // Lock 1: Initial load
 let bgmStarted = false;
 
 function startBGM() {
     if (!bgmStarted) {
-        bgm.play().catch(e => console.log("Audio autoplay blocked by browser until further interaction."));
+        bgm.volume = 0.4; // Lock 2: Before playing
+        const playPromise = bgm.play();
+        if (playPromise !== undefined) {
+            playPromise.then(() => {
+                bgm.volume = 0.4; // Lock 3: After the browser allows playback
+            }).catch(e => console.log("Audio autoplay blocked by browser until further interaction."));
+        }
         bgmStarted = true;
     }
 }
+
+// ❄️ PRE-RENDERED FEATHERED SNOW (Super fast & beautiful)
+const snowSprite = document.createElement('canvas');
+snowSprite.width = 20;
+snowSprite.height = 20;
+const sCtx = snowSprite.getContext('2d');
+const grad = sCtx.createRadialGradient(10, 10, 0, 10, 10, 10);
+grad.addColorStop(0, 'rgba(255, 255, 255, 1)');      // Solid white center
+grad.addColorStop(0.4, 'rgba(255, 255, 255, 0.8)');  // Soft mid
+grad.addColorStop(1, 'rgba(255, 255, 255, 0)');      // Feathered transparent edge
+sCtx.fillStyle = grad;
+sCtx.beginPath();
+sCtx.arc(10, 10, 10, 0, Math.PI * 2);
+sCtx.fill();
 
 let skyTime = 0; 
 let snowParticles = [];
@@ -222,7 +243,7 @@ class SnowParticle {
   reset(startOnScreen = false) {
     this.x = Math.random() * BG_WIDTH;
     this.y = startOnScreen ? Math.random() * BG_HEIGHT : -50 - Math.random() * 200;
-    this.size = Math.random() * 4 + 2; 
+    this.size = Math.random() * 6 + 3; // Slightly larger to show off the feathering
     this.baseSpeed = Math.random() * 1.2 + 0.5; 
     this.speed = this.baseSpeed; 
     this.opacity = 0; 
@@ -241,8 +262,10 @@ class SnowParticle {
   }
   draw() {
     if (this.opacity <= 0) return;
-    ctx.fillStyle = `rgba(255, 255, 255, ${this.opacity})`;
-    ctx.beginPath(); ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2); ctx.fill();
+    // Uses the new pre-rendered feathered sprite for beautiful, lag-free snow!
+    ctx.globalAlpha = this.opacity;
+    ctx.drawImage(snowSprite, this.x - this.size, this.y - this.size, this.size * 2, this.size * 2);
+    ctx.globalAlpha = 1.0; // Reset alpha
   }
 }
 for (let i = 0; i < MAX_SNOW; i++) snowParticles.push(new SnowParticle(true));
@@ -262,9 +285,8 @@ class Sprite {
     this.name = name; this.startX = x; this.x = x; this.y = y;
     this.assetScale = assetScale; this.yOffset = yOffset; this.zIndex = zIndex; 
     
-    // 🔥 SPEED OPTIMIZATION 1: Async image decoding stops the UI from freezing
     this.webp = new Image(); 
-    this.webp.decoding = "async";
+    this.webp.decoding = "async"; // Stops image loading from freezing the game
     this.webp.src = webpPath;
     
     this.jsonPath = jsonPath; this.idleFrames = idleRange; this.actionFrames = actionRange;
@@ -274,8 +296,7 @@ class Sprite {
     this.fullData = null; this.frameNames = []; this.state = "idle"; this.index = 0; this.ready = false; this.lastUpdate = 0;
     this.hitShakeDone = false;
     
-    // 🔥 SPEED OPTIMIZATION 2: Lazy Loading Audio. 
-    // We save the path, but we DO NOT load the file until the user taps the character!
+    // Lazy Audio Loading
     this.audioSrc = `assets/sounds/${this.name.toLowerCase()}.mp3`;
     this.sound = null; 
 
@@ -369,7 +390,6 @@ class Sprite {
 
   checkHit(tx, ty) {
     if (this.isHit(tx, ty)) {
-      // 🔥 SPEED OPTIMIZATION 2 (Cont.): Only create and download the audio if they are clicked!
       if (!this.sound) {
           this.sound = new Audio(this.audioSrc);
       }
@@ -449,8 +469,7 @@ let lastTime = 0;
 function render(time) {
   const delta = time - lastTime; lastTime = time;
   
-  // 🔥 SPEED OPTIMIZATION 3: Cap Device Pixel Ratio at 2. 
-  // Prevents mobile GPUs from crashing while still looking HD.
+  // HD CAP at DPR=2: Stops modern phones from overheating
   const dpr = Math.min(window.devicePixelRatio || 1, 2);
   ctx.setTransform(1, 0, 0, 1, 0, 0); 
   ctx.clearRect(0, 0, canvas.width, canvas.height); 
@@ -463,8 +482,10 @@ function render(time) {
   ctx.scale(worldScale, worldScale); 
   
   if (skyImg.complete) {
-    skyTime += 0.015; ctx.filter = `hue-rotate(${Math.sin(skyTime)*20}deg) brightness(0.8)`;
-    ctx.drawImage(skyImg, 0, 0); ctx.filter = 'none';
+    ctx.drawImage(skyImg, 0, 0); 
+    // 🔥 LAG FIX: Replaced expensive 'ctx.filter' with a fast hardware-accelerated dark overlay overlay
+    ctx.fillStyle = 'rgba(0, 0, 0, 0.2)'; 
+    ctx.fillRect(0, 0, BG_WIDTH, BG_HEIGHT); 
   }
   if (mountainImg.complete) ctx.drawImage(mountainImg, 0, 0);
 
