@@ -58,17 +58,17 @@ rotateOverlay.innerHTML = `
   <div class="custom-overlay-content">
     <div class="icons-container">
       
-      <svg class="anim-phone" viewBox="0 0 24 24" width="70" height="70" stroke="white" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <svg class="anim-phone" viewBox="0 0 24 24" width="70" height="70" stroke="white" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round">
         <rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect>
       </svg>
 
-      <svg viewBox="0 0 24 24" width="70" height="70" stroke="white" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <svg viewBox="0 0 24 24" width="70" height="70" stroke="white" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round">
         <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
         <path class="anim-wave1" d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
         <path class="anim-wave2" d="M19.07 4.93a10 10 0 0 1 0 14.14"></path>
       </svg>
 
-      <svg class="anim-snow" viewBox="0 0 24 24" width="70" height="70" stroke="white" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <svg class="anim-snow" viewBox="0 0 24 24" width="70" height="70" stroke="white" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round">
         <line x1="12" y1="2" x2="12" y2="22"></line>
         <line x1="17" y1="5" x2="12" y2="10"></line>
         <line x1="7" y1="5" x2="12" y2="10"></line>
@@ -117,7 +117,7 @@ style.innerHTML = `
   .custom-overlay-text {
     color: white;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font-size: 18px;
+    font-size: 10px;
     font-weight: 400;
     text-align: center;
     margin: 0;
@@ -478,3 +478,4 @@ rotateOverlay.addEventListener('touchstart', () => { manualDismiss = true; rotat
 rotateOverlay.addEventListener('click', () => { manualDismiss = true; rotateOverlay.style.display = 'none'; });
 
 initShannonPath(); requestAnimationFrame(render);
+
