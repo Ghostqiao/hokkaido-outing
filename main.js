@@ -7,7 +7,7 @@ const FPS = 10;
 let worldScale = 1; 
 let screenShake = 0; 
 
-// 🌌 Background Assets
+// 🌌 Assets
 const skyImg = new Image(); skyImg.src = 'assets/sky.webp';
 const mountainImg = new Image(); mountainImg.src = 'assets/mountainandgrass.webp';
 
@@ -18,11 +18,15 @@ let weatherTimer = 0;
 const SNOW_DURATION = 20000; 
 const CLEAR_DURATION = 15000;
 
+// ❄️ DYNAMIC SNOW GLOBE CONTROLS
+let activeSnowCount = 15; 
+const MAX_SNOW = 100;
+
 /* ===============================
-   📱 SHAKE DETECTION (Quantity & Speed Boost)
+   📱 OPTIMIZED SHAKE (Medium Sensitivity)
 ================================ */
 let lastX, lastY, lastZ;
-let moveThreshold = 18; 
+let moveThreshold = 25; // 🎯 MEDIUM: Not too sensitive, not too hard
 
 function handleMotion(event) {
     let accel = event.accelerationIncludingGravity;
@@ -33,59 +37,36 @@ function handleMotion(event) {
     let deltaZ = Math.abs(accel.z - lastZ);
 
     if ((deltaX + deltaY + deltaZ) > moveThreshold) {
-        isSnowing = true;
-        weatherTimer = 0; 
+        if (activeSnowCount < MAX_SNOW) activeSnowCount += 3; // Adds snow gradually
         
-        // Boost existing snow and spawn new ones
-        snowParticles.forEach(p => {
-            if (p.opacity <= 0) p.reset(false); // Respawn at top
-            p.speed += 2.5; // AGGRESSIVE SPEED BOOST
-            if (p.speed > 8) p.speed = 8; // Cap max speed
+        snowParticles.forEach((p, i) => {
+            if (i < activeSnowCount) {
+                p.speed += 2.5; 
+                if (p.speed > 10) p.speed = 10;
+                if (p.opacity <= 0) p.reset(false);
+            }
         });
     }
-
     lastX = accel.x; lastY = accel.y; lastZ = accel.z;
 }
 
-window.addEventListener('click', () => {
-    if (typeof DeviceMotionEvent.requestPermission === 'function') {
-        DeviceMotionEvent.requestPermission()
-            .then(state => { if (state === 'granted') window.addEventListener('devicemotion', handleMotion); })
-            .catch(console.error);
-    } else {
-        window.addEventListener('devicemotion', handleMotion);
-    }
-}, { once: true });
-
 /* ===============================
-   📱 ORIENTATION GUARD
+   📱 ORIENTATION GUARD (Dismissible)
 ================================ */
 let manualDismiss = false;
 const rotateOverlay = document.createElement('div');
 rotateOverlay.id = 'rotate-guard';
-rotateOverlay.innerHTML = `
-  <div class="rotate-box">
-    <div class="phone-icon"></div>
-    <p>Please Rotate Your Device</p>
-    <p style="font-size: 12px; opacity: 0.6; margin-top: 10px;">(Touch anywhere to skip)</p>
-  </div>
-`;
+rotateOverlay.innerHTML = `<div class="rotate-box"><div class="phone-icon"></div><p>Rotate Your Device</p></div>`;
 document.body.appendChild(rotateOverlay);
 
 const style = document.createElement('style');
 style.innerHTML = `
-  #rotate-guard {
-    display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-    background: rgba(0,0,0,0.85); z-index: 10000; color: white; font-family: sans-serif;
-    justify-content: center; align-items: center; cursor: pointer;
-  }
-  .rotate-box { text-align: center; pointer-events: none; }
+  #rotate-guard { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 10000; color: white; font-family: sans-serif; justify-content: center; align-items: center; cursor: pointer; }
   .phone-icon { width: 40px; height: 70px; border: 3px solid white; border-radius: 6px; margin: 0 auto 15px; animation: rotatePhone 2s ease-in-out infinite; }
   @keyframes rotatePhone { 0% { transform: rotate(0deg); } 50% { transform: rotate(90deg); } 100% { transform: rotate(90deg); } }
 `;
 document.head.appendChild(style);
-
-rotateOverlay.addEventListener('click', () => { manualDismiss = true; rotateOverlay.style.display = 'none'; });
+rotateOverlay.addEventListener('touchstart', () => { manualDismiss = true; rotateOverlay.style.display = 'none'; }, {passive: true});
 
 function checkOrientation() {
   const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
@@ -94,15 +75,15 @@ function checkOrientation() {
 }
 
 /* ===============================
-   ❄️ SNOW SYSTEM (Fade In/Out + Shake Speed)
+   ❄️ REFINED SNOW SYSTEM
 ================================ */
 class SnowParticle {
   constructor(startOnScreen = false) { this.reset(startOnScreen); }
   reset(startOnScreen = false) {
     this.x = Math.random() * BG_WIDTH;
     this.y = startOnScreen ? Math.random() * BG_HEIGHT : -50 - Math.random() * 200;
-    this.size = Math.random() * 2 + 1;
-    this.baseSpeed = Math.random() * 1.2 + 0.8; 
+    this.size = Math.random() * 4 + 2; 
+    this.baseSpeed = Math.random() * 1 + 0.5; 
     this.speed = this.baseSpeed; 
     this.velX = (Math.random() - 0.5) * 0.5; 
     this.opacity = 0; 
@@ -112,19 +93,11 @@ class SnowParticle {
     if (this.y < this.meltY) {
       this.y += this.speed;
       this.x += this.velX + Math.sin(this.y * 0.01) * 0.2; 
-      
-      // Fade in from top
-      if (this.opacity < 0.75) this.opacity += 0.015; 
-      
-      // Gradually slow back down to normal speed after a shake
-      if (this.speed > this.baseSpeed) this.speed *= 0.96; 
+      if (this.opacity < 0.8) this.opacity += 0.01; 
+      if (this.speed > this.baseSpeed) this.speed *= 0.97; // Decay boost
     } else {
-      // Hit ground: melt (fade out)
       this.opacity -= 0.02; 
-      if (this.opacity <= 0) {
-          if (!forceStop) this.reset(false);
-          else this.opacity = 0; 
-      }
+      if (this.opacity <= 0 && !forceStop) this.reset(false);
     }
   }
   draw() {
@@ -133,12 +106,10 @@ class SnowParticle {
     ctx.beginPath(); ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2); ctx.fill();
   }
 }
-
-// Increased slightly to 60 for better "globe" feel when shaken
-for (let i = 0; i < 60; i++) snowParticles.push(new SnowParticle(true));
+for (let i = 0; i < MAX_SNOW; i++) snowParticles.push(new SnowParticle(true));
 
 /* ===============================
-   🎨 SPRITE CLASS & CHARACTERS (Unchanged)
+   🎨 SPRITE CLASS & CHARACTERS
 ================================ */
 class Sprite {
   constructor(name, jsonPath, webpPath, x, y, idleRange, actionRange, repeatAction = 1, stutterQueue = [], assetScale = 1, yOffset = 0, zIndex = 0) {
@@ -169,9 +140,11 @@ class Sprite {
     let seq = (this.state === "idle") ? this.idleFrames : (this.stutterStage >= 0) ? this.stutterQueue[this.stutterStage].range : this.actionFrames;
     if (!seq || seq.length === 0) return;
     if (this.index >= seq.length) this.index = 0; 
+    
     if (this.name === "donghaoandbear" && this.state === "action" && seq[this.index] === 29 && !this.hitShakeDone) {
       screenShake = 60; this.hitShakeDone = true;
     }
+    
     const frameData = this.fullData.frames[this.frameNames[seq[this.index]]];
     if (frameData) {
       const f = frameData.frame; const s = frameData.spriteSourceSize; 
@@ -273,15 +246,15 @@ const characters = [
 ];
 
 /* ===============================
-   🚀 ENGINE (Unchanged)
+   🚀 ENGINE & RENDER
 ================================ */
 async function initShannonPath() {
   try {
-    const response = await fetch('assets/path.svg');
-    const text = await response.text();
+    const resp = await fetch('assets/path.svg');
+    const text = await resp.text();
     const xml = new DOMParser().parseFromString(text, "image/svg+xml");
-    const pathElement = xml.querySelector('path');
-    if (pathElement) { shannonPath.setAttribute("d", pathElement.getAttribute('d')); shannonPathLength = pathElement.getTotalLength(); }
+    const pathElem = xml.querySelector('path');
+    if (pathElem) { shannonPath.setAttribute("d", pathElem.getAttribute('d')); shannonPathLength = pathElem.getTotalLength(); }
   } catch(e) { console.error("Path error", e); }
 }
 
@@ -309,10 +282,7 @@ function render(time) {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   
   ctx.save();
-  if (screenShake > 0) { 
-    ctx.translate((Math.random() - 0.5) * screenShake, (Math.random() - 0.5) * screenShake); 
-    screenShake *= 0.85; if (screenShake < 1) screenShake = 0;
-  }
+  if (screenShake > 0) { ctx.translate((Math.random() - 0.5) * screenShake, (Math.random() - 0.5) * screenShake); screenShake *= 0.85; if (screenShake < 1) screenShake = 0; }
 
   skyTime += 0.015; let currentHue = Math.sin(skyTime) * 20; 
   ctx.save(); ctx.scale(worldScale, worldScale); 
@@ -322,13 +292,9 @@ function render(time) {
   if (mountainImg.complete) ctx.drawImage(mountainImg, 0, 0);
 
   weatherTimer += delta;
-  if (isSnowing) {
-    snowParticles.forEach(p => { p.update(false); p.draw(); });
-    if (weatherTimer > SNOW_DURATION) { isSnowing = false; weatherTimer = 0; }
-  } else {
-    snowParticles.forEach(p => { p.update(true); p.draw(); });
-    if (weatherTimer > CLEAR_DURATION) { isSnowing = true; weatherTimer = 0; }
-  }
+  let forceStop = (weatherTimer > SNOW_DURATION);
+  snowParticles.forEach((p, i) => { if (i < activeSnowCount) { p.update(forceStop); p.draw(); } });
+  if (weatherTimer > SNOW_DURATION + CLEAR_DURATION) { weatherTimer = 0; }
 
   updateShannon(delta); 
   characters.forEach(c => c.update(time)); 
@@ -336,14 +302,26 @@ function render(time) {
   requestAnimationFrame(render);
 }
 
-function handleResize() { 
-  worldScale = window.innerHeight / BG_HEIGHT; 
-  canvas.height = window.innerHeight; canvas.width = BG_WIDTH * worldScale;
-  checkOrientation(); 
-}
+function handleResize() { worldScale = window.innerHeight / BG_HEIGHT; canvas.height = window.innerHeight; canvas.width = BG_WIDTH * worldScale; checkOrientation(); }
 window.addEventListener('resize', handleResize); handleResize();
-canvas.addEventListener('mousedown', (e) => {
-  const rect = canvas.getBoundingClientRect(); const worldX = (e.clientX - rect.left) / worldScale; const worldY = (e.clientY - rect.top) / worldScale;
-  [...characters].sort((a,b) => b.zIndex - a.zIndex).forEach(c => c.checkHit(worldX, worldY));
-});
+
+/* 📱 MOBILE INPUT OPTIMIZATION */
+const handleInteraction = (e) => {
+    // Permission request for iOS motion
+    if (typeof DeviceMotionEvent.requestPermission === 'function') {
+        DeviceMotionEvent.requestPermission().then(state => { if (state === 'granted') window.addEventListener('devicemotion', handleMotion); });
+    } else { window.addEventListener('devicemotion', handleMotion); }
+
+    const rect = canvas.getBoundingClientRect();
+    const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+    const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+    const worldX = (clientX - rect.left) / worldScale;
+    const worldY = (clientY - rect.top) / worldScale;
+    [...characters].sort((a,b) => b.zIndex - a.zIndex).forEach(c => c.checkHit(worldX, worldY));
+};
+
+// Remove click lag by using touchstart
+canvas.addEventListener('touchstart', handleInteraction, {passive: false});
+canvas.addEventListener('mousedown', handleInteraction);
+
 initShannonPath(); requestAnimationFrame(render);
