@@ -25,6 +25,34 @@ let lastX = 0, lastY = 0, lastZ = 0;
 let moveThreshold = 25; 
 
 /* ===============================
+   📱 HIDDEN SCROLLBARS & DRAG CSS
+================================ */
+const hideScrollStyle = document.createElement('style');
+hideScrollStyle.innerHTML = `
+  html, body {
+    margin: 0; padding: 0;
+    overflow-x: auto; 
+    overflow-y: hidden; 
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE/Edge */
+    background-color: #000;
+    overscroll-behavior: none; /* Prevents bounce effects on mobile */
+  }
+  html::-webkit-scrollbar, body::-webkit-scrollbar {
+    display: none; /* Chrome/Safari/Opera */
+  }
+  canvas {
+    display: block;
+    touch-action: none; /* Gives our code full control of swiping */
+    cursor: grab;
+  }
+  canvas:active {
+    cursor: grabbing;
+  }
+`;
+document.head.appendChild(hideScrollStyle);
+
+/* ===============================
    📱 ORIENTATION GUARD + ICONS
 ================================ */
 let manualDismiss = false;
@@ -148,6 +176,7 @@ class Sprite {
     if (!seq || seq.length === 0) return;
     if (this.index >= seq.length) this.index = 0; 
 
+    // BEAR HIT EFFECT RESTORED
     if (this.name === "donghaoandbear" && this.state === "action" && seq[this.index] === 29 && !this.hitShakeDone) {
       screenShake = 60; this.hitShakeDone = true;
     }
@@ -228,9 +257,9 @@ class Sprite {
   }
 }
 
-// 🗺️ CHARACTERS
+// 🗺️ CHARACTERS (Rabbitman zIndex fixed)
 const characters = [
-  new Sprite("Rabbitman", "assets/rabbitman.json", "assets/rabbitman.webp", 1300, 630, [0], [], 1, [], 1, 0, 10),
+  new Sprite("Rabbitman", "assets/rabbitman.json", "assets/rabbitman.webp", 1300, 630, [0], [], 1, [], 1, 0, 100),
   new Sprite("Shannon", "assets/shannon.json", "assets/shannon.webp", 2840, 129, [0, 1, 2, 3, 4], [0, 1, 2, 3, 4], 1, [], 1, -155, 0),
   new Sprite("ezofox", "assets/ezofox.json", "assets/ezofox.webp", 136, 559, Array.from({length:15}, (_,i)=>i), Array.from({length:3}, (_,i)=>i+15), 3, [], 1, 0, 5),
   new Sprite("donghaoandbear", "assets/donghaoandbear.json", "assets/donghaoandbear.webp", 241, 257, [...Array(5).fill([...Array(10).keys()]).flat(), ...Array.from({length:14},(_,i)=>i+10)], Array.from({length:7}, (_,i)=>i+24), 1, [{ range: [30], target: 10 }], 1, 0, 5),
@@ -246,13 +275,15 @@ const characters = [
   new Sprite("Shuqiao", "assets/shuqiao.json", "assets/shuqiao.webp", 1060, 527, Array.from({length:10}, (_,i)=>i), Array.from({length:9}, (_,i)=>i+10), 2, [], 1, 0, 5),
   new Sprite("Ricky", "assets/ricky.json", "assets/ricky.webp", 1141, 458, Array.from({length:8}, (_,i)=>i), Array.from({length:9}, (_,i)=>i+8), 1, [{range:[15,16], target:10}], 1, 0, 6), 
   new Sprite("Toni", "assets/toni.json", "assets/toni.webp", 1462, 420, Array.from({length:10}, (_,i)=>i), Array.from({length:8}, (_,i)=>i+10), 1, [{range:[18,19], target:5},{range:[20],target:1},{range:[20,21], target:3}], 1, 0, 5),
-  new Sprite("Zushihocky", "assets/zushihocky.json", "assets/zushihocky.webp", 1700, 360, Array.from({length:10}, (_,i)=>i), [15], 1, [{range:[11,16], target:1}, {range:[16], target:10}], 1, 0, 4),
+  new Sprite("Zushihocky", "assets/zushihocky.json", "assets/zushihocky.webp", 1700, 360, Array.from({length:10}, (_,i)=>i), [15], 1, [{range:[11,16], target:1}, {range:[16], target:10}], 1, 0, 5),
   new Sprite("Yuki", "assets/yuki.json", "assets/yuki.webp", 2098, 458, Array.from({length:8}, (_,i)=>i), Array.from({length:6}, (_,i)=>i+8), 1, [{range:[12,13], target:5}], 1, 0, 5),
   new Sprite("Melody", "assets/melody.json", "assets/melody.webp", 2234, 480, Array.from({length:10}, (_,i)=>i), Array.from({length:7}, (_,i)=>i+10), 1, [{range:[12,16], target:10}], 1, 0, 4), 
   new Sprite("Horseman", "assets/horseman.json", "assets/horseman.webp", 2463, 441, Array.from({length:15}, (_,i)=>i), [15], 1, [{range:[15], target:3}, {range:[16], target:10}], 1, 0, 5),
   new Sprite("Onigiriman", "assets/onigiriman.json", "assets/onigiriman.webp", 2600, 648, Array.from({length: 13}, (_, i) => i), Array.from({length:5}, (_, i) => i + 13), 1, [{ range: [13,17], target: 1 },{range:[18], target: 5}], 1, 0, 5),
   new Sprite("Weizhuo", "assets/weizhuo.json", "assets/weizhuo.webp", 2673, 445, Array.from({length:11}, (_,i)=>i), Array.from({length:21}, (_,i)=>i+11), 1, [], 1, 0, 5)
 ];
+
+function sortCharacters() { characters.sort((a, b) => a.zIndex - b.zIndex); }
 
 /* ===============================
    🚀 ENGINE & RENDER
@@ -283,8 +314,6 @@ function updateShannon(delta) {
   if (shannonState === "trick") { trickTimer += delta; if (trickTimer >= 700) shannonState = "skating"; }
 }
 
-function sortCharacters() { characters.sort((a, b) => a.zIndex - b.zIndex); }
-
 let lastTime = 0;
 function render(time) {
   const delta = time - lastTime; lastTime = time;
@@ -308,22 +337,60 @@ function render(time) {
   requestAnimationFrame(render);
 }
 
-// 📱 MOBILE INPUT OPTIMIZATION
+/* ===============================
+   🖱️ MOUSE / SWIPE DRAG-TO-PAN
+================================ */
+let isDragging = false;
+let dragStartX = 0;
+let initialScrollX = 0;
+let hasMoved = false;
+
+// Universal Pointer Events handle both Mouse and Touch effortlessly
+canvas.addEventListener('pointerdown', (e) => {
+    isDragging = true;
+    hasMoved = false; // Reset movement flag
+    dragStartX = e.pageX;
+    initialScrollX = document.documentElement.scrollLeft || document.body.scrollLeft;
+});
+
+window.addEventListener('pointermove', (e) => {
+    if (!isDragging) return;
+    
+    // Calculate how far the mouse/finger has dragged
+    const dragDistance = dragStartX - e.pageX;
+    
+    // If they drag more than 10 pixels, we register it as a panning motion, not a click
+    if (Math.abs(dragDistance) > 10) {
+        hasMoved = true; 
+    }
+    
+    window.scrollTo(initialScrollX + dragDistance, 0);
+});
+
+window.addEventListener('pointerup', (e) => {
+    if (!isDragging) return;
+    isDragging = false;
+
+    // Trigger Interaction ONLY if they didn't drag the screen (it was a tap)
+    if (!hasMoved) {
+        handleInteraction(e);
+    }
+});
+
+// The character interaction logic
 const handleInteraction = (e) => {
     if (typeof DeviceMotionEvent?.requestPermission === 'function') {
         DeviceMotionEvent.requestPermission().then(s => { if (s === 'granted') window.addEventListener('devicemotion', handleMotion); });
     } else window.addEventListener('devicemotion', handleMotion);
+
     const rect = canvas.getBoundingClientRect();
-    const touch = e.touches ? e.touches[0] : e;
-    const worldX = (touch.clientX - rect.left) / worldScale;
-    const worldY = (touch.clientY - rect.top) / worldScale;
-    characters.forEach(c => c.checkHit(worldX, worldY));
+    const worldX = (e.clientX - rect.left) / worldScale;
+    const worldY = (e.clientY - rect.top) / worldScale;
+    [...characters].sort((a,b) => b.zIndex - a.zIndex).forEach(c => c.checkHit(worldX, worldY));
 };
 
 function handleResize() { worldScale = window.innerHeight / 850; canvas.height = window.innerHeight; canvas.width = 2982 * worldScale; checkOrientation(); }
 window.addEventListener('resize', handleResize); handleResize();
-canvas.addEventListener('touchstart', (e) => { e.preventDefault(); handleInteraction(e); }, {passive: false});
-canvas.addEventListener('mousedown', handleInteraction);
 rotateOverlay.addEventListener('touchstart', () => { manualDismiss = true; rotateOverlay.style.display = 'none'; });
 
 initShannonPath(); requestAnimationFrame(render);
