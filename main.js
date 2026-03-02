@@ -49,7 +49,7 @@ hideScrollStyle.innerHTML = `
 document.head.appendChild(hideScrollStyle);
 
 /* ===============================
-   ✨ YOUR CUSTOM 3-COLUMN OVERLAY DESIGN
+   ✨ THE "THREE COLUMNS" OVERLAY DESIGN
 ================================ */
 let manualDismiss = false;
 const rotateOverlay = document.createElement('div');
@@ -57,14 +57,14 @@ rotateOverlay.id = 'rotate-guard';
 rotateOverlay.innerHTML = `
   <div class="custom-overlay-content">
     
-    <div class="icon-column">
+    <div class="instruction-column">
       <svg class="anim-phone" viewBox="0 0 24 24" width="70" height="70" stroke="white" stroke-width="0.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
         <rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect>
       </svg>
       <span class="icon-label">Rotate</span>
     </div>
 
-    <div class="icon-column">
+    <div class="instruction-column">
       <svg viewBox="0 0 24 24" width="70" height="70" stroke="white" stroke-width="0.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
         <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
         <path class="anim-wave1" d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
@@ -73,7 +73,7 @@ rotateOverlay.innerHTML = `
       <span class="icon-label">Sound On</span>
     </div>
 
-    <div class="icon-column">
+    <div class="instruction-column">
       <svg class="anim-snow" viewBox="0 0 24 24" width="70" height="70" stroke="white" stroke-width="0.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
         <line x1="12" y1="2" x2="12" y2="22"></line>
         <line x1="17" y1="5" x2="12" y2="10"></line>
@@ -108,31 +108,35 @@ style.innerHTML = `
     cursor: pointer; 
   }
   
-  /* Flex row to line up the columns */
+  /* Flexbox container mapping elements horizontally */
   .custom-overlay-content {
     display: flex;
     flex-direction: row;
+    align-items: flex-start;
     justify-content: center;
-    align-items: flex-end;
-    gap: 40px; /* Space between icons */
+    gap: 40px; /* Creates perfectly even spacing between the columns */
   }
   
-  /* Flex col to stack icon and text */
-  .icon-column {
+  /* Individual columns mapping icons and text vertically */
+  .instruction-column {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 15px; /* Space between icon and word */
-    width: 80px; /* Forces boxes to be the same size for perfect alignment */
+    justify-content: flex-start;
+    gap: 15px; /* Exact space between the icon and the text below it */
+    width: 80px; /* Fixed width ensures the bounding box remains consistent */
   }
-  
+
+  /* Text styling specifically structured to match icon widths */
   .icon-label {
     color: white;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font-size: 13px;
+    font-size: 13px; /* Increased slightly from 10px since it has its own dedicated space now */
     font-weight: 300; 
     letter-spacing: 1px; 
     text-align: center;
+    white-space: nowrap; /* Prevents short words from incorrectly wrapping */
+    opacity: 0.9;
   }
   
   /* Animations */
