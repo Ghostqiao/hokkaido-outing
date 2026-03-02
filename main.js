@@ -19,9 +19,47 @@ const SNOW_DURATION = 20000;
 const CLEAR_DURATION = 15000;
 
 /* ===============================
-   📱 ORIENTATION GUARD (Refresh-Based)
+   📱 SHAKE DETECTION
 ================================ */
-let manualDismiss = false; // Resets to false every time the page refreshes
+let lastX, lastY, lastZ;
+let moveThreshold = 15; // Sensitivity of the shake
+
+function handleMotion(event) {
+    let accel = event.accelerationIncludingGravity;
+    if (!accel.x) return;
+
+    let deltaX = Math.abs(accel.x - lastX);
+    let deltaY = Math.abs(accel.y - lastY);
+    let deltaZ = Math.abs(accel.z - lastZ);
+
+    if ((deltaX + deltaY + deltaZ) > moveThreshold) {
+        // If shaken, force snow to start and add extra speed
+        isSnowing = true;
+        weatherTimer = 0; 
+        snowParticles.forEach(p => {
+            if (p.opacity <= 0) p.reset(false);
+            p.speed += 0.5; // Temporary speed boost
+        });
+    }
+
+    lastX = accel.x; lastY = accel.y; lastZ = accel.z;
+}
+
+// Request permission for iOS 13+ devices
+window.addEventListener('click', () => {
+    if (typeof DeviceMotionEvent.requestPermission === 'function') {
+        DeviceMotionEvent.requestPermission()
+            .then(state => { if (state === 'granted') window.addEventListener('devicemotion', handleMotion); })
+            .catch(console.error);
+    } else {
+        window.addEventListener('devicemotion', handleMotion);
+    }
+}, { once: true });
+
+/* ===============================
+   📱 ORIENTATION GUARD (Dismissible)
+================================ */
+let manualDismiss = false;
 const rotateOverlay = document.createElement('div');
 rotateOverlay.id = 'rotate-guard';
 rotateOverlay.innerHTML = `
@@ -36,56 +74,32 @@ document.body.appendChild(rotateOverlay);
 const style = document.createElement('style');
 style.innerHTML = `
   #rotate-guard {
-    display: none;
-    position: fixed;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background: rgba(0,0,0,0.85);
-    z-index: 10000;
-    color: white;
-    font-family: sans-serif;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
+    display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.85); z-index: 10000; color: white; font-family: sans-serif;
+    justify-content: center; align-items: center; cursor: pointer;
   }
   .rotate-box { text-align: center; pointer-events: none; }
-  .phone-icon {
-    width: 40px; height: 70px;
-    border: 3px solid white;
-    border-radius: 6px;
-    margin: 0 auto 15px;
-    animation: rotatePhone 2s ease-in-out infinite;
-  }
-  @keyframes rotatePhone {
-    0% { transform: rotate(0deg); }
-    50% { transform: rotate(90deg); }
-    100% { transform: rotate(90deg); }
-  }
+  .phone-icon { width: 40px; height: 70px; border: 3px solid white; border-radius: 6px; margin: 0 auto 15px; animation: rotatePhone 2s ease-in-out infinite; }
+  @keyframes rotatePhone { 0% { transform: rotate(0deg); } 50% { transform: rotate(90deg); } 100% { transform: rotate(90deg); } }
 `;
 document.head.appendChild(style);
 
-rotateOverlay.addEventListener('click', () => {
-    manualDismiss = true;
-    rotateOverlay.style.display = 'none';
-});
+rotateOverlay.addEventListener('click', () => { manualDismiss = true; rotateOverlay.style.display = 'none'; });
 
 function checkOrientation() {
   const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-  // Shows if vertical AND hasn't been touched yet this session
-  if (isMobile && window.innerHeight > window.innerWidth && !manualDismiss) {
-    rotateOverlay.style.display = 'flex';
-  } else {
-    rotateOverlay.style.display = 'none';
-  }
+  if (isMobile && window.innerHeight > window.innerWidth && !manualDismiss) rotateOverlay.style.display = 'flex';
+  else rotateOverlay.style.display = 'none';
 }
 
 /* ===============================
-   ❄️ SNOW SYSTEM
+   ❄️ SNOW GLOBE SYSTEM
 ================================ */
 class SnowParticle {
   constructor(startOnScreen = false) { this.reset(startOnScreen); }
   reset(startOnScreen = false) {
     this.x = Math.random() * BG_WIDTH;
-    this.y = startOnScreen ? Math.random() * BG_HEIGHT : -20 - Math.random() * 200;
+    this.y = startOnScreen ? Math.random() * BG_HEIGHT : -50 - Math.random() * 200;
     this.size = Math.random() * 2 + 1;
     this.speed = Math.random() * 1.2 + 0.5; 
     this.velX = (Math.random() - 0.5) * 0.5; 
@@ -96,9 +110,10 @@ class SnowParticle {
     if (this.y < this.meltY) {
       this.y += this.speed;
       this.x += this.velX + Math.sin(this.y * 0.01) * 0.2; 
-      if (this.opacity < 0.7) this.opacity += 0.01; 
+      if (this.opacity < 0.7) this.opacity += 0.01; // Fade in from top
+      if (this.speed > 2) this.speed *= 0.98; // Slowly return to normal speed after shake
     } else {
-      this.opacity -= 0.015; 
+      this.opacity -= 0.015; // Melt into ground
       if (this.opacity <= 0 && !forceStop) this.reset(false);
     }
   }
@@ -123,9 +138,6 @@ const SHANNON_SPEED = 0.00005;
 const shannonPath = document.createElementNS("http://www.w3.org/2000/svg", "path");
 let shannonPathLength = 0;
 
-/**
- * 🎨 SPRITE CLASS
- */
 class Sprite {
   constructor(name, jsonPath, webpPath, x, y, idleRange, actionRange, repeatAction = 1, stutterQueue = [], assetScale = 1, yOffset = 0, zIndex = 0) {
     this.name = name; this.startX = x; this.x = x; this.y = y;
@@ -137,7 +149,6 @@ class Sprite {
     this.crabPhase = 0; this.moveSpeed = 25; this.rabbitSubPhase = 0; this.leahWaitTimer = 0;
     this.fullData = null; this.frameNames = []; this.state = "idle"; this.index = 0; this.ready = false; this.lastUpdate = 0;
     this.hitShakeDone = false;
-
     this.soundPath = `assets/sounds/${this.name.toLowerCase()}.mp3`;
     this.sound = new Audio(this.soundPath);
     this.load();
@@ -152,12 +163,7 @@ class Sprite {
     } catch (e) { console.error("JSON Error for " + this.name, e); }
   }
 
-  playSound() {
-    if (this.sound) {
-      this.sound.currentTime = 0; 
-      this.sound.play().catch(e => {}); 
-    }
-  }
+  playSound() { if (this.sound) { this.sound.currentTime = 0; this.sound.play().catch(e => {}); } }
 
   update(now) {
     if (!this.ready || !this.fullData) return;
@@ -165,10 +171,8 @@ class Sprite {
     if (!seq || seq.length === 0) return;
     if (this.index >= seq.length) this.index = 0; 
 
-    // 🐻 Bear Hit Effect
     if (this.name === "donghaoandbear" && this.state === "action" && seq[this.index] === 29 && !this.hitShakeDone) {
-      screenShake = 60; 
-      this.hitShakeDone = true;
+      screenShake = 60; this.hitShakeDone = true;
     }
 
     const frameData = this.fullData.frames[this.frameNames[seq[this.index]]];
@@ -227,10 +231,7 @@ class Sprite {
       if (this.name === "Crabman") { this.state = "idle"; this.index = 0; return; }
       if (this.stutterQueue.length > 0) {
         if (this.stutterStage === -1) { this.stutterStage = 0; this.index = 0; } 
-        else {
-          this.stutterCount++; if (this.stutterCount < this.stutterQueue[this.stutterStage].target) { this.index = 0; } 
-          else { this.stutterStage++; this.stutterCount = 0; this.index = 0; if (this.stutterStage >= this.stutterQueue.length) this.finalize(); }
-        }
+        else { this.stutterCount++; if (this.stutterCount < this.stutterQueue[this.stutterStage].target) { this.index = 0; } else { this.stutterStage++; this.stutterCount = 0; this.index = 0; if (this.stutterStage >= this.stutterQueue.length) this.finalize(); } }
       } else { this.finalize(); }
     } else { this.index = 0; }
   }
@@ -318,8 +319,7 @@ function render(time) {
   ctx.save();
   if (screenShake > 0) { 
     ctx.translate((Math.random() - 0.5) * screenShake, (Math.random() - 0.5) * screenShake); 
-    screenShake *= 0.85; 
-    if (screenShake < 1) screenShake = 0;
+    screenShake *= 0.85; if (screenShake < 1) screenShake = 0;
   }
 
   skyTime += 0.015; let currentHue = Math.sin(skyTime) * 20; 
@@ -346,12 +346,10 @@ function render(time) {
 
 function handleResize() { 
   worldScale = window.innerHeight / BG_HEIGHT; 
-  canvas.height = window.innerHeight; 
-  canvas.width = BG_WIDTH * worldScale;
-  checkOrientation(); // Trigger orientation check
+  canvas.height = window.innerHeight; canvas.width = BG_WIDTH * worldScale;
+  checkOrientation(); 
 }
-window.addEventListener('resize', handleResize); 
-handleResize();
+window.addEventListener('resize', handleResize); handleResize();
 
 canvas.addEventListener('mousedown', (e) => {
   const rect = canvas.getBoundingClientRect(); const worldX = (e.clientX - rect.left) / worldScale; const worldY = (e.clientY - rect.top) / worldScale;
