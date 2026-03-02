@@ -60,7 +60,7 @@ rotateOverlay.innerHTML = `
     <div class="device-icon">📱</div>
     <p style="color: #ddd; font-weight: bold; font-family: sans-serif;">Landscape Mode Required</p>
     <p style="font-size: 13px; color: #999; font-family: sans-serif;">Turn on Sound & Shake for Snow</p>
-    <div style="margin-top: 15px; padding: 5px 10px; background: rgba(0,0,0,0.5); border-radius: 5px; font-size: 10px; color: #00E5FF; font-family: monospace;">V3 UI UPDATE - TAP TO SKIP</div>
+    <div style="margin-top: 15px; padding: 5px 10px; background: rgba(0,0,0,0.5); border-radius: 5px; font-size: 10px; color: #00E5FF; font-family: monospace;">INSTANT TAP FIX - TAP TO SKIP</div>
   </div>
 `;
 document.body.appendChild(rotateOverlay);
@@ -134,7 +134,7 @@ const SHANNON_WAIT = 4000, TRICK_DURATION = 700, SHANNON_SPEED = 0.00005;
 const shannonPath = document.createElementNS("http://www.w3.org/2000/svg", "path");
 
 /* ===============================
-   🎨 SPRITE CLASS (ORIGINAL INDIVIDUAL JSON LOGIC)
+   🎨 SPRITE CLASS (Original JSON Logic)
 ================================ */
 class Sprite {
   constructor(name, jsonPath, webpPath, x, y, idleRange, actionRange, repeatAction = 1, stutterQueue = [], assetScale = 1, yOffset = 0, zIndex = 0) {
@@ -166,7 +166,7 @@ class Sprite {
     if (!seq || seq.length === 0) return;
     if (this.index >= seq.length) this.index = 0; 
 
-    // BEAR HIT EFFECT RESTORED
+    // BEAR HIT EFFECT
     if (this.name === "donghaoandbear" && this.state === "action" && seq[this.index] === 29 && !this.hitShakeDone) {
       screenShake = 60; this.hitShakeDone = true;
     }
@@ -232,7 +232,6 @@ class Sprite {
 
   finalize() { this.index = 0; this.state = "idle"; this.repeatCount = 0; this.stutterStage = -1; this.stutterCount = 0; this.rabbitSubPhase = 0; }
 
-  // New helper method used by both the Click Logic and the Hover Logic
   isHit(tx, ty) {
     if (!this.w || !this.h) return false;
     return (tx >= this.x && tx <= this.x + this.w && ty >= this.y + this.yOffset - 100 && ty <= this.y + this.yOffset + this.h + 100);
@@ -334,7 +333,7 @@ function render(time) {
 }
 
 /* ===============================
-   🖱️ PC MOUSE DRAG & HOVER LOGIC 
+   🖱️ INSTANT INTERACTION & PC DRAG
 ================================ */
 const handleInteraction = (e) => {
     if (typeof DeviceMotionEvent?.requestPermission === 'function') {
@@ -342,83 +341,52 @@ const handleInteraction = (e) => {
     } else window.addEventListener('devicemotion', handleMotion);
     
     const rect = canvas.getBoundingClientRect();
-    const clientX = e.clientX !== undefined ? e.clientX : (e.changedTouches ? e.changedTouches[0].clientX : 0);
-    const clientY = e.clientY !== undefined ? e.clientY : (e.changedTouches ? e.changedTouches[0].clientY : 0);
-    
-    const worldX = (clientX - rect.left) / worldScale;
-    const worldY = (clientY - rect.top) / worldScale;
+    const worldX = (e.clientX - rect.left) / worldScale;
+    const worldY = (e.clientY - rect.top) / worldScale;
     [...characters].sort((a,b) => b.zIndex - a.zIndex).forEach(c => c.checkHit(worldX, worldY));
 };
 
-// State variables for PC dragging
 let isDragging = false;
-let hasDragged = false;
 let lastClientX = 0;
 
-window.addEventListener('mousedown', (e) => {
+// 1. INSTANT HIT: Fires the millisecond you touch/click. Fast and responsive!
+canvas.addEventListener('pointerdown', (e) => {
     isDragging = true;
-    hasDragged = false;
     lastClientX = e.clientX;
+    handleInteraction(e); // Play animation instantly
 });
 
-window.addEventListener('mouseup', (e) => {
+// 2. STOP DRAGGING
+window.addEventListener('pointerup', () => {
     isDragging = false;
     canvas.style.cursor = 'default';
-    if (!hasDragged) {
-        handleInteraction(e); // Only trigger animation if they didn't drag
-    }
 });
 
-// Controls both PC dragging and Mouse Hover logic
-window.addEventListener('mousemove', (e) => {
-    if (isDragging) {
-        const dx = e.clientX - lastClientX;
-        if (Math.abs(dx) > 2) hasDragged = true; // If they moved the mouse, it's a drag!
-        
-        window.scrollBy(-dx, 0); // Move the scrollbar dynamically
-        lastClientX = e.clientX;
-        canvas.style.cursor = 'grabbing'; // Show closed fist while dragging
-        return; // Don't run hover checks while dragging
-    }
-    
-    // --- HOVER POINTER LOGIC ---
-    const rect = canvas.getBoundingClientRect();
-    const worldX = (e.clientX - rect.left) / worldScale;
-    const worldY = (e.clientY - rect.top) / worldScale;
-    
-    let isHovering = false;
-    const sortedChars = [...characters].sort((a,b) => b.zIndex - a.zIndex);
-    for (let c of sortedChars) {
-        if (c.isHit(worldX, worldY)) {
-            isHovering = true;
-            break;
+// 3. PC HOVER & DRAG LOGIC (Ignored by Mobile Touch)
+window.addEventListener('pointermove', (e) => {
+    if (e.pointerType === 'mouse') {
+        if (isDragging) {
+            // Drag the map left/right
+            const dx = e.clientX - lastClientX;
+            window.scrollBy(-dx, 0);
+            lastClientX = e.clientX;
+            canvas.style.cursor = 'grabbing'; // Closed hand when pulling the map
+        } else {
+            // Hover logic: Show normal arrow, unless over a character
+            const rect = canvas.getBoundingClientRect();
+            const worldX = (e.clientX - rect.left) / worldScale;
+            const worldY = (e.clientY - rect.top) / worldScale;
+            
+            let isHovering = false;
+            const sortedChars = [...characters].sort((a,b) => b.zIndex - a.zIndex);
+            for (let c of sortedChars) {
+                if (c.isHit(worldX, worldY)) {
+                    isHovering = true;
+                    break;
+                }
+            }
+            canvas.style.cursor = isHovering ? 'pointer' : 'default'; // Clicking hand ONLY on characters
         }
-    }
-    
-    // Change cursor to pointing hand if over character, otherwise default arrow
-    canvas.style.cursor = isHovering ? 'pointer' : 'default'; 
-});
-
-/* ===============================
-   📱 MOBILE TAP DETECTION
-================================ */
-let touchStartX = 0;
-let touchStartY = 0;
-
-canvas.addEventListener('touchstart', (e) => {
-    touchStartX = e.touches[0].clientX;
-    touchStartY = e.touches[0].clientY;
-}, {passive: true}); // Passive true lets the mobile browser scroll natively
-
-canvas.addEventListener('touchend', (e) => {
-    const touchEndX = e.changedTouches[0].clientX;
-    const touchEndY = e.changedTouches[0].clientY;
-    const dx = Math.abs(touchEndX - touchStartX);
-    const dy = Math.abs(touchEndY - touchStartY);
-    
-    // If finger moves less than 15 pixels, count it as a tap!
-    if (dx < 15 && dy < 15) {
-        handleInteraction(e);
     }
 });
 
