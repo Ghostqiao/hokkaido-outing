@@ -19,38 +19,40 @@ const SNOW_DURATION = 20000;
 const CLEAR_DURATION = 15000;
 
 /* ===============================
-   📱 ORIENTATION GUARD (Mobile Only)
+   📱 ORIENTATION GUARD (Refresh-Based)
 ================================ */
+let manualDismiss = false; // Resets to false every time the page refreshes
 const rotateOverlay = document.createElement('div');
 rotateOverlay.id = 'rotate-guard';
 rotateOverlay.innerHTML = `
   <div class="rotate-box">
     <div class="phone-icon"></div>
     <p>Please Rotate Your Device</p>
+    <p style="font-size: 12px; opacity: 0.6; margin-top: 10px;">(Touch anywhere to skip)</p>
   </div>
 `;
 document.body.appendChild(rotateOverlay);
 
-// Add CSS directly via JS to keep your main.js portable
 const style = document.createElement('style');
 style.innerHTML = `
   #rotate-guard {
     display: none;
     position: fixed;
     top: 0; left: 0; width: 100%; height: 100%;
-    background: rgba(0,0,0,0.9);
+    background: rgba(0,0,0,0.85);
     z-index: 10000;
     color: white;
     font-family: sans-serif;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
   }
-  .rotate-box { text-align: center; }
+  .rotate-box { text-align: center; pointer-events: none; }
   .phone-icon {
-    width: 50px; height: 80px;
+    width: 40px; height: 70px;
     border: 3px solid white;
     border-radius: 6px;
-    margin: 0 auto 20px;
+    margin: 0 auto 15px;
     animation: rotatePhone 2s ease-in-out infinite;
   }
   @keyframes rotatePhone {
@@ -61,16 +63,20 @@ style.innerHTML = `
 `;
 document.head.appendChild(style);
 
+rotateOverlay.addEventListener('click', () => {
+    manualDismiss = true;
+    rotateOverlay.style.display = 'none';
+});
+
 function checkOrientation() {
   const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-  if (isMobile && window.innerHeight > window.innerWidth) {
+  // Shows if vertical AND hasn't been touched yet this session
+  if (isMobile && window.innerHeight > window.innerWidth && !manualDismiss) {
     rotateOverlay.style.display = 'flex';
   } else {
     rotateOverlay.style.display = 'none';
   }
 }
-window.addEventListener('resize', checkOrientation);
-checkOrientation();
 
 /* ===============================
    ❄️ SNOW SYSTEM
@@ -149,9 +155,7 @@ class Sprite {
   playSound() {
     if (this.sound) {
       this.sound.currentTime = 0; 
-      this.sound.play().catch(e => {
-          console.error(`🔊 Audio Failed for ${this.name}: Ensure ${this.soundPath} exists and you have clicked the screen once!`);
-      });
+      this.sound.play().catch(e => {}); 
     }
   }
 
@@ -161,6 +165,7 @@ class Sprite {
     if (!seq || seq.length === 0) return;
     if (this.index >= seq.length) this.index = 0; 
 
+    // 🐻 Bear Hit Effect
     if (this.name === "donghaoandbear" && this.state === "action" && seq[this.index] === 29 && !this.hitShakeDone) {
       screenShake = 60; 
       this.hitShakeDone = true;
@@ -183,12 +188,8 @@ class Sprite {
       const pivotX = this.x + (s.x / this.assetScale) + (drawW / 2);
       const pivotY = this.y + (s.y / this.assetScale) + (drawH / 2) + this.yOffset + jumpY;
       ctx.translate(pivotX, pivotY);
-      if (this.name === "Shannon" && shannonState === "trick") {
-        ctx.rotate((trickTimer / TRICK_DURATION) * Math.PI * 4); 
-      }
-      if ((this.name === "Crabman" && this.crabPhase === 0) || (this.name === "Rabbitman" && this.crabPhase === 1)) {
-        ctx.scale(-1, 1);
-      }
+      if (this.name === "Shannon" && shannonState === "trick") { ctx.rotate((trickTimer / TRICK_DURATION) * Math.PI * 4); }
+      if ((this.name === "Crabman" && this.crabPhase === 0) || (this.name === "Rabbitman" && this.crabPhase === 1)) { ctx.scale(-1, 1); }
       ctx.drawImage(this.webp, f.x, f.y, f.w, f.h, -drawW / 2, -drawH / 2, drawW, drawH);
       ctx.restore();
     }
@@ -252,7 +253,7 @@ class Sprite {
   }
 }
 
-// 🗺️ FULL CHARACTER LIST
+// 🗺️ CHARACTERS
 const characters = [
   new Sprite("Rabbitman", "assets/rabbitman.json", "assets/rabbitman.webp", 1300, 630, [0], [], 1, [], 1, 0, 98),
   new Sprite("Shannon", "assets/shannon.json", "assets/shannon.webp", 2840, 129, [0, 1, 2, 3, 4], [0, 1, 2, 3, 4], 1, [], 1, -155, 0),
@@ -347,7 +348,7 @@ function handleResize() {
   worldScale = window.innerHeight / BG_HEIGHT; 
   canvas.height = window.innerHeight; 
   canvas.width = BG_WIDTH * worldScale;
-  checkOrientation(); 
+  checkOrientation(); // Trigger orientation check
 }
 window.addEventListener('resize', handleResize); 
 handleResize();
