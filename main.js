@@ -11,6 +11,18 @@ let screenShake = 0;
 const skyImg = new Image(); skyImg.src = 'assets/sky.webp';
 const mountainImg = new Image(); mountainImg.src = 'assets/mountainandgrass.webp';
 
+// 🎵 Background Music
+const bgm = new Audio('assets/sounds/outingbgm.mp3');
+bgm.loop = true;
+let bgmStarted = false;
+
+function startBGM() {
+    if (!bgmStarted) {
+        bgm.play().catch(e => console.log("Audio autoplay blocked by browser until further interaction."));
+        bgmStarted = true;
+    }
+}
+
 let skyTime = 0; 
 let snowParticles = [];
 let isSnowing = true;
@@ -18,8 +30,8 @@ let weatherTimer = 0;
 const SNOW_DURATION = 20000; 
 const CLEAR_DURATION = 15000;
 
-// ❄️ DYNAMIC SNOW GLOBE CONTROLS
-let activeSnowCount = 15; 
+// ❄️ DYNAMIC SNOW GLOBE CONTROLS (Starts at 0!)
+let activeSnowCount = 0; 
 const MAX_SNOW = 100;
 let lastX = 0, lastY = 0, lastZ = 0;
 let moveThreshold = 25; 
@@ -32,7 +44,7 @@ hideScrollStyle.innerHTML = `
   html, body {
     margin: 0; padding: 0;
     width: 100%;
-    height: 100%;
+    height: 100dvh; 
     overflow-x: auto; 
     overflow-y: hidden; 
     background-color: #000;
@@ -45,11 +57,11 @@ hideScrollStyle.innerHTML = `
   }
   canvas {
     display: block;
-    touch-action: pan-x; /* Native left/right swipe on mobile */
-    cursor: grab; /* PC grab hand */
+    touch-action: pan-x; 
+    cursor: grab; 
   }
   canvas:active {
-    cursor: grabbing; /* PC closed fist */
+    cursor: grabbing; 
   }
 `;
 document.head.appendChild(hideScrollStyle);
@@ -143,13 +155,12 @@ style.innerHTML = `
 document.head.appendChild(style);
 
 /* ===============================
-   📱 SMART MOBILE FULLSCREEN (Ignores PC)
+   📱 SMART MOBILE FULLSCREEN
 ================================ */
 function tryMobileFullscreen() {
     const isTouch = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
     const isMobile = /Android|webOS|iPhone|iPad|iPod/i.test(navigator.userAgent);
     
-    // Will ONLY activate if you are literally touching a mobile device screen!
     if (isTouch && isMobile) {
         const docEl = document.documentElement;
         const requestFS = docEl.requestFullscreen || docEl.webkitRequestFullscreen;
@@ -164,7 +175,10 @@ function handleMotion(event) {
     if (!accel?.x) return;
     let delta = Math.abs(accel.x - lastX) + Math.abs(accel.y - lastY) + Math.abs(accel.z - lastZ);
     if (delta > moveThreshold) {
-        if (activeSnowCount < MAX_SNOW) activeSnowCount += 3;
+        // Immediate burst of snow if it's the first shake
+        if (activeSnowCount === 0) activeSnowCount = 20; 
+        else if (activeSnowCount < MAX_SNOW) activeSnowCount += 3;
+        
         snowParticles.forEach(p => { 
             p.speed = Math.min(p.speed + 0.8, 8); 
             if (p.opacity <= 0) p.reset(false); 
@@ -397,12 +411,12 @@ let lastTime = 0;
 function render(time) {
   const delta = time - lastTime; lastTime = time;
   
-  // HD RENDER SETUP: Use Device Pixel Ratio for perfect sharpness on phones
+  // HD RENDER SETUP
   const dpr = window.devicePixelRatio || 1;
-  ctx.setTransform(1, 0, 0, 1, 0, 0); // Reset transform
-  ctx.clearRect(0, 0, canvas.width, canvas.height); // Clear physical canvas
+  ctx.setTransform(1, 0, 0, 1, 0, 0); 
+  ctx.clearRect(0, 0, canvas.width, canvas.height); 
   
-  ctx.setTransform(dpr, 0, 0, dpr, 0, 0); // Scale up for Retina/HD screens
+  ctx.setTransform(dpr, 0, 0, dpr, 0, 0); 
   ctx.save();
   
   if (screenShake > 0) { ctx.translate((Math.random()-0.5)*screenShake, (Math.random()-0.5)*screenShake); screenShake *= 0.85; if (screenShake < 1) screenShake = 0; }
@@ -428,11 +442,9 @@ function handleResize() {
     worldScale = window.innerHeight / 850; 
     const dpr = window.devicePixelRatio || 1;
     
-    // Set logical CSS size (for layout and mouse tracking)
     canvas.style.width = `${2982 * worldScale}px`;
     canvas.style.height = `${window.innerHeight}px`;
     
-    // Set actual HD physical size
     canvas.width = Math.round(2982 * worldScale * dpr);
     canvas.height = Math.round(window.innerHeight * dpr);
     
@@ -444,6 +456,9 @@ window.addEventListener('resize', handleResize); handleResize();
    🖱️ FLAWLESS PC DRAG & MOBILE TOUCH
 ================================ */
 const handleInteraction = (e) => {
+    // 🎵 Start BGM on first interaction!
+    startBGM();
+
     if (typeof DeviceMotionEvent?.requestPermission === 'function') {
         DeviceMotionEvent.requestPermission().then(s => { if (s === 'granted') window.addEventListener('devicemotion', handleMotion); });
     } else window.addEventListener('devicemotion', handleMotion);
@@ -457,13 +472,13 @@ const handleInteraction = (e) => {
     [...characters].sort((a,b) => b.zIndex - a.zIndex).forEach(c => c.checkHit(worldX, worldY));
 };
 
-// --- FLAWLESS PC DRAG SYSTEM ---
 let isDragging = false;
 let dragStartX = 0;
 let hasDragged = false;
 
+// --- PC DRAG SYSTEM ---
 canvas.addEventListener('mousedown', (e) => {
-    e.preventDefault(); // Stops the browser from "ghost dragging" the canvas like an image
+    e.preventDefault(); 
     isDragging = true;
     hasDragged = false;
     dragStartX = e.clientX;
@@ -474,14 +489,10 @@ window.addEventListener('mousemove', (e) => {
     if (isDragging) {
         const dx = e.clientX - dragStartX;
         if (Math.abs(dx) > 3) hasDragged = true;
-        
-        // This scrolls the document smoothly left and right
         document.documentElement.scrollLeft -= dx;
         document.body.scrollLeft -= dx;
-        
         dragStartX = e.clientX;
-    } else {
-        // Hover pointer logic when NOT dragging
+    } else if (e.target === canvas) {
         const rect = canvas.getBoundingClientRect();
         const worldX = (e.clientX - rect.left) / worldScale;
         const worldY = (e.clientY - rect.top) / worldScale;
@@ -502,24 +513,23 @@ window.addEventListener('mouseup', (e) => {
     isDragging = false;
     canvas.style.cursor = 'grab';
     if (!hasDragged && e.button === 0) {
-        handleInteraction(e); // Trigger character click if you didn't drag the map
+        handleInteraction(e); 
     }
 });
 
-// --- SMART MOBILE TAP SYSTEM ---
+// --- MOBILE TAP SYSTEM ---
 let touchStartX = 0;
 let touchStartY = 0;
 
 canvas.addEventListener('touchstart', (e) => {
     touchStartX = e.touches[0].clientX;
     touchStartY = e.touches[0].clientY;
-}, {passive: true}); // Passive allows native scrolling to work perfectly on phones
+}, {passive: true}); 
 
 canvas.addEventListener('touchend', (e) => {
     const dx = Math.abs(e.changedTouches[0].clientX - touchStartX);
     const dy = Math.abs(e.changedTouches[0].clientY - touchStartY);
     
-    // If it was a quick tap, play animation and attempt to hide browser bar!
     if (dx < 10 && dy < 10) {
         handleInteraction(e);
         tryMobileFullscreen();
@@ -530,6 +540,7 @@ rotateOverlay.addEventListener('pointerdown', () => {
     manualDismiss = true; 
     rotateOverlay.style.display = 'none'; 
     tryMobileFullscreen();
+    startBGM(); // Start music if they tap to dismiss the overlay
 });
 
 initShannonPath(); requestAnimationFrame(render);
