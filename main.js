@@ -34,74 +34,106 @@ hideScrollStyle.innerHTML = `
     overflow-x: auto; 
     overflow-y: hidden; 
     background-color: #000;
-    scrollbar-width: none; /* Firefox */
-    -ms-overflow-style: none;  /* IE and Edge */
-    overscroll-behavior-y: none; /* Prevents mobile pull-to-refresh */
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    overscroll-behavior-y: none;
   }
   html::-webkit-scrollbar, body::-webkit-scrollbar {
-    display: none; /* Chrome, Safari and Opera */
+    display: none;
   }
   canvas {
     display: block;
-    touch-action: pan-x; /* Allow native mobile left/right swipes */
+    touch-action: pan-x;
   }
 `;
 document.head.appendChild(hideScrollStyle);
 
 /* ===============================
-   ✨ CONCEPT 3: PLAYFUL TOOLTIP UI
+   ✨ YOUR CUSTOM OVERLAY DESIGN
 ================================ */
 let manualDismiss = false;
 const rotateOverlay = document.createElement('div');
 rotateOverlay.id = 'rotate-guard';
-// Design: Floating white card with iconic instructions for minimal reading
 rotateOverlay.innerHTML = `
-  <div class="rotate-card">
-    <div class="card-content">
-      <div class="icon-row main-action">
-        <div class="device-icon">📱</div>
-      </div>
+  <div class="custom-overlay-content">
+    <div class="icons-container">
       
-      <div class="icon-row equation">
-        <span class="step">🎧</span>
-        <span class="plus">+</span>
-        <span class="step">❄️</span>
-      </div>
-      
-      <h1 class="rotate-text">Turn to Play!</h1>
-      
-      <div class="tap-note">V3 Tooltip UI - Tap to Skip</div>
+      <svg class="anim-phone" viewBox="0 0 24 24" width="70" height="70" stroke="white" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect>
+      </svg>
+
+      <svg viewBox="0 0 24 24" width="70" height="70" stroke="white" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+        <path class="anim-wave1" d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+        <path class="anim-wave2" d="M19.07 4.93a10 10 0 0 1 0 14.14"></path>
+      </svg>
+
+      <svg class="anim-snow" viewBox="0 0 24 24" width="70" height="70" stroke="white" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="12" y1="2" x2="12" y2="22"></line>
+        <line x1="17" y1="5" x2="12" y2="10"></line>
+        <line x1="7" y1="5" x2="12" y2="10"></line>
+        <line x1="17" y1="19" x2="12" y2="14"></line>
+        <line x1="7" y1="19" x2="12" y2="14"></line>
+        <line x1="2" y1="12" x2="22" y2="12"></line>
+        <line x1="5" y1="7" x2="10" y2="12"></line>
+        <line x1="5" y1="17" x2="10" y2="12"></line>
+        <line x1="19" y1="7" x2="14" y2="12"></line>
+        <line x1="19" y1="17" x2="14" y2="12"></line>
+      </svg>
+
     </div>
+    <p class="custom-overlay-text">Rotate your phone. Turn your volume on. Shake your phone to snow.</p>
   </div>
 `;
 document.body.appendChild(rotateOverlay);
 
 const style = document.createElement('style');
 style.innerHTML = `
-  /* Dark muted blue background to make the card pop */
-  #rotate-guard { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #1a2a3a; z-index: 10000; justify-content: center; align-items: center; cursor: pointer; }
+  #rotate-guard { 
+    display: none; 
+    position: fixed; 
+    top: 0; left: 0; 
+    width: 100%; height: 100%; 
+    background: rgba(10, 10, 80, 0.75); /* Deep transparent blue from your image */
+    backdrop-filter: blur(3px); /* Subtle blur so game is visible behind */
+    z-index: 10000; 
+    justify-content: center; 
+    align-items: center; 
+    cursor: pointer; 
+  }
+  .custom-overlay-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+  }
+  .icons-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+  }
+  .custom-overlay-text {
+    color: white;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    text-align: center;
+    margin: 0;
+    padding: 0 20px;
+  }
   
-  /* The floating rounded white card */
-  .rotate-card { background: white; padding: 25px 35px; border-radius: 25px; box-shadow: 0 20px 50px rgba(0,0,0,0.5); width: 80%; max-width: 320px; transition: transform 0.3s ease; }
+  /* Animations */
+  .anim-phone { animation: rotPhone 2.5s ease-in-out infinite; }
+  @keyframes rotPhone { 0% { transform: rotate(0deg); } 40%, 100% { transform: rotate(-90deg); } }
   
-  /* Layout helpers */
-  .card-content { text-align: center; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; display: flex; flex-direction: column; align-items: center; gap: 10px; }
-  .icon-row { display: flex; align-items: center; justify-content: center; gap: 10px; }
+  .anim-wave1 { animation: pulseWave 1.5s infinite; }
+  .anim-wave2 { animation: pulseWave 1.5s infinite 0.3s; }
+  @keyframes pulseWave { 0%, 100% { opacity: 0.2; } 50% { opacity: 1; } }
   
-  /* Phone rotation animation */
-  .device-icon { font-size: 80px; display: inline-block; animation: tiltPhoneV3 2s ease-in-out infinite; }
-  @keyframes tiltPhoneV3 { 0% { transform: rotate(0deg); } 40% { transform: rotate(-90deg); } 100% { transform: rotate(-90deg); } }
-  
-  /* Equation styling (🎧 + ❄️) */
-  .equation { font-size: 30px; margin-top: -10px; }
-  .step { opacity: 0.8; }
-  .plus { color: #888; font-weight: bold; font-size: 24px; }
-  
-  /* Bold, clean game-like text */
-  .rotate-text { font-size: 26px; color: #1a2a3a; margin: 0; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; }
-  
-  /* Minimal tap-to-skip note */
-  .tap-note { margin-top: 10px; font-size: 10px; color: #aaa; text-transform: uppercase; letter-spacing: 1px; font-weight: bold; }
+  .anim-snow { animation: fadeSnow 2s ease-in-out infinite; }
+  @keyframes fadeSnow { 0%, 100% { opacity: 0.3; } 50% { opacity: 1; } }
 `;
 document.head.appendChild(style);
 
@@ -165,7 +197,7 @@ const SHANNON_WAIT = 4000, TRICK_DURATION = 700, SHANNON_SPEED = 0.00005;
 const shannonPath = document.createElementNS("http://www.w3.org/2000/svg", "path");
 
 /* ===============================
-   🎨 SPRITE CLASS (ORIGINAL INDIVIDUAL JSON)
+   🎨 SPRITE CLASS
 ================================ */
 class Sprite {
   constructor(name, jsonPath, webpPath, x, y, idleRange, actionRange, repeatAction = 1, stutterQueue = [], assetScale = 1, yOffset = 0, zIndex = 0) {
@@ -263,7 +295,6 @@ class Sprite {
 
   finalize() { this.index = 0; this.state = "idle"; this.repeatCount = 0; this.stutterStage = -1; this.stutterCount = 0; this.rabbitSubPhase = 0; }
 
-  // Special helper to detect if a point is within the character's hit box
   isHit(tx, ty) {
     if (!this.w || !this.h) return false;
     return (tx >= this.x && tx <= this.x + this.w && ty >= this.y + this.yOffset - 100 && ty <= this.y + this.yOffset + this.h + 100);
@@ -373,8 +404,11 @@ const handleInteraction = (e) => {
     } else window.addEventListener('devicemotion', handleMotion);
     
     const rect = canvas.getBoundingClientRect();
-    const worldX = (e.clientX - rect.left) / worldScale;
-    const worldY = (e.clientY - rect.top) / worldScale;
+    const clientX = e.clientX !== undefined ? e.clientX : (e.changedTouches ? e.changedTouches[0].clientX : 0);
+    const clientY = e.clientY !== undefined ? e.clientY : (e.changedTouches ? e.changedTouches[0].clientY : 0);
+    
+    const worldX = (clientX - rect.left) / worldScale;
+    const worldY = (clientY - rect.top) / worldScale;
     [...characters].sort((a,b) => b.zIndex - a.zIndex).forEach(c => c.checkHit(worldX, worldY));
 };
 
@@ -385,7 +419,7 @@ let lastClientX = 0;
 canvas.addEventListener('pointerdown', (e) => {
     isDragging = true;
     lastClientX = e.clientX;
-    // Mobile optimization: If pointerdown has world coordinates, trigger interaction
+    // Mobile optimization: If pointerdown has world coordinates, trigger interaction immediately
     if (e.pointerType !== 'mouse') {
         handleInteraction(e);
     }
@@ -410,7 +444,6 @@ window.addEventListener('mouseup', (e) => {
 
 // 2. PC HOVER & DRAG LOGIC (Ignored by Mobile Touch)
 window.addEventListener('mousemove', (e) => {
-    // Only run this logic for mouse, not touch
     if (e.pointerType === 'mouse') {
         if (isDragging) {
             // Drag the map left/right
@@ -442,5 +475,6 @@ window.addEventListener('mousemove', (e) => {
 function handleResize() { worldScale = window.innerHeight / 850; canvas.height = window.innerHeight; canvas.width = 2982 * worldScale; checkOrientation(); }
 window.addEventListener('resize', handleResize); handleResize();
 rotateOverlay.addEventListener('touchstart', () => { manualDismiss = true; rotateOverlay.style.display = 'none'; });
+rotateOverlay.addEventListener('click', () => { manualDismiss = true; rotateOverlay.style.display = 'none'; });
 
 initShannonPath(); requestAnimationFrame(render);
