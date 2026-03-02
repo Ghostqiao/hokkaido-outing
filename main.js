@@ -25,7 +25,7 @@ let lastX = 0, lastY = 0, lastZ = 0;
 let moveThreshold = 25; 
 
 /* ===============================
-   📱 HIDDEN SCROLLBARS & DRAG CSS
+   📱 NATIVE SCROLL & CSS
 ================================ */
 const hideScrollStyle = document.createElement('style');
 hideScrollStyle.innerHTML = `
@@ -33,54 +33,44 @@ hideScrollStyle.innerHTML = `
     margin: 0; padding: 0;
     overflow-x: auto; 
     overflow-y: hidden; 
-    scrollbar-width: none; /* Firefox */
-    -ms-overflow-style: none; /* IE/Edge */
     background-color: #000;
-    overscroll-behavior: none; /* Prevents bounce effects on mobile */
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none;  /* IE and Edge */
+    overscroll-behavior-y: none; /* Prevents mobile pull-to-refresh */
   }
   html::-webkit-scrollbar, body::-webkit-scrollbar {
-    display: none; /* Chrome/Safari/Opera */
+    display: none; /* Chrome, Safari and Opera */
   }
   canvas {
     display: block;
-    touch-action: none; /* Gives our code full control of swiping */
-    cursor: grab;
-  }
-  canvas:active {
-    cursor: grabbing;
+    touch-action: pan-x; /* Allow native mobile left/right swipes */
   }
 `;
 document.head.appendChild(hideScrollStyle);
 
 /* ===============================
-   📱 ORIENTATION GUARD + ICONS
+   ✨ V3 BRAND NEW ROTATE UI (Neon Blue)
 ================================ */
 let manualDismiss = false;
 const rotateOverlay = document.createElement('div');
 rotateOverlay.id = 'rotate-guard';
 rotateOverlay.innerHTML = `
   <div class="rotate-box">
-    <div class="icon-row">
-        <div class="mini-icon">🔊</div>
-        <div class="phone-icon"></div>
-        <div class="mini-icon">📳</div>
-    </div>
-    <p>Rotate Device to Play</p>
-    <p style="font-size: 13px; opacity: 0.8; margin-top: 5px;">Turn Sound ON & Shake to Snow</p>
-    <p style="font-size: 11px; opacity: 0.5; margin-top: 15px;">(Tap to skip)</p>
+    <h2 style="color: #00E5FF; margin: 0 0 10px 0; font-family: sans-serif; text-transform: uppercase;">⚠️ Rotate Phone ⚠️</h2>
+    <div class="device-icon">📱</div>
+    <p style="color: #ddd; font-weight: bold; font-family: sans-serif;">Landscape Mode Required</p>
+    <p style="font-size: 13px; color: #999; font-family: sans-serif;">Turn on Sound & Shake for Snow</p>
+    <div style="margin-top: 15px; padding: 5px 10px; background: rgba(0,0,0,0.5); border-radius: 5px; font-size: 10px; color: #00E5FF; font-family: monospace;">V3 UI UPDATE - TAP TO SKIP</div>
   </div>
 `;
 document.body.appendChild(rotateOverlay);
 
 const style = document.createElement('style');
 style.innerHTML = `
-  #rotate-guard { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 10000; color: white; font-family: sans-serif; justify-content: center; align-items: center; cursor: pointer; }
-  .rotate-box { text-align: center; pointer-events: none; }
-  .icon-row { display: flex; align-items: center; justify-content: center; gap: 20px; margin-bottom: 20px; }
-  .mini-icon { font-size: 30px; animation: pulse 2s infinite; }
-  .phone-icon { width: 40px; height: 70px; border: 3px solid white; border-radius: 6px; animation: rotatePhone 2s ease-in-out infinite; }
-  @keyframes rotatePhone { 0% { transform: rotate(0deg); } 50% { transform: rotate(90deg); } 100% { transform: rotate(90deg); } }
-  @keyframes pulse { 0% { opacity: 0.4; } 50% { opacity: 1; } 100% { opacity: 0.4; } }
+  #rotate-guard { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(135deg, #0f2027, #203a43, #2c5364); z-index: 10000; justify-content: center; align-items: center; cursor: pointer; }
+  .rotate-box { background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); padding: 30px 40px; border-radius: 20px; text-align: center; box-shadow: 0 15px 40px rgba(0,0,0,0.6); border: 2px solid #00E5FF; }
+  .device-icon { font-size: 70px; display: inline-block; animation: tiltPhone 2s ease-in-out infinite; }
+  @keyframes tiltPhone { 0% { transform: rotate(0deg); } 50% { transform: rotate(-90deg); } 100% { transform: rotate(-90deg); } }
 `;
 document.head.appendChild(style);
 
@@ -144,7 +134,7 @@ const SHANNON_WAIT = 4000, TRICK_DURATION = 700, SHANNON_SPEED = 0.00005;
 const shannonPath = document.createElementNS("http://www.w3.org/2000/svg", "path");
 
 /* ===============================
-   🎨 SPRITE CLASS (Original Logic)
+   🎨 SPRITE CLASS (ORIGINAL INDIVIDUAL JSON LOGIC)
 ================================ */
 class Sprite {
   constructor(name, jsonPath, webpPath, x, y, idleRange, actionRange, repeatAction = 1, stutterQueue = [], assetScale = 1, yOffset = 0, zIndex = 0) {
@@ -242,8 +232,14 @@ class Sprite {
 
   finalize() { this.index = 0; this.state = "idle"; this.repeatCount = 0; this.stutterStage = -1; this.stutterCount = 0; this.rabbitSubPhase = 0; }
 
+  // New helper method used by both the Click Logic and the Hover Logic
+  isHit(tx, ty) {
+    if (!this.w || !this.h) return false;
+    return (tx >= this.x && tx <= this.x + this.w && ty >= this.y + this.yOffset - 100 && ty <= this.y + this.yOffset + this.h + 100);
+  }
+
   checkHit(tx, ty) {
-    if (tx >= this.x && tx <= this.x + this.w && ty >= this.y + this.yOffset - 100 && ty <= this.y + this.yOffset + this.h + 100) {
+    if (this.isHit(tx, ty)) {
       if (this.sound) { this.sound.currentTime = 0; this.sound.play().catch(()=>{}); }
       if (this.name === "Shannon") { shannonState = "trick"; trickTimer = 0; }
       if (this.name === "Rabbitman" && this.state === "idle") {
@@ -257,7 +253,7 @@ class Sprite {
   }
 }
 
-// 🗺️ CHARACTERS (Rabbitman zIndex fixed)
+// 🗺️ CHARACTERS
 const characters = [
   new Sprite("Rabbitman", "assets/rabbitman.json", "assets/rabbitman.webp", 1300, 630, [0], [], 1, [], 1, 0, 100),
   new Sprite("Shannon", "assets/shannon.json", "assets/shannon.webp", 2840, 129, [0, 1, 2, 3, 4], [0, 1, 2, 3, 4], 1, [], 1, -155, 0),
@@ -338,56 +334,93 @@ function render(time) {
 }
 
 /* ===============================
-   🖱️ MOUSE / SWIPE DRAG-TO-PAN
+   🖱️ PC MOUSE DRAG & HOVER LOGIC 
 ================================ */
-let isDragging = false;
-let dragStartX = 0;
-let initialScrollX = 0;
-let hasMoved = false;
-
-// Universal Pointer Events handle both Mouse and Touch effortlessly
-canvas.addEventListener('pointerdown', (e) => {
-    isDragging = true;
-    hasMoved = false; // Reset movement flag
-    dragStartX = e.pageX;
-    initialScrollX = document.documentElement.scrollLeft || document.body.scrollLeft;
-});
-
-window.addEventListener('pointermove', (e) => {
-    if (!isDragging) return;
-    
-    // Calculate how far the mouse/finger has dragged
-    const dragDistance = dragStartX - e.pageX;
-    
-    // If they drag more than 10 pixels, we register it as a panning motion, not a click
-    if (Math.abs(dragDistance) > 10) {
-        hasMoved = true; 
-    }
-    
-    window.scrollTo(initialScrollX + dragDistance, 0);
-});
-
-window.addEventListener('pointerup', (e) => {
-    if (!isDragging) return;
-    isDragging = false;
-
-    // Trigger Interaction ONLY if they didn't drag the screen (it was a tap)
-    if (!hasMoved) {
-        handleInteraction(e);
-    }
-});
-
-// The character interaction logic
 const handleInteraction = (e) => {
     if (typeof DeviceMotionEvent?.requestPermission === 'function') {
         DeviceMotionEvent.requestPermission().then(s => { if (s === 'granted') window.addEventListener('devicemotion', handleMotion); });
     } else window.addEventListener('devicemotion', handleMotion);
+    
+    const rect = canvas.getBoundingClientRect();
+    const clientX = e.clientX !== undefined ? e.clientX : (e.changedTouches ? e.changedTouches[0].clientX : 0);
+    const clientY = e.clientY !== undefined ? e.clientY : (e.changedTouches ? e.changedTouches[0].clientY : 0);
+    
+    const worldX = (clientX - rect.left) / worldScale;
+    const worldY = (clientY - rect.top) / worldScale;
+    [...characters].sort((a,b) => b.zIndex - a.zIndex).forEach(c => c.checkHit(worldX, worldY));
+};
 
+// State variables for PC dragging
+let isDragging = false;
+let hasDragged = false;
+let lastClientX = 0;
+
+window.addEventListener('mousedown', (e) => {
+    isDragging = true;
+    hasDragged = false;
+    lastClientX = e.clientX;
+});
+
+window.addEventListener('mouseup', (e) => {
+    isDragging = false;
+    canvas.style.cursor = 'default';
+    if (!hasDragged) {
+        handleInteraction(e); // Only trigger animation if they didn't drag
+    }
+});
+
+// Controls both PC dragging and Mouse Hover logic
+window.addEventListener('mousemove', (e) => {
+    if (isDragging) {
+        const dx = e.clientX - lastClientX;
+        if (Math.abs(dx) > 2) hasDragged = true; // If they moved the mouse, it's a drag!
+        
+        window.scrollBy(-dx, 0); // Move the scrollbar dynamically
+        lastClientX = e.clientX;
+        canvas.style.cursor = 'grabbing'; // Show closed fist while dragging
+        return; // Don't run hover checks while dragging
+    }
+    
+    // --- HOVER POINTER LOGIC ---
     const rect = canvas.getBoundingClientRect();
     const worldX = (e.clientX - rect.left) / worldScale;
     const worldY = (e.clientY - rect.top) / worldScale;
-    [...characters].sort((a,b) => b.zIndex - a.zIndex).forEach(c => c.checkHit(worldX, worldY));
-};
+    
+    let isHovering = false;
+    const sortedChars = [...characters].sort((a,b) => b.zIndex - a.zIndex);
+    for (let c of sortedChars) {
+        if (c.isHit(worldX, worldY)) {
+            isHovering = true;
+            break;
+        }
+    }
+    
+    // Change cursor to pointing hand if over character, otherwise default arrow
+    canvas.style.cursor = isHovering ? 'pointer' : 'default'; 
+});
+
+/* ===============================
+   📱 MOBILE TAP DETECTION
+================================ */
+let touchStartX = 0;
+let touchStartY = 0;
+
+canvas.addEventListener('touchstart', (e) => {
+    touchStartX = e.touches[0].clientX;
+    touchStartY = e.touches[0].clientY;
+}, {passive: true}); // Passive true lets the mobile browser scroll natively
+
+canvas.addEventListener('touchend', (e) => {
+    const touchEndX = e.changedTouches[0].clientX;
+    const touchEndY = e.changedTouches[0].clientY;
+    const dx = Math.abs(touchEndX - touchStartX);
+    const dy = Math.abs(touchEndY - touchStartY);
+    
+    // If finger moves less than 15 pixels, count it as a tap!
+    if (dx < 15 && dy < 15) {
+        handleInteraction(e);
+    }
+});
 
 function handleResize() { worldScale = window.innerHeight / 850; canvas.height = window.innerHeight; canvas.width = 2982 * worldScale; checkOrientation(); }
 window.addEventListener('resize', handleResize); handleResize();
