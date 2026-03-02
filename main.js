@@ -246,7 +246,7 @@ const characters = [
   new Sprite("Shuqiao", "assets/shuqiao.json", "assets/shuqiao.webp", 1060, 527, Array.from({length:10}, (_,i)=>i), Array.from({length:9}, (_,i)=>i+10), 2, [], 1, 0, 5),
   new Sprite("Ricky", "assets/ricky.json", "assets/ricky.webp", 1141, 458, Array.from({length:8}, (_,i)=>i), Array.from({length:9}, (_,i)=>i+8), 1, [{range:[15,16], target:10}], 1, 0, 6), 
   new Sprite("Toni", "assets/toni.json", "assets/toni.webp", 1462, 420, Array.from({length:10}, (_,i)=>i), Array.from({length:8}, (_,i)=>i+10), 1, [{range:[18,19], target:5},{range:[20],target:1},{range:[20,21], target:3}], 1, 0, 5),
-  new Sprite("Zushihocky", "assets/zushihocky.json", "assets/zushihocky.webp", 1700, 360, Array.from({length:10}, (_,i)=>i), [15], 1, [{range:[11,16], target:1}, {range:[16], target:10}], 1, 0, 5),
+  new Sprite("Zushihocky", "assets/zushihocky.json", "assets/zushihocky.webp", 1700, 360, Array.from({length:10}, (_,i)=>i), [15], 1, [{range:[11,16], target:1}, {range:[16], target:10}], 1, 0, 4),
   new Sprite("Yuki", "assets/yuki.json", "assets/yuki.webp", 2098, 458, Array.from({length:8}, (_,i)=>i), Array.from({length:6}, (_,i)=>i+8), 1, [{range:[12,13], target:5}], 1, 0, 5),
   new Sprite("Melody", "assets/melody.json", "assets/melody.webp", 2234, 480, Array.from({length:10}, (_,i)=>i), Array.from({length:7}, (_,i)=>i+10), 1, [{range:[12,16], target:10}], 1, 0, 4), 
   new Sprite("Horseman", "assets/horseman.json", "assets/horseman.webp", 2463, 441, Array.from({length:15}, (_,i)=>i), [15], 1, [{range:[15], target:3}, {range:[16], target:10}], 1, 0, 5),
