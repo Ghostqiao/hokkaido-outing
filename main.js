@@ -43,13 +43,17 @@ hideScrollStyle.innerHTML = `
   }
   canvas {
     display: block;
-    touch-action: pan-x;
+    touch-action: pan-x; /* Allow native mobile left/right swipes */
+    cursor: grab; /* Default PC cursor */
+  }
+  canvas:active {
+    cursor: grabbing; /* PC grabbing cursor */
   }
 `;
 document.head.appendChild(hideScrollStyle);
 
 /* ===============================
-   ✨ THE "THREE COLUMNS" OVERLAY DESIGN
+   ✨ YOUR CUSTOM OVERLAY (PERFECTLY ALIGNED)
 ================================ */
 let manualDismiss = false;
 const rotateOverlay = document.createElement('div');
@@ -57,36 +61,27 @@ rotateOverlay.id = 'rotate-guard';
 rotateOverlay.innerHTML = `
   <div class="custom-overlay-content">
     
-    <div class="instruction-column">
-      <svg class="anim-phone" viewBox="0 0 24 24" width="70" height="70" stroke="white" stroke-width="0.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <div class="icons-container">
+      <svg class="anim-phone" viewBox="0 0 24 24" width="60" height="60" stroke="white" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round">
         <rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect>
       </svg>
-      <span class="icon-label">Rotate</span>
-    </div>
 
-    <div class="instruction-column">
-      <svg viewBox="0 0 24 24" width="70" height="70" stroke="white" stroke-width="0.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <svg viewBox="0 0 24 24" width="60" height="60" stroke="white" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round">
         <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
         <path class="anim-wave1" d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
         <path class="anim-wave2" d="M19.07 4.93a10 10 0 0 1 0 14.14"></path>
       </svg>
-      <span class="icon-label">Sound On</span>
-    </div>
 
-    <div class="instruction-column">
-      <svg class="anim-snow" viewBox="0 0 24 24" width="70" height="70" stroke="white" stroke-width="0.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
-        <line x1="12" y1="2" x2="12" y2="22"></line>
-        <line x1="17" y1="5" x2="12" y2="10"></line>
-        <line x1="7" y1="5" x2="12" y2="10"></line>
-        <line x1="17" y1="19" x2="12" y2="14"></line>
-        <line x1="7" y1="19" x2="12" y2="14"></line>
-        <line x1="2" y1="12" x2="22" y2="12"></line>
-        <line x1="5" y1="7" x2="10" y2="12"></line>
-        <line x1="5" y1="17" x2="10" y2="12"></line>
-        <line x1="19" y1="7" x2="14" y2="12"></line>
+      <svg class="anim-snow" viewBox="0 0 24 24" width="60" height="60" stroke="white" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="12" y1="2" x2="12" y2="22"></line><line x1="17" y1="5" x2="12" y2="10"></line><line x1="7" y1="5" x2="12" y2="10"></line>
+        <line x1="17" y1="19" x2="12" y2="14"></line><line x1="7" y1="19" x2="12" y2="14"></line><line x1="2" y1="12" x2="22" y2="12"></line>
+        <line x1="5" y1="7" x2="10" y2="12"></line><line x1="5" y1="17" x2="10" y2="12"></line><line x1="19" y1="7" x2="14" y2="12"></line>
         <line x1="19" y1="17" x2="14" y2="12"></line>
       </svg>
-      <span class="icon-label">Shake</span>
+    </div>
+
+    <div class="text-block">
+      Rotate your phone. Turn your volume on. Shake your phone to snow.
     </div>
 
   </div>
@@ -100,57 +95,61 @@ style.innerHTML = `
     position: fixed; 
     top: 0; left: 0; 
     width: 100%; height: 100%; 
-    background: rgba(10, 10, 80, 0.75); 
-    backdrop-filter: blur(3px); 
+    background: rgba(10, 15, 50, 0.85); 
+    backdrop-filter: blur(4px); 
     z-index: 10000; 
     justify-content: center; 
     align-items: center; 
     cursor: pointer; 
   }
-  
-  /* Flexbox container mapping elements horizontally */
   .custom-overlay-content {
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    justify-content: center;
-    gap: 40px; /* Creates perfectly even spacing between the columns */
-  }
-  
-  /* Individual columns mapping icons and text vertically */
-  .instruction-column {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: flex-start;
-    gap: 15px; /* Exact space between the icon and the text below it */
-    width: 80px; /* Fixed width ensures the bounding box remains consistent */
+    gap: 25px; /* Space between icons and text */
   }
-
-  /* Text styling specifically structured to match icon widths */
-  .icon-label {
+  .icons-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 35px; /* Spacing between the 3 icons */
+  }
+  .text-block {
     color: white;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font-size: 13px; /* Increased slightly from 10px since it has its own dedicated space now */
-    font-weight: 300; 
-    letter-spacing: 1px; 
+    font-family: 'Segoe UI', Tahoma, Geneva, sans-serif;
+    font-size: 14px;
+    font-weight: 300;
     text-align: center;
-    white-space: nowrap; /* Prevents short words from incorrectly wrapping */
-    opacity: 0.9;
+    line-height: 1.5;
+    max-width: 250px; /* THIS IS THE FIX: Forces text to wrap perfectly under the icon edges */
   }
   
   /* Animations */
   .anim-phone { animation: rotPhone 2.5s ease-in-out infinite; }
   @keyframes rotPhone { 0% { transform: rotate(0deg); } 40%, 100% { transform: rotate(-90deg); } }
-  
   .anim-wave1 { animation: pulseWave 1.5s infinite; }
   .anim-wave2 { animation: pulseWave 1.5s infinite 0.3s; }
   @keyframes pulseWave { 0%, 100% { opacity: 0.2; } 50% { opacity: 1; } }
-  
   .anim-snow { animation: fadeSnow 2s ease-in-out infinite; }
   @keyframes fadeSnow { 0%, 100% { opacity: 0.3; } 50% { opacity: 1; } }
 `;
 document.head.appendChild(style);
+
+/* ===============================
+   📱 MOBILE FULLSCREEN HIDER
+================================ */
+function goFullScreenMobile() {
+    const isMobile = /Android|webOS|iPhone|iPad|iPod/i.test(navigator.userAgent);
+    if (isMobile) {
+        const doc = window.document;
+        const docEl = doc.documentElement;
+        const requestFullScreen = docEl.requestFullscreen || docEl.webkitRequestFullScreen || docEl.msRequestFullscreen;
+        if (!doc.fullscreenElement && requestFullScreen) {
+            requestFullScreen.call(docEl).catch(err => console.log("Fullscreen blocked by browser"));
+        }
+    }
+}
 
 function handleMotion(event) {
     let accel = event.accelerationIncludingGravity;
@@ -410,7 +409,7 @@ function render(time) {
 }
 
 /* ===============================
-   🖱️ INSTANT INTERACTION & PC DRAG
+   🖱️ INSTANT TOUCH & BUG-FREE PC DRAG
 ================================ */
 const handleInteraction = (e) => {
     if (typeof DeviceMotionEvent?.requestPermission === 'function') {
@@ -427,33 +426,25 @@ const handleInteraction = (e) => {
 };
 
 let isDragging = false;
+let hasDragged = false;
 let lastClientX = 0;
 
-canvas.addEventListener('pointerdown', (e) => {
-    isDragging = true;
-    lastClientX = e.clientX;
-    if (e.pointerType !== 'mouse') {
+// 1. POINTER EVENTS FOR BUG-FREE DRAGGING/HOVERING (Replaces mousemove)
+window.addEventListener('pointerdown', (e) => {
+    // Triggers Mobile App Mode!
+    goFullScreenMobile();
+
+    if (e.pointerType === 'mouse') {
+        isDragging = true;
+        hasDragged = false;
+        lastClientX = e.clientX;
+    } else {
+        // Instant interaction for Mobile Touch
         handleInteraction(e);
     }
 });
 
-window.addEventListener('mousedown', (e) => {
-    isDragging = true;
-    hasDragged = false;
-    lastClientX = e.clientX;
-});
-
-window.addEventListener('mouseup', (e) => {
-    if (isDragging && e.button === 0) { 
-        if (!hasDragged) {
-            handleInteraction(e); 
-        }
-    }
-    isDragging = false;
-    canvas.style.cursor = 'default';
-});
-
-window.addEventListener('mousemove', (e) => {
+window.addEventListener('pointermove', (e) => {
     if (e.pointerType === 'mouse') {
         if (isDragging) {
             const dx = e.clientX - lastClientX;
@@ -474,14 +465,29 @@ window.addEventListener('mousemove', (e) => {
                     break;
                 }
             }
-            canvas.style.cursor = isHovering ? 'pointer' : 'default'; 
+            canvas.style.cursor = isHovering ? 'pointer' : 'grab'; 
         }
+    }
+});
+
+window.addEventListener('pointerup', (e) => {
+    if (e.pointerType === 'mouse') {
+        if (isDragging && e.button === 0 && !hasDragged) {
+            handleInteraction(e); 
+        }
+        isDragging = false;
+        // Cursor will automatically reset on next pointermove hover check
     }
 });
 
 function handleResize() { worldScale = window.innerHeight / 850; canvas.height = window.innerHeight; canvas.width = 2982 * worldScale; checkOrientation(); }
 window.addEventListener('resize', handleResize); handleResize();
-rotateOverlay.addEventListener('touchstart', () => { manualDismiss = true; rotateOverlay.style.display = 'none'; });
-rotateOverlay.addEventListener('click', () => { manualDismiss = true; rotateOverlay.style.display = 'none'; });
+
+// Dismiss overlay + trigger fullscreen on mobile
+rotateOverlay.addEventListener('pointerdown', () => { 
+  manualDismiss = true; 
+  rotateOverlay.style.display = 'none'; 
+  goFullScreenMobile();
+});
 
 initShannonPath(); requestAnimationFrame(render);
