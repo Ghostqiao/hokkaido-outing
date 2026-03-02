@@ -19,10 +19,10 @@ const SNOW_DURATION = 20000;
 const CLEAR_DURATION = 15000;
 
 /* ===============================
-   📱 SHAKE DETECTION
+   📱 SHAKE DETECTION (Quantity & Speed Boost)
 ================================ */
 let lastX, lastY, lastZ;
-let moveThreshold = 15; // Sensitivity of the shake
+let moveThreshold = 18; 
 
 function handleMotion(event) {
     let accel = event.accelerationIncludingGravity;
@@ -33,19 +33,20 @@ function handleMotion(event) {
     let deltaZ = Math.abs(accel.z - lastZ);
 
     if ((deltaX + deltaY + deltaZ) > moveThreshold) {
-        // If shaken, force snow to start and add extra speed
         isSnowing = true;
         weatherTimer = 0; 
+        
+        // Boost existing snow and spawn new ones
         snowParticles.forEach(p => {
-            if (p.opacity <= 0) p.reset(false);
-            p.speed += 0.5; // Temporary speed boost
+            if (p.opacity <= 0) p.reset(false); // Respawn at top
+            p.speed += 2.5; // AGGRESSIVE SPEED BOOST
+            if (p.speed > 8) p.speed = 8; // Cap max speed
         });
     }
 
     lastX = accel.x; lastY = accel.y; lastZ = accel.z;
 }
 
-// Request permission for iOS 13+ devices
 window.addEventListener('click', () => {
     if (typeof DeviceMotionEvent.requestPermission === 'function') {
         DeviceMotionEvent.requestPermission()
@@ -57,7 +58,7 @@ window.addEventListener('click', () => {
 }, { once: true });
 
 /* ===============================
-   📱 ORIENTATION GUARD (Dismissible)
+   📱 ORIENTATION GUARD
 ================================ */
 let manualDismiss = false;
 const rotateOverlay = document.createElement('div');
@@ -93,7 +94,7 @@ function checkOrientation() {
 }
 
 /* ===============================
-   ❄️ SNOW GLOBE SYSTEM
+   ❄️ SNOW SYSTEM (Fade In/Out + Shake Speed)
 ================================ */
 class SnowParticle {
   constructor(startOnScreen = false) { this.reset(startOnScreen); }
@@ -101,7 +102,8 @@ class SnowParticle {
     this.x = Math.random() * BG_WIDTH;
     this.y = startOnScreen ? Math.random() * BG_HEIGHT : -50 - Math.random() * 200;
     this.size = Math.random() * 2 + 1;
-    this.speed = Math.random() * 1.2 + 0.5; 
+    this.baseSpeed = Math.random() * 1.2 + 0.8; 
+    this.speed = this.baseSpeed; 
     this.velX = (Math.random() - 0.5) * 0.5; 
     this.opacity = 0; 
     this.meltY = 740 + Math.random() * 60; 
@@ -110,11 +112,19 @@ class SnowParticle {
     if (this.y < this.meltY) {
       this.y += this.speed;
       this.x += this.velX + Math.sin(this.y * 0.01) * 0.2; 
-      if (this.opacity < 0.7) this.opacity += 0.01; // Fade in from top
-      if (this.speed > 2) this.speed *= 0.98; // Slowly return to normal speed after shake
+      
+      // Fade in from top
+      if (this.opacity < 0.75) this.opacity += 0.015; 
+      
+      // Gradually slow back down to normal speed after a shake
+      if (this.speed > this.baseSpeed) this.speed *= 0.96; 
     } else {
-      this.opacity -= 0.015; // Melt into ground
-      if (this.opacity <= 0 && !forceStop) this.reset(false);
+      // Hit ground: melt (fade out)
+      this.opacity -= 0.02; 
+      if (this.opacity <= 0) {
+          if (!forceStop) this.reset(false);
+          else this.opacity = 0; 
+      }
     }
   }
   draw() {
@@ -123,21 +133,13 @@ class SnowParticle {
     ctx.beginPath(); ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2); ctx.fill();
   }
 }
-for (let i = 0; i < 45; i++) snowParticles.push(new SnowParticle(true));
+
+// Increased slightly to 60 for better "globe" feel when shaken
+for (let i = 0; i < 60; i++) snowParticles.push(new SnowParticle(true));
 
 /* ===============================
-   🛼 SHANNON GLOBAL CONTROL
+   🎨 SPRITE CLASS & CHARACTERS (Unchanged)
 ================================ */
-let shannonProgress = 0;
-let shannonState = "skating"; 
-let shannonWaitTimer = 0;
-const SHANNON_WAIT = 4000; 
-let trickTimer = 0;
-const TRICK_DURATION = 700;
-const SHANNON_SPEED = 0.00005; 
-const shannonPath = document.createElementNS("http://www.w3.org/2000/svg", "path");
-let shannonPathLength = 0;
-
 class Sprite {
   constructor(name, jsonPath, webpPath, x, y, idleRange, actionRange, repeatAction = 1, stutterQueue = [], assetScale = 1, yOffset = 0, zIndex = 0) {
     this.name = name; this.startX = x; this.x = x; this.y = y;
@@ -153,28 +155,23 @@ class Sprite {
     this.sound = new Audio(this.soundPath);
     this.load();
   }
-
   async load() {
     try {
       const resp = await fetch(this.jsonPath);
       this.fullData = await resp.json();
       this.frameNames = Object.keys(this.fullData.frames).sort((a, b) => a.localeCompare(b, undefined, {numeric: true, sensitivity: 'base'}));
       this.ready = true; sortCharacters(); 
-    } catch (e) { console.error("JSON Error for " + this.name, e); }
+    } catch (e) { console.error("JSON Error", e); }
   }
-
   playSound() { if (this.sound) { this.sound.currentTime = 0; this.sound.play().catch(e => {}); } }
-
   update(now) {
     if (!this.ready || !this.fullData) return;
     let seq = (this.state === "idle") ? this.idleFrames : (this.stutterStage >= 0) ? this.stutterQueue[this.stutterStage].range : this.actionFrames;
     if (!seq || seq.length === 0) return;
     if (this.index >= seq.length) this.index = 0; 
-
     if (this.name === "donghaoandbear" && this.state === "action" && seq[this.index] === 29 && !this.hitShakeDone) {
       screenShake = 60; this.hitShakeDone = true;
     }
-
     const frameData = this.fullData.frames[this.frameNames[seq[this.index]]];
     if (frameData) {
       const f = frameData.frame; const s = frameData.spriteSourceSize; 
@@ -182,9 +179,8 @@ class Sprite {
       const drawW = f.w / this.assetScale; const drawH = f.h / this.assetScale;
       this.w = drawW; this.h = drawH;
       let jumpY = 0;
-      if (this.name === "Shannon" && shannonState === "trick") {
-        jumpY = Math.sin((trickTimer / TRICK_DURATION) * Math.PI) * -200;
-      } else if (this.name === "Leah" && this.state === "action") {
+      if (this.name === "Shannon" && shannonState === "trick") { jumpY = Math.sin((trickTimer / TRICK_DURATION) * Math.PI) * -200; }
+      else if (this.name === "Leah" && this.state === "action") {
         const totalJumpFrames = this.actionFrames.length * 3;
         const currentProgress = (this.repeatCount * this.actionFrames.length + this.index) / totalJumpFrames;
         jumpY = Math.sin(currentProgress * Math.PI) * -120;
@@ -212,7 +208,6 @@ class Sprite {
       this.lastUpdate = now;
     }
   }
-
   handleSequenceEnd() {
     if (this.state === "action") {
       if (this.name === "Rabbitman") {
@@ -235,9 +230,7 @@ class Sprite {
       } else { this.finalize(); }
     } else { this.index = 0; }
   }
-
   finalize() { this.index = 0; this.state = "idle"; this.repeatCount = 0; this.stutterStage = -1; this.stutterCount = 0; this.rabbitSubPhase = 0; }
-
   checkHit(tx, ty) {
     let isHit = (tx >= this.x && tx <= this.x + this.w && ty >= this.y + this.yOffset - 100 && ty <= this.y + this.yOffset + this.h + 100);
     if (isHit) {
@@ -254,7 +247,6 @@ class Sprite {
   }
 }
 
-// 🗺️ CHARACTERS
 const characters = [
   new Sprite("Rabbitman", "assets/rabbitman.json", "assets/rabbitman.webp", 1300, 630, [0], [], 1, [], 1, 0, 98),
   new Sprite("Shannon", "assets/shannon.json", "assets/shannon.webp", 2840, 129, [0, 1, 2, 3, 4], [0, 1, 2, 3, 4], 1, [], 1, -155, 0),
@@ -281,7 +273,7 @@ const characters = [
 ];
 
 /* ===============================
-   🚀 ENGINE & RENDER
+   🚀 ENGINE (Unchanged)
 ================================ */
 async function initShannonPath() {
   try {
@@ -350,10 +342,8 @@ function handleResize() {
   checkOrientation(); 
 }
 window.addEventListener('resize', handleResize); handleResize();
-
 canvas.addEventListener('mousedown', (e) => {
   const rect = canvas.getBoundingClientRect(); const worldX = (e.clientX - rect.left) / worldScale; const worldY = (e.clientY - rect.top) / worldScale;
   [...characters].sort((a,b) => b.zIndex - a.zIndex).forEach(c => c.checkHit(worldX, worldY));
 });
-
 initShannonPath(); requestAnimationFrame(render);
