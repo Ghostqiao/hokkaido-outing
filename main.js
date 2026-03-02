@@ -25,12 +25,14 @@ let lastX = 0, lastY = 0, lastZ = 0;
 let moveThreshold = 25; 
 
 /* ===============================
-   📱 NATIVE SCROLL & CSS
+   📱 HD SCROLL & CSS
 ================================ */
 const hideScrollStyle = document.createElement('style');
 hideScrollStyle.innerHTML = `
   html, body {
     margin: 0; padding: 0;
+    width: 100%;
+    height: 100%;
     overflow-x: auto; 
     overflow-y: hidden; 
     background-color: #000;
@@ -43,17 +45,17 @@ hideScrollStyle.innerHTML = `
   }
   canvas {
     display: block;
-    touch-action: pan-x; /* Allow native mobile left/right swipes */
-    cursor: grab; /* Default PC cursor */
+    touch-action: pan-x; /* Native left/right swipe on mobile */
+    cursor: grab; /* PC grab hand */
   }
   canvas:active {
-    cursor: grabbing; /* PC grabbing cursor */
+    cursor: grabbing; /* PC closed fist */
   }
 `;
 document.head.appendChild(hideScrollStyle);
 
 /* ===============================
-   ✨ YOUR CUSTOM OVERLAY (PERFECTLY ALIGNED)
+   ✨ THE "THREE COLUMNS" OVERLAY DESIGN
 ================================ */
 let manualDismiss = false;
 const rotateOverlay = document.createElement('div');
@@ -61,27 +63,30 @@ rotateOverlay.id = 'rotate-guard';
 rotateOverlay.innerHTML = `
   <div class="custom-overlay-content">
     
-    <div class="icons-container">
-      <svg class="anim-phone" viewBox="0 0 24 24" width="60" height="60" stroke="white" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <div class="instruction-column">
+      <svg class="anim-phone" viewBox="0 0 24 24" width="70" height="70" stroke="white" stroke-width="0.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
         <rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect>
       </svg>
+      <span class="icon-label">Rotate</span>
+    </div>
 
-      <svg viewBox="0 0 24 24" width="60" height="60" stroke="white" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <div class="instruction-column">
+      <svg viewBox="0 0 24 24" width="70" height="70" stroke="white" stroke-width="0.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
         <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
         <path class="anim-wave1" d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
         <path class="anim-wave2" d="M19.07 4.93a10 10 0 0 1 0 14.14"></path>
       </svg>
+      <span class="icon-label">Sound On</span>
+    </div>
 
-      <svg class="anim-snow" viewBox="0 0 24 24" width="60" height="60" stroke="white" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <div class="instruction-column">
+      <svg class="anim-snow" viewBox="0 0 24 24" width="70" height="70" stroke="white" stroke-width="0.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
         <line x1="12" y1="2" x2="12" y2="22"></line><line x1="17" y1="5" x2="12" y2="10"></line><line x1="7" y1="5" x2="12" y2="10"></line>
         <line x1="17" y1="19" x2="12" y2="14"></line><line x1="7" y1="19" x2="12" y2="14"></line><line x1="2" y1="12" x2="22" y2="12"></line>
         <line x1="5" y1="7" x2="10" y2="12"></line><line x1="5" y1="17" x2="10" y2="12"></line><line x1="19" y1="7" x2="14" y2="12"></line>
         <line x1="19" y1="17" x2="14" y2="12"></line>
       </svg>
-    </div>
-
-    <div class="text-block">
-      Rotate your phone. Turn your volume on. Shake your phone to snow.
+      <span class="icon-label">Shake</span>
     </div>
 
   </div>
@@ -95,8 +100,8 @@ style.innerHTML = `
     position: fixed; 
     top: 0; left: 0; 
     width: 100%; height: 100%; 
-    background: rgba(10, 15, 50, 0.85); 
-    backdrop-filter: blur(4px); 
+    background: rgba(10, 10, 80, 0.75); 
+    backdrop-filter: blur(3px); 
     z-index: 10000; 
     justify-content: center; 
     align-items: center; 
@@ -104,28 +109,29 @@ style.innerHTML = `
   }
   .custom-overlay-content {
     display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 40px; 
+  }
+  .instruction-column {
+    display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 25px; /* Space between icons and text */
+    justify-content: flex-start;
+    gap: 15px; 
+    width: 80px; 
   }
-  .icons-container {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    gap: 35px; /* Spacing between the 3 icons */
-  }
-  .text-block {
+  .icon-label {
     color: white;
-    font-family: 'Segoe UI', Tahoma, Geneva, sans-serif;
-    font-size: 14px;
-    font-weight: 300;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 13px; 
+    font-weight: 300; 
+    letter-spacing: 1px; 
     text-align: center;
-    line-height: 1.5;
-    max-width: 250px; /* THIS IS THE FIX: Forces text to wrap perfectly under the icon edges */
+    white-space: nowrap; 
+    opacity: 0.9;
   }
-  
-  /* Animations */
   .anim-phone { animation: rotPhone 2.5s ease-in-out infinite; }
   @keyframes rotPhone { 0% { transform: rotate(0deg); } 40%, 100% { transform: rotate(-90deg); } }
   .anim-wave1 { animation: pulseWave 1.5s infinite; }
@@ -137,16 +143,18 @@ style.innerHTML = `
 document.head.appendChild(style);
 
 /* ===============================
-   📱 MOBILE FULLSCREEN HIDER
+   📱 SMART MOBILE FULLSCREEN (Ignores PC)
 ================================ */
-function goFullScreenMobile() {
+function tryMobileFullscreen() {
+    const isTouch = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
     const isMobile = /Android|webOS|iPhone|iPad|iPod/i.test(navigator.userAgent);
-    if (isMobile) {
-        const doc = window.document;
-        const docEl = doc.documentElement;
-        const requestFullScreen = docEl.requestFullscreen || docEl.webkitRequestFullScreen || docEl.msRequestFullscreen;
-        if (!doc.fullscreenElement && requestFullScreen) {
-            requestFullScreen.call(docEl).catch(err => console.log("Fullscreen blocked by browser"));
+    
+    // Will ONLY activate if you are literally touching a mobile device screen!
+    if (isTouch && isMobile) {
+        const docEl = document.documentElement;
+        const requestFS = docEl.requestFullscreen || docEl.webkitRequestFullscreen;
+        if (requestFS && !document.fullscreenElement) {
+            requestFS.call(docEl).catch(()=>{});
         }
     }
 }
@@ -388,11 +396,19 @@ function updateShannon(delta) {
 let lastTime = 0;
 function render(time) {
   const delta = time - lastTime; lastTime = time;
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  
+  // HD RENDER SETUP: Use Device Pixel Ratio for perfect sharpness on phones
+  const dpr = window.devicePixelRatio || 1;
+  ctx.setTransform(1, 0, 0, 1, 0, 0); // Reset transform
+  ctx.clearRect(0, 0, canvas.width, canvas.height); // Clear physical canvas
+  
+  ctx.setTransform(dpr, 0, 0, dpr, 0, 0); // Scale up for Retina/HD screens
   ctx.save();
+  
   if (screenShake > 0) { ctx.translate((Math.random()-0.5)*screenShake, (Math.random()-0.5)*screenShake); screenShake *= 0.85; if (screenShake < 1) screenShake = 0; }
   
-  ctx.save(); ctx.scale(worldScale, worldScale); 
+  ctx.scale(worldScale, worldScale); 
+  
   if (skyImg.complete) {
     skyTime += 0.015; ctx.filter = `hue-rotate(${Math.sin(skyTime)*20}deg) brightness(0.8)`;
     ctx.drawImage(skyImg, 0, 0); ctx.filter = 'none';
@@ -404,12 +420,28 @@ function render(time) {
 
   updateShannon(delta); 
   characters.forEach(c => c.update(time));
-  ctx.restore(); ctx.restore();
+  ctx.restore(); 
   requestAnimationFrame(render);
 }
 
+function handleResize() { 
+    worldScale = window.innerHeight / 850; 
+    const dpr = window.devicePixelRatio || 1;
+    
+    // Set logical CSS size (for layout and mouse tracking)
+    canvas.style.width = `${2982 * worldScale}px`;
+    canvas.style.height = `${window.innerHeight}px`;
+    
+    // Set actual HD physical size
+    canvas.width = Math.round(2982 * worldScale * dpr);
+    canvas.height = Math.round(window.innerHeight * dpr);
+    
+    checkOrientation(); 
+}
+window.addEventListener('resize', handleResize); handleResize();
+
 /* ===============================
-   🖱️ INSTANT TOUCH & BUG-FREE PC DRAG
+   🖱️ FLAWLESS PC DRAG & MOBILE TOUCH
 ================================ */
 const handleInteraction = (e) => {
     if (typeof DeviceMotionEvent?.requestPermission === 'function') {
@@ -417,77 +449,87 @@ const handleInteraction = (e) => {
     } else window.addEventListener('devicemotion', handleMotion);
     
     const rect = canvas.getBoundingClientRect();
-    const clientX = e.clientX !== undefined ? e.clientX : (e.changedTouches ? e.changedTouches[0].clientX : 0);
-    const clientY = e.clientY !== undefined ? e.clientY : (e.changedTouches ? e.changedTouches[0].clientY : 0);
+    const clientX = e.clientX !== undefined ? e.clientX : e.changedTouches[0].clientX;
+    const clientY = e.clientY !== undefined ? e.clientY : e.changedTouches[0].clientY;
     
     const worldX = (clientX - rect.left) / worldScale;
     const worldY = (clientY - rect.top) / worldScale;
     [...characters].sort((a,b) => b.zIndex - a.zIndex).forEach(c => c.checkHit(worldX, worldY));
 };
 
+// --- FLAWLESS PC DRAG SYSTEM ---
 let isDragging = false;
+let dragStartX = 0;
 let hasDragged = false;
-let lastClientX = 0;
 
-// 1. POINTER EVENTS FOR BUG-FREE DRAGGING/HOVERING (Replaces mousemove)
-window.addEventListener('pointerdown', (e) => {
-    // Triggers Mobile App Mode!
-    goFullScreenMobile();
+canvas.addEventListener('mousedown', (e) => {
+    e.preventDefault(); // Stops the browser from "ghost dragging" the canvas like an image
+    isDragging = true;
+    hasDragged = false;
+    dragStartX = e.clientX;
+    canvas.style.cursor = 'grabbing';
+});
 
-    if (e.pointerType === 'mouse') {
-        isDragging = true;
-        hasDragged = false;
-        lastClientX = e.clientX;
+window.addEventListener('mousemove', (e) => {
+    if (isDragging) {
+        const dx = e.clientX - dragStartX;
+        if (Math.abs(dx) > 3) hasDragged = true;
+        
+        // This scrolls the document smoothly left and right
+        document.documentElement.scrollLeft -= dx;
+        document.body.scrollLeft -= dx;
+        
+        dragStartX = e.clientX;
     } else {
-        // Instant interaction for Mobile Touch
-        handleInteraction(e);
-    }
-});
-
-window.addEventListener('pointermove', (e) => {
-    if (e.pointerType === 'mouse') {
-        if (isDragging) {
-            const dx = e.clientX - lastClientX;
-            if (Math.abs(dx) > 2) hasDragged = true; 
-            window.scrollBy(-dx, 0);
-            lastClientX = e.clientX;
-            canvas.style.cursor = 'grabbing'; 
-        } else {
-            const rect = canvas.getBoundingClientRect();
-            const worldX = (e.clientX - rect.left) / worldScale;
-            const worldY = (e.clientY - rect.top) / worldScale;
-            
-            let isHovering = false;
-            const sortedChars = [...characters].sort((a,b) => b.zIndex - a.zIndex);
-            for (let c of sortedChars) {
-                if (c.isHit(worldX, worldY)) {
-                    isHovering = true;
-                    break;
-                }
+        // Hover pointer logic when NOT dragging
+        const rect = canvas.getBoundingClientRect();
+        const worldX = (e.clientX - rect.left) / worldScale;
+        const worldY = (e.clientY - rect.top) / worldScale;
+        let isHovering = false;
+        const sortedChars = [...characters].sort((a,b) => b.zIndex - a.zIndex);
+        for (let c of sortedChars) {
+            if (c.isHit(worldX, worldY)) {
+                isHovering = true;
+                break;
             }
-            canvas.style.cursor = isHovering ? 'pointer' : 'grab'; 
         }
+        canvas.style.cursor = isHovering ? 'pointer' : 'grab';
     }
 });
 
-window.addEventListener('pointerup', (e) => {
-    if (e.pointerType === 'mouse') {
-        if (isDragging && e.button === 0 && !hasDragged) {
-            handleInteraction(e); 
-        }
-        isDragging = false;
-        // Cursor will automatically reset on next pointermove hover check
+window.addEventListener('mouseup', (e) => {
+    if (!isDragging) return;
+    isDragging = false;
+    canvas.style.cursor = 'grab';
+    if (!hasDragged && e.button === 0) {
+        handleInteraction(e); // Trigger character click if you didn't drag the map
     }
 });
 
-function handleResize() { worldScale = window.innerHeight / 850; canvas.height = window.innerHeight; canvas.width = 2982 * worldScale; checkOrientation(); }
-window.addEventListener('resize', handleResize); handleResize();
+// --- SMART MOBILE TAP SYSTEM ---
+let touchStartX = 0;
+let touchStartY = 0;
 
-// Dismiss overlay + trigger fullscreen on mobile
+canvas.addEventListener('touchstart', (e) => {
+    touchStartX = e.touches[0].clientX;
+    touchStartY = e.touches[0].clientY;
+}, {passive: true}); // Passive allows native scrolling to work perfectly on phones
+
+canvas.addEventListener('touchend', (e) => {
+    const dx = Math.abs(e.changedTouches[0].clientX - touchStartX);
+    const dy = Math.abs(e.changedTouches[0].clientY - touchStartY);
+    
+    // If it was a quick tap, play animation and attempt to hide browser bar!
+    if (dx < 10 && dy < 10) {
+        handleInteraction(e);
+        tryMobileFullscreen();
+    }
+});
+
 rotateOverlay.addEventListener('pointerdown', () => { 
-  manualDismiss = true; 
-  rotateOverlay.style.display = 'none'; 
-  goFullScreenMobile();
+    manualDismiss = true; 
+    rotateOverlay.style.display = 'none'; 
+    tryMobileFullscreen();
 });
 
 initShannonPath(); requestAnimationFrame(render);
