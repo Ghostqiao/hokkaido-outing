@@ -30,11 +30,30 @@ let weatherTimer = 0;
 const SNOW_DURATION = 20000; 
 const CLEAR_DURATION = 15000;
 
-// ❄️ DYNAMIC SNOW GLOBE CONTROLS (Starts at 0!)
+// ❄️ DYNAMIC SNOW GLOBE CONTROLS
 let activeSnowCount = 0; 
 const MAX_SNOW = 100;
 let lastX = 0, lastY = 0, lastZ = 0;
 let moveThreshold = 25; 
+
+/* ===============================
+   📱 FORCE MOBILE "APP MODE" META TAGS
+================================ */
+(function injectAppMetaTags() {
+    const metaTags = [
+        { name: "apple-mobile-web-app-capable", content: "yes" },
+        { name: "apple-mobile-web-app-status-bar-style", content: "black-translucent" },
+        { name: "mobile-web-app-capable", content: "yes" },
+        { name: "theme-color", content: "#000000" },
+        { name: "viewport", content: "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" }
+    ];
+    metaTags.forEach(tag => {
+        const el = document.createElement('meta');
+        el.name = tag.name;
+        el.content = tag.content;
+        document.head.appendChild(el);
+    });
+})();
 
 /* ===============================
    📱 HD SCROLL & CSS
@@ -51,6 +70,7 @@ hideScrollStyle.innerHTML = `
     scrollbar-width: none;
     -ms-overflow-style: none;
     overscroll-behavior-y: none;
+    -webkit-touch-callout: none;
   }
   html::-webkit-scrollbar, body::-webkit-scrollbar {
     display: none;
@@ -59,6 +79,8 @@ hideScrollStyle.innerHTML = `
     display: block;
     touch-action: pan-x; 
     cursor: grab; 
+    -webkit-user-select: none;
+    user-select: none;
   }
   canvas:active {
     cursor: grabbing; 
@@ -167,6 +189,7 @@ function tryMobileFullscreen() {
         if (requestFS && !document.fullscreenElement) {
             requestFS.call(docEl).catch(()=>{});
         }
+        setTimeout(() => { window.scrollTo(0, 1); }, 100);
     }
 }
 
@@ -175,7 +198,6 @@ function handleMotion(event) {
     if (!accel?.x) return;
     let delta = Math.abs(accel.x - lastX) + Math.abs(accel.y - lastY) + Math.abs(accel.z - lastZ);
     if (delta > moveThreshold) {
-        // Immediate burst of snow if it's the first shake
         if (activeSnowCount === 0) activeSnowCount = 20; 
         else if (activeSnowCount < MAX_SNOW) activeSnowCount += 3;
         
@@ -233,20 +255,30 @@ const SHANNON_WAIT = 4000, TRICK_DURATION = 700, SHANNON_SPEED = 0.00005;
 const shannonPath = document.createElementNS("http://www.w3.org/2000/svg", "path");
 
 /* ===============================
-   🎨 SPRITE CLASS
+   🎨 OPTIMIZED SPRITE CLASS 
 ================================ */
 class Sprite {
   constructor(name, jsonPath, webpPath, x, y, idleRange, actionRange, repeatAction = 1, stutterQueue = [], assetScale = 1, yOffset = 0, zIndex = 0) {
     this.name = name; this.startX = x; this.x = x; this.y = y;
     this.assetScale = assetScale; this.yOffset = yOffset; this.zIndex = zIndex; 
-    this.webp = new Image(); this.webp.src = webpPath;
+    
+    // 🔥 SPEED OPTIMIZATION 1: Async image decoding stops the UI from freezing
+    this.webp = new Image(); 
+    this.webp.decoding = "async";
+    this.webp.src = webpPath;
+    
     this.jsonPath = jsonPath; this.idleFrames = idleRange; this.actionFrames = actionRange;
     this.repeatTarget = repeatAction; this.repeatCount = 0;
     this.stutterQueue = stutterQueue; this.stutterStage = -1; this.stutterCount = 0;
     this.crabPhase = 0; this.moveSpeed = 25; this.rabbitSubPhase = 0; this.leahWaitTimer = 0;
     this.fullData = null; this.frameNames = []; this.state = "idle"; this.index = 0; this.ready = false; this.lastUpdate = 0;
     this.hitShakeDone = false;
-    this.sound = new Audio(`assets/sounds/${this.name.toLowerCase()}.mp3`);
+    
+    // 🔥 SPEED OPTIMIZATION 2: Lazy Loading Audio. 
+    // We save the path, but we DO NOT load the file until the user taps the character!
+    this.audioSrc = `assets/sounds/${this.name.toLowerCase()}.mp3`;
+    this.sound = null; 
+
     this.load();
   }
 
@@ -337,7 +369,13 @@ class Sprite {
 
   checkHit(tx, ty) {
     if (this.isHit(tx, ty)) {
-      if (this.sound) { this.sound.currentTime = 0; this.sound.play().catch(()=>{}); }
+      // 🔥 SPEED OPTIMIZATION 2 (Cont.): Only create and download the audio if they are clicked!
+      if (!this.sound) {
+          this.sound = new Audio(this.audioSrc);
+      }
+      this.sound.currentTime = 0; 
+      this.sound.play().catch(()=>{}); 
+
       if (this.name === "Shannon") { shannonState = "trick"; trickTimer = 0; }
       if (this.name === "Rabbitman" && this.state === "idle") {
         this.state = "action"; this.index = 0; this.repeatCount = 0; this.rabbitSubPhase = 0;
@@ -411,8 +449,9 @@ let lastTime = 0;
 function render(time) {
   const delta = time - lastTime; lastTime = time;
   
-  // HD RENDER SETUP
-  const dpr = window.devicePixelRatio || 1;
+  // 🔥 SPEED OPTIMIZATION 3: Cap Device Pixel Ratio at 2. 
+  // Prevents mobile GPUs from crashing while still looking HD.
+  const dpr = Math.min(window.devicePixelRatio || 1, 2);
   ctx.setTransform(1, 0, 0, 1, 0, 0); 
   ctx.clearRect(0, 0, canvas.width, canvas.height); 
   
@@ -440,7 +479,7 @@ function render(time) {
 
 function handleResize() { 
     worldScale = window.innerHeight / 850; 
-    const dpr = window.devicePixelRatio || 1;
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
     
     canvas.style.width = `${2982 * worldScale}px`;
     canvas.style.height = `${window.innerHeight}px`;
@@ -456,7 +495,6 @@ window.addEventListener('resize', handleResize); handleResize();
    🖱️ FLAWLESS PC DRAG & MOBILE TOUCH
 ================================ */
 const handleInteraction = (e) => {
-    // 🎵 Start BGM on first interaction!
     startBGM();
 
     if (typeof DeviceMotionEvent?.requestPermission === 'function') {
@@ -476,7 +514,6 @@ let isDragging = false;
 let dragStartX = 0;
 let hasDragged = false;
 
-// --- PC DRAG SYSTEM ---
 canvas.addEventListener('mousedown', (e) => {
     e.preventDefault(); 
     isDragging = true;
@@ -517,7 +554,6 @@ window.addEventListener('mouseup', (e) => {
     }
 });
 
-// --- MOBILE TAP SYSTEM ---
 let touchStartX = 0;
 let touchStartY = 0;
 
@@ -540,7 +576,7 @@ rotateOverlay.addEventListener('pointerdown', () => {
     manualDismiss = true; 
     rotateOverlay.style.display = 'none'; 
     tryMobileFullscreen();
-    startBGM(); // Start music if they tap to dismiss the overlay
+    startBGM(); 
 });
 
 initShannonPath(); requestAnimationFrame(render);
